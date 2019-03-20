@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "476602426236",
+    "firebase_url": "https://sqli-f4ec9.firebaseio.com",
+    "project_id": "sqli-f4ec9",
+    "storage_bucket": "sqli-f4ec9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:476602426236:android:9868529877c9f684",
+        "android_client_info": {
+          "package_name": "com.sqli.guildes"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "476602426236-iai0ggarui3fj1a5eqphmgr4b93h4gr9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDGMpKeub5R5wTHWc7sYy69qJkkx1UtveA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
