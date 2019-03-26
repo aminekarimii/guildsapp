@@ -31,17 +31,9 @@ public class MainActivityTest {
     public ActivityTestRule<MainActivity> mActivityRule = new ActivityTestRule<>(
             MainActivity.class);
 
-    @Test
-    public void useAppContext() {
-        // Context of the app under test.
-        Context appContext = InstrumentationRegistry.getTargetContext();
-
-        assertEquals("com.sqli.starterkitandroid", appContext.getPackageName());
-    }
 
     @Test
     public void check_text_content_hello_world() {
-        onView(withId(R.id.hello_world_label))
-                .check(matches(withText("Hello World!")));
+
     }
 }

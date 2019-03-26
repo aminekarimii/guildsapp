@@ -16,4 +16,7 @@
     <string name="drawer_menu_send">Envoyer</string>
 
     <string name="analytics_main_screen">Ecran principal</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
 </resources>

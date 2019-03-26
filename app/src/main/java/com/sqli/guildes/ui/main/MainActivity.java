@@ -12,6 +12,7 @@ import android.view.View;
 
 import com.google.android.gms.analytics.HitBuilders;
 import com.sqli.guildes.App;
+import com.sqli.guildes.ui.login.LoginActivity;
 import com.sqli.starterkitandroid.R;
 
 public class MainActivity extends AppCompatActivity
@@ -62,6 +63,7 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onClick(final View view) {
+        LoginActivity.Companion.navigate(this);
         Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show();
     }

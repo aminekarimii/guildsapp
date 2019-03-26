@@ -3,35 +3,33 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.sqli.starterkitandroid">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:name="com.sqli.guildes.App"
         android:allowBackup="true"
+        android:fullBackupContent="@xml/backup_descriptor"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
+        android:usesCleartextTraffic="true"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:fullBackupContent="@xml/backup_descriptor"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity
-            android:name="com.sqli.guildes.ui.main.MainActivity"
+        <activity android:name="com.sqli.guildes.ui.login.LoginActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
 
-        <!-- Fabric Configuration -->
+        </activity>
+        <activity android:name="com.sqli.guildes.ui.main.MainActivity"/>
         <meta-data
             android:name="io.fabric.ApiKey"
-            android:value="${fabricApiKey}"
-            />
+            android:value="${fabricApiKey}" />
     </application>
 
 </manifest>
