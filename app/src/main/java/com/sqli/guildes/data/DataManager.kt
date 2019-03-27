@@ -2,27 +2,21 @@ package com.sqli.guildes.data
 
 import android.content.Context
 import com.sqli.guildes.data.local.PreferencesHelper
-import com.sqli.guildes.data.remote.GuildesService
-import com.sqli.guildes.data.remote.requests.LoginRequest
-import com.sqli.guildes.data.remote.responses.LoginResponse
+import com.sqli.guildes.data.local.SharedPreferencesDelegate
+import com.sqli.guildes.data.remote.ApiManager
 import com.sqli.guildes.di.SingletonHolder
-import io.reactivex.Observable
 
 class DataManager (val context: Context) {
 
-    companion object : SingletonHolder<PreferencesHelper, Context>(::PreferencesHelper)
+    companion object : SingletonHolder<DataManager, Context>(::DataManager)
 
-    var mService : GuildesService
-    var mPrefsHelper : PreferencesHelper
+    var apiManager : ApiManager = ApiManager(context)
 
-    init {
-        mService = GuildesService.Creator.newGitHubService()
-        mPrefsHelper = PreferencesHelper.getInstance(context)
-    }
+    private var mPrefsHelper : PreferencesHelper = PreferencesHelper.getInstance(context)
+    var tokenPref by SharedPreferencesDelegate(mPrefsHelper.mPref, PreferencesHelper.Constants.TOKEN, "")
 
-    fun login(username : String, password : String) : Observable<LoginResponse> {
-        return mService.login(LoginRequest())
-    }
+
+
 
 
 }

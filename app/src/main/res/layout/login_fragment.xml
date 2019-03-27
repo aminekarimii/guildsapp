@@ -21,33 +21,29 @@
         android:layout_gravity="center_horizontal" />
 
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="10"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp">
-        <EditText android:id="@+id/inputUsername"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="text"
-            android:hint="@string/username"
-            android:background="@drawable/login_text_background"/>
-    </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
+
+    <EditText android:id="@+id/inputUsername"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="10"
+        android:layout_weight="8"
         android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp">
-        <EditText android:id="@+id/inputPassword"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textPassword"
-            android:hint="@string/password"
-            android:background="@drawable/login_text_background"/>
-    </com.google.android.material.textfield.TextInputLayout>
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="10dp"
+        android:inputType="text"
+        android:hint="@string/username"
+        android:background="@drawable/login_text_background"/>
+
+    <EditText android:id="@+id/inputPassword"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="8"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:inputType="textPassword"
+        android:hint="@string/password"
+        android:background="@drawable/login_text_background"/>
+
 
     <View android:layout_width="match_parent"
         android:layout_height="0dp"

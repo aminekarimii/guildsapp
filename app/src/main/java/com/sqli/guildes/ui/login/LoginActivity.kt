@@ -4,9 +4,11 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.sqli.starterkitandroid.R
+import android.view.View
+import com.sqli.guildes.R
+import kotlinx.android.synthetic.main.login_fragment.*
 
-class LoginActivity : AppCompatActivity() {
+class LoginActivity : AppCompatActivity(){
 
     companion object {
         fun navigate (context: Context) {
@@ -24,5 +26,4 @@ class LoginActivity : AppCompatActivity() {
                     .commitNow()
         }
     }
-
 }
