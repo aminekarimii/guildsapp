@@ -15,6 +15,7 @@ import com.sqli.guildes.data.DataManager
 import com.sqli.guildes.ui.main.MainActivity
 import kotlinx.android.synthetic.main.login_fragment.*
 import log
+import onRightDrawableClicked
 import safe
 
 class LoginFragment : Fragment(){
@@ -33,10 +34,13 @@ class LoginFragment : Fragment(){
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
+        //UI setup
+        inputUsername.onRightDrawableClicked { it.text.clear() }
+
+        //ViewModel Setup
         val dataManager = context?.let { DataManager(it) }
         val loginViewModelFactory = dataManager?.let { LoginViewModelFactory(it) }
         loginViewModel = ViewModelProviders.of(this, loginViewModelFactory).get(LoginViewModel::class.java)
-
         loginViewModel.message.observe(viewLifecycleOwner, Observer{ message -> handleError(message)})
 
         //loginViewModel.getToken()

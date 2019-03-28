@@ -5,59 +5,90 @@
     android:id="@+id/login"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorBg"
+    android:orientation="vertical"
     android:paddingLeft="24dp"
     android:paddingRight="24dp"
-    android:orientation="vertical"
-    android:background="@color/colorBg"
     android:weightSum="100"
     tools:context=".ui.login.LoginFragment">
 
-    <ImageView android:src="@drawable/logo"
+
+    <ImageView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="54"
+        android:layout_gravity="center_horizontal"
         android:layout_marginLeft="80dp"
         android:layout_marginRight="80dp"
-        android:layout_gravity="center_horizontal" />
+        android:layout_weight="54"
+        android:src="@drawable/logo" />
 
 
-
-
-    <EditText android:id="@+id/inputUsername"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layoutUsername"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="8"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         android:layout_marginBottom="10dp"
-        android:inputType="text"
-        android:hint="@string/username"
-        android:background="@drawable/login_text_background"/>
+        android:layout_weight="8"
+        app:hintEnabled="false">
 
-    <EditText android:id="@+id/inputPassword"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/inputUsername"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/login_text_background"
+            android:drawableEnd="@drawable/ic_highlight_off_black_24dp"
+            android:drawableRight="@drawable/ic_highlight_off_black_24dp"
+            android:hint="@string/username"
+            android:inputType="text"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layoutPassword"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="8"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
-        android:inputType="textPassword"
-        android:hint="@string/password"
-        android:background="@drawable/login_text_background"/>
+        android:layout_marginBottom="10dp"
+        android:layout_weight="8"
+        app:hintEnabled="false"
+        app:passwordToggleEnabled="true">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/inputPassword"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/login_text_background"
+            android:hint="@string/password"
+            android:inputType="textPassword" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!--<EditText android:id="@+id/inputUsername"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="0dp"-->
+    <!--android:layout_weight="8"-->
+    <!--android:layout_marginLeft="30dp"-->
+    <!--android:layout_marginRight="30dp"-->
+    <!--android:layout_marginBottom="10dp"-->
+    <!--android:inputType="text"-->
+    <!--android:hint="@string/username"-->
+    <!--android:background="@drawable/login_text_background"/>-->
 
 
-    <View android:layout_width="match_parent"
+    <View
+        android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="6"/>
+        android:layout_weight="6" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnLogin"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="8"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
-        android:textColor="@color/colorWhite"
+        android:layout_weight="8"
+        android:background="@drawable/login_btn_background"
         android:text="@string/login"
-        android:background="@drawable/login_btn_background"/>
+        android:textColor="@color/colorWhite" />
 
 </LinearLayout>
