@@ -7,6 +7,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.sqli.guildes.core.Resource
 import com.sqli.guildes.data.DataManager
+import com.sqli.guildes.ui.base.BaseViewModel
 import com.sqli.guildes.utils.SingleLiveEvent
 import disposeWith
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -17,39 +18,32 @@ import log
 import java.io.IOException
 import java.util.concurrent.TimeoutException
 
-class LoginViewModel (private var dataManager : DataManager) : ViewModel() {
-
-
-
-    private val _requestToken = SingleLiveEvent<Resource<String>>()
-    private val _message = MutableLiveData<String>()
-
-    val requestToken: LiveData<Resource<String>> get() = _requestToken
-    val message: LiveData<String> get() = _message
-
-    private val compositeDisposable = CompositeDisposable()
+class LoginViewModel(dataManager: DataManager) : BaseViewModel<LoginNavigator>(dataManager) {
 
     fun isUsernameAndPasswordValid(username : String, password : String) : Boolean
             = !TextUtils.isEmpty(username) && !TextUtils.isEmpty(password)
 
 
     fun getRequestToken(username : String, password : String) {
-        dataManager.apiManager.getRequestToken(username, password)
+        dataManager.getRequestToken(username, password)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeBy(
-                        onSuccess = { tokenRes ->
-                            _requestToken.postValue(tokenRes)
-                            if (tokenRes is Resource.Success) {
-                                dataManager.tokenPref = tokenRes.data
+                        onSuccess = { when (it) {
+                            is Resource.Success -> {
+                                navigator.openMainActivity()
                             }
-                        },
-                        onError = { error -> handleError(error, "get-request-token")}
+                            is Resource.Error -> {
+                                //navigator.handleError("An error occurred while trying to login")
+                                navigator.handleError(it.errorMessage)
+                            }
+                        }},
+                        onError = { error ->
+                            handleError(error, "get-request-token")
+                        }
                 )
                 .disposeWith(compositeDisposable)
     }
-
-    fun getToken() = dataManager.tokenPref
 
     private fun handleError(error: Throwable, caller: String) {
         error.localizedMessage?.let {
@@ -59,9 +53,9 @@ class LoginViewModel (private var dataManager : DataManager) : ViewModel() {
                     error.printStackTrace()
                 }
         when (error) {
-            is IOException -> _message.postValue("Please check your internet connection")
-            is TimeoutException -> _message.postValue("Request timed out")
-            else -> _message.postValue("An error occurred")
+            is IOException -> navigator.handleError("Please check your internet connection")
+            is TimeoutException -> navigator.handleError("Request timed out")
+            else -> navigator.handleError("An error occurred")
         }
     }
 
