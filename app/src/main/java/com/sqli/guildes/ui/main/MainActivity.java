@@ -64,8 +64,8 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onClick(final View view) {
-        LoginActivity.Companion.navigate(this);
-        finish();
+//        LoginActivity.Companion.navigate(this);
+//        finish();
         Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show();
     }

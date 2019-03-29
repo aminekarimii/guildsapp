@@ -28,17 +28,9 @@ import io.reactivex.disposables.CompositeDisposable
  * Created by amitshekhar on 07/07/17.
  */
 
-abstract class BaseViewModel<N>(val dataManager: DataManager) : ViewModel() {
+abstract class BaseViewModel (val dataManager: DataManager) : ViewModel() {
 
     val compositeDisposable: CompositeDisposable
-
-    private var mNavigator: WeakReference<N>? = null
-
-    var navigator: N
-        get() = mNavigator!!.get()!!
-        set(navigator) {
-            this.mNavigator = WeakReference(navigator)
-        }
 
     init {
         this.compositeDisposable = CompositeDisposable()

@@ -1,6 +1,8 @@
 package com.sqli.guildes;
 
 import android.app.Application;
+import android.widget.Toast;
+
 import com.crashlytics.android.Crashlytics;
 import com.google.android.gms.analytics.GoogleAnalytics;
 import com.google.android.gms.analytics.Tracker;
