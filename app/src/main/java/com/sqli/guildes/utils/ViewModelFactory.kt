@@ -28,7 +28,6 @@ class ViewModelFactory(private val dataManager: DataManager) : ViewModelProvider
     //Singleton
     companion object {
 
-
         @Volatile private var INSTANCE: ViewModelFactory? = null
 
         fun getInstance(application: Application) =
@@ -40,23 +39,9 @@ class ViewModelFactory(private val dataManager: DataManager) : ViewModelProvider
                             .also { INSTANCE = it }
                 }
 
-
         @VisibleForTesting
         fun destroyInstance() {
             INSTANCE = null
         }
     }
-
-
-//    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-//        if (modelClass.isAssignableFrom(LoginViewModel::class.java)) {
-//            return LoginViewModel(dataManager) as T
-//        }
-//        if (modelClass.isAssignableFrom(SplashViewModel::class.java)) {
-//            return SplashViewModel(dataManager) as T
-//        }
-//
-//        throw IllegalArgumentException("Unknown ViewModel Class")
-//    }
-
 }

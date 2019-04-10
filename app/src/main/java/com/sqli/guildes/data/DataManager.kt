@@ -2,6 +2,7 @@ package com.sqli.guildes.data
 
 import android.content.Context
 import android.text.TextUtils
+import com.sqli.guildes.R
 import com.sqli.guildes.core.Resource
 import com.sqli.guildes.data.local.PreferencesHelper
 import com.sqli.guildes.data.local.SharedPreferencesDelegate
@@ -20,11 +21,9 @@ class DataManager (val context: Context) {
 
     companion object : SingletonHolder<DataManager, Context>(::DataManager)
 
-    private val ENDPOINT = "http://10.242.2.190:3000/api/"
+    private val ENDPOINT = context.getString(R.string.endpoint)
 
     private var loginService: LoginService
-
-
 
     private var prefsHelper : PreferencesHelper = PreferencesHelper.getInstance(context)
 
@@ -38,7 +37,7 @@ class DataManager (val context: Context) {
                 .baseUrl(ENDPOINT)
                 .addConverterFactory(MoshiConverterFactory.create())
                 .addCallAdapterFactory(KotlinRxJava2CallAdapterFactory.create())
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create()) //https://medium.com/mindorks/rxandroid-retrofit-2fff4f89fa85
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build()
 
         loginService = retrofit.create(LoginService::class.java)

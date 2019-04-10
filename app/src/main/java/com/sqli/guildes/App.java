@@ -1,7 +1,6 @@
 package com.sqli.guildes;
 
 import android.app.Application;
-import android.widget.Toast;
 
 import com.crashlytics.android.Crashlytics;
 import com.google.android.gms.analytics.GoogleAnalytics;
@@ -22,6 +21,10 @@ public class App extends Application {
         Fabric.with(this, new Crashlytics());
     }
 
+    /**
+     * Gets the default {@link Tracker} for this {@link Application}.
+     * @return tracker
+     */
     synchronized public static Tracker getDefaultTracker() {
         // To enable debug logging use: adb shell setprop log.tag.GAv4 DEBUG
         if (sTracker == null) {

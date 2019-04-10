@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.lifecycle.Observer
+import com.google.android.material.snackbar.Snackbar
 import com.sqli.guildes.R
 import com.sqli.guildes.core.Resource
 import com.sqli.guildes.ui.main.MainActivity
@@ -14,8 +15,15 @@ import com.sqli.guildes.utils.extensions.obtainViewModel
 class LoginActivity : AppCompatActivity() , LoginNavigator{
 
 
+    companion object {
+        fun navigate (context: Context) : Intent {
+            return Intent(context,LoginActivity::class.java)
+        }
+    }
+
+
     override fun handleError(message: String) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+        Snackbar.make(findViewById(android.R.id.content), message, Snackbar.LENGTH_SHORT).show()
     }
 
     override fun openMainActivity() {
@@ -52,11 +60,5 @@ class LoginActivity : AppCompatActivity() , LoginNavigator{
     fun obtainViewModel(): LoginViewModel = obtainViewModel(LoginViewModel::class.java)
 
 
-    companion object {
-        fun navigate (context: Context) {
-            val intent = Intent(context,LoginActivity::class.java)
-            context.startActivity(intent)
-        }
-    }
 
 }

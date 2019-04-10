@@ -1,6 +1,5 @@
 package com.sqli.guildes.ui.splash
 
-
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.sqli.guildes.core.Resource

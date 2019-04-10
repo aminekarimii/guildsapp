@@ -30,7 +30,7 @@ class SplachActivity : AppCompatActivity(), SplashNavigator {
     }
 
     override fun openLoginActivity() {
-        LoginActivity.navigate(this)
+        startActivity(LoginActivity.navigate(this))
         finish()
     }
 

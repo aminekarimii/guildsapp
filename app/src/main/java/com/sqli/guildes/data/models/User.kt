@@ -11,7 +11,7 @@ import java.util.*
 
 
 @Entity(tableName = "users",
-        foreignKeys = [ ForeignKey(
+        foreignKeys = [ForeignKey(
                 entity = Guilde::class,
                 parentColumns = ["id"],
                 childColumns = ["guildeId"]
