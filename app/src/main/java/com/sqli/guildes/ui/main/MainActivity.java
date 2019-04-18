@@ -12,7 +12,9 @@ import android.view.View;
 
 import com.google.android.gms.analytics.HitBuilders;
 import com.sqli.guildes.App;
-import com.sqli.starterkitandroid.R;
+import com.sqli.guildes.R;
+import com.sqli.guildes.ui.login.LoginActivity;
+
 
 public class MainActivity extends AppCompatActivity
         implements View.OnClickListener, MainFragment.Listener {

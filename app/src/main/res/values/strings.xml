@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">Guildes App</string>
+
+    <string name="endpoint">http://10.242.2.190:3000/api/</string>
+
     <string name="navigation_drawer_open">Ouvrir le menu</string>
     <string name="navigation_drawer_close">Fermer le menu</string>
     <string name="nav_header_title">SC Mobile</string>
@@ -16,4 +19,8 @@
     <string name="drawer_menu_send">Envoyer</string>
 
     <string name="analytics_main_screen">Ecran principal</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="invalid_username_password">Please provide a valid email and password.</string>
 </resources>

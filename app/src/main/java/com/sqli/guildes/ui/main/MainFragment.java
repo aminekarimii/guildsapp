@@ -7,7 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.sqli.starterkitandroid.R;
+import com.sqli.guildes.R;
+
 
 public class MainFragment extends Fragment {
 

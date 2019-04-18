@@ -1,10 +1,10 @@
 package com.sqli.guildes;
 
 import android.app.Application;
+
 import com.crashlytics.android.Crashlytics;
 import com.google.android.gms.analytics.GoogleAnalytics;
 import com.google.android.gms.analytics.Tracker;
-import com.sqli.starterkitandroid.R;
 
 import io.fabric.sdk.android.Fabric;
 
