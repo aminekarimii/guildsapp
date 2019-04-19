@@ -9,9 +9,8 @@ import com.sqli.guildes.core.Resource
 import com.sqli.guildes.data.DataManager
 import com.sqli.guildes.ui.base.BaseViewModel
 import com.sqli.guildes.utils.SingleLiveEvent
-import com.sqli.guildes.utils.extensions.disposeWith
+import com.sqli.guildes.core.extensions.disposeWith
 import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.schedulers.Schedulers
 import log

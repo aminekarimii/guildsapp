@@ -6,8 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.sqli.guildes.R
-import com.sqli.guildes.utils.extensions.onRightDrawableClicked
-import kotlinx.android.synthetic.main.login_fragment.*
+import com.sqli.guildes.core.extensions.onRightDrawableClicked
+import kotlinx.android.synthetic.main.fragment_login.*
 
 class LoginFragment : Fragment() {
 
@@ -22,7 +22,7 @@ class LoginFragment : Fragment() {
 
         mViewModel = (activity as LoginActivity).obtainViewModel()
 
-        return inflater.inflate(R.layout.login_fragment, container, false)
+        return inflater.inflate(R.layout.fragment_login, container, false)
     }
 
 

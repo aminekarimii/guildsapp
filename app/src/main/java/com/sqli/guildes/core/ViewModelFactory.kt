@@ -1,4 +1,4 @@
-package com.sqli.guildes.utils
+package com.sqli.guildes.core
 
 import android.app.Application
 import androidx.annotation.VisibleForTesting

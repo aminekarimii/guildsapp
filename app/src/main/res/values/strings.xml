@@ -23,4 +23,11 @@
     <string name="password">Password</string>
     <string name="login">Login</string>
     <string name="invalid_username_password">Please provide a valid email and password.</string>
+    <string name="home">Home</string>
+    <string name="my_guilde">My Guilde</string>
+    <string name="my_contributions">My contributions</string>
+    <string name="make_contribution">Make Contribution</string>
+    <string name="all_contributions">All Contributions</string>
+    <string name="profile">Profile</string>
+    <string name="sign_out">Sign out</string>
 </resources>

@@ -1,4 +1,4 @@
-package com.sqli.guildes.utils.extensions
+package com.sqli.guildes.core.extensions
 
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable

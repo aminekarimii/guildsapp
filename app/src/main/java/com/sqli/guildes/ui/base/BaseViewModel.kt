@@ -11,11 +11,7 @@ import io.reactivex.disposables.CompositeDisposable
 
 abstract class BaseViewModel (val dataManager: DataManager) : ViewModel() {
 
-    val compositeDisposable: CompositeDisposable
-
-    init {
-        this.compositeDisposable = CompositeDisposable()
-    }
+    val compositeDisposable: CompositeDisposable = CompositeDisposable()
 
     override fun onCleared() {
         compositeDisposable.dispose()

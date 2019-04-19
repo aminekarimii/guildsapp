@@ -5,7 +5,7 @@ import android.text.TextUtils
 import com.sqli.guildes.R
 import com.sqli.guildes.core.Resource
 import com.sqli.guildes.data.local.PreferencesHelper
-import com.sqli.guildes.data.local.SharedPreferencesDelegate
+import com.sqli.guildes.utils.SharedPreferencesDelegate
 import com.sqli.guildes.data.models.User
 import com.sqli.guildes.data.remote.LoginRequest
 import com.sqli.guildes.data.remote.LoginService

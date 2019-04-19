@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <item
+        android:id="@+id/home_navigation_menu_item"
+        android:icon="@drawable/ic_home"
+        android:title="@string/home" />
+    <item
+        android:id="@+id/guilde_navigation_menu_item"
+        android:icon="@drawable/ic_guilde"
+        android:title="@string/my_guilde" />
+
+    <item
+        android:id="@+id/my_contributions_navigation_menu_item"
+        android:icon="@drawable/ic_list"
+        android:title="@string/my_contributions" />
+
+    <item
+        android:id="@+id/make_contribution_navigation_menu_item"
+        android:icon="@drawable/ic_edit"
+        android:title="@string/make_contribution" />
+    <item
+        android:id="@+id/all_contributions_navigation_menu_item"
+        android:icon="@drawable/ic_list"
+        android:title="@string/all_contributions" />
+    <item
+        android:id="@+id/profile_navigation_menu_item"
+        android:icon="@drawable/ic_account"
+        android:title="@string/profile" />
+    <item
+        android:id="@+id/sign_out_navigation_menu_item"
+        android:icon="@drawable/ic_exit"
+        android:title="@string/sign_out" />
+</menu>

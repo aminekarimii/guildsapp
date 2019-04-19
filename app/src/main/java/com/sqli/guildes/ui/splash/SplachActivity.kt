@@ -5,9 +5,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.Observer
 import com.sqli.guildes.R
+import com.sqli.guildes.core.extensions.obtainViewModel
 import com.sqli.guildes.ui.login.LoginActivity
 import com.sqli.guildes.ui.main.MainActivity
-import com.sqli.guildes.utils.extensions.obtainViewModel
 
 class SplachActivity : AppCompatActivity(), SplashNavigator {
 
@@ -35,8 +35,7 @@ class SplachActivity : AppCompatActivity(), SplashNavigator {
     }
 
     override fun openMainActivity() {
-        val intent = Intent(this, MainActivity::class.java)
-        startActivity(intent)
+        startActivity(MainActivity.navigate(this))
         finish()
     }
 }

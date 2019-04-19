@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.sqli.guildes.utils.extensions
+package com.sqli.guildes.core.extensions
 
 /**
  * Various extension functions for AppCompatActivity.
@@ -28,7 +28,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProviders
-import com.sqli.guildes.utils.ViewModelFactory
+import com.sqli.guildes.core.ViewModelFactory
 
 
 const val ADD_EDIT_RESULT_OK = Activity.RESULT_FIRST_USER + 1

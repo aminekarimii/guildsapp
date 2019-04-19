@@ -4,13 +4,12 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
 import androidx.lifecycle.Observer
 import com.google.android.material.snackbar.Snackbar
 import com.sqli.guildes.R
 import com.sqli.guildes.core.Resource
+import com.sqli.guildes.core.extensions.obtainViewModel
 import com.sqli.guildes.ui.main.MainActivity
-import com.sqli.guildes.utils.extensions.obtainViewModel
 
 class LoginActivity : AppCompatActivity() , LoginNavigator{
 
@@ -27,8 +26,7 @@ class LoginActivity : AppCompatActivity() , LoginNavigator{
     }
 
     override fun openMainActivity() {
-        val intent = Intent(this, MainActivity::class.java)
-        startActivity(intent)
+        startActivity(MainActivity.navigate(this))
         finish()
     }
 
@@ -37,7 +35,7 @@ class LoginActivity : AppCompatActivity() , LoginNavigator{
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.login_activity)
+        setContentView(R.layout.activity_login)
 
 
         mViewModel = obtainViewModel().apply {

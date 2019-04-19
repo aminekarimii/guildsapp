@@ -1,4 +1,4 @@
-package com.sqli.guildes.utils.extensions
+package com.sqli.guildes.core.extensions
 
 import android.annotation.SuppressLint
 import android.view.MotionEvent

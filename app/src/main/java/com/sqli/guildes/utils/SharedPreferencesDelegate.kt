@@ -1,4 +1,4 @@
-package com.sqli.guildes.data.local
+package com.sqli.guildes.utils
 
 import android.annotation.SuppressLint
 import android.content.SharedPreferences
