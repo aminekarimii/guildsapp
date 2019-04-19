@@ -16,9 +16,4 @@
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
-    <style name="Widget.MaterialComponents.Toolbar.MainToolbar">
-        <item name="titleTextAppearance">@style/TextAppearance.MaterialComponents.Headline5</item>
-        <item name="titleTextColor">@color/colorSecondary</item>
-    </style>
-
 </resources>

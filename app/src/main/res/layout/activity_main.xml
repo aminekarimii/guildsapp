@@ -2,6 +2,7 @@
 <androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mainRootView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.sqli.guildes.ui.main.MainActivity"
@@ -19,11 +20,10 @@
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/mainToolbar"
-                style="@style/Widget.MaterialComponents.Toolbar.MainToolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                app:layout_scrollFlags="scroll|enterAlways|snap"
-                app:title="@string/app_name" />
+                app:titleTextColor="@color/colorWhite"
+                app:layout_scrollFlags="scroll|enterAlways|snap" />
 
         </com.google.android.material.appbar.AppBarLayout>
 
@@ -44,8 +44,6 @@
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/nav_header"
         app:menu="@menu/drawer_actions" />
-
-
 
 
 
