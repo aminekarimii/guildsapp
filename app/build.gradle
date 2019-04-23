@@ -2,8 +2,11 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'io.fabric'
+apply plugin: 'kotlin-kapt'
 
-
+kapt {
+    correctErrorTypes = true
+}
 
 repositories {
     maven { url 'https://maven.fabric.io/public' }
@@ -116,6 +119,10 @@ dependencies {
     implementation 'io.reactivex.rxjava2:rxjava:2.2.7'
     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
     implementation 'io.reactivex.rxjava2:rxkotlin:2.3.0'
+
+    // UI
+    implementation 'com.airbnb.android:epoxy:3.3.0'
+    kapt 'com.airbnb.android:epoxy-processor:3.3.0'
 
     // Unit testing
     testImplementation "org.mockito:mockito-core:2.21.0"
