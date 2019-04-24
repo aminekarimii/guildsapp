@@ -11,7 +11,7 @@
     <dimen name="small">16dp</dimen>
     <dimen name="medium">32dp</dimen>
     <dimen name="large">64dp</dimen>
-    <dimen name="itemHeight">160dp</dimen>
+    <dimen name="itemHeight">128dp</dimen>
     <dimen name="textH1">20sp</dimen>
     <dimen name="textH2">16sp</dimen>
     <dimen name="textH3">14sp</dimen>

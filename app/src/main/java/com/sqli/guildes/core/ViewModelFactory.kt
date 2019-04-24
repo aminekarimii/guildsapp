@@ -5,6 +5,7 @@ import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.sqli.guildes.data.DataManager
+import com.sqli.guildes.ui.home.HomeViewModel
 import com.sqli.guildes.ui.login.LoginViewModel
 import com.sqli.guildes.ui.main.MainViewModel
 import com.sqli.guildes.ui.splash.SplashViewModel
@@ -22,6 +23,8 @@ class ViewModelFactory(private val dataManager: DataManager) : ViewModelProvider
                         SplashViewModel(dataManager)
                     isAssignableFrom(MainViewModel::class.java) ->
                         MainViewModel(dataManager)
+                    isAssignableFrom(HomeViewModel::class.java) ->
+                        HomeViewModel(dataManager)
                     else ->
                         throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
                 }

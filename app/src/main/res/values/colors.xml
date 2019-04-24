@@ -7,7 +7,7 @@
     <color name="colorBg">#424242</color>
     <color name="colorWhite">#fff</color>
     <color name="colorSurface">#F4F4F4</color>
-    <color name="colorH1">#2d2d2d</color>
+    <color name="colorH1">#333333</color>
     <color name="colorH2">#7b7b7b</color>
     <color name="colorH3">#a1a1a1</color>
 </resources>

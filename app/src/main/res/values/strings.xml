@@ -31,4 +31,6 @@
     <string name="profile">Profile</string>
     <string name="sign_out">Sign out</string>
     <string name="guilde_logo">Guilde logo</string>
+    <string name="view_all">Veiw All</string>
+    <string name="view_less">Veiw Less</string>
 </resources>

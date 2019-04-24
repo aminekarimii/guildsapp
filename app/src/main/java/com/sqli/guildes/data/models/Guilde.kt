@@ -11,6 +11,6 @@ data class Guilde @JvmOverloads constructor(
         @PrimaryKey @ColumnInfo(name = "id") @field:Json(name="_id")
         var id: String = UUID.randomUUID().toString(),
         @ColumnInfo(name = "name") var name: String,
-        @ColumnInfo(name = "points") var points: String,
+        @ColumnInfo(name = "points") var points: Int,
         @ColumnInfo(name = "description") var description: String = ""
 )
