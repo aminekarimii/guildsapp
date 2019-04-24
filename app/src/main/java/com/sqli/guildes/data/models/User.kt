@@ -26,5 +26,5 @@ data class User @JvmOverloads constructor (
         var firstname: String = "admin",
         var lastname: String = "",
         var site: String = "Rabat",
-        var guildeId: String = ""
+        @field:Json(name="guilde_id") var guildeId: String = ""
 ) : Parcelable
