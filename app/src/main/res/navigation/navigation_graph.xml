@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.sqli.guildes.ui.home.HomeFragment"
+        android:label="Blank"
+        tools:layout="@layout/fragment_home" />
+
+
+    <fragment
+        android:id="@+id/guildeDetailFragment"
+        android:name="com.sqli.guildes.ui.guildedetail.GuildeDetailFragment"
+        android:label="Blank"
+        tools:layout="@layout/fragment_guilde_detail" />
+
+    <fragment
+        android:id="@+id/contributionFragment"
+        android:name="com.sqli.guildes.ui.contributions.ContributionsFragment"
+        android:label="Blank"
+        tools:layout="@layout/fragment_contributions" />
+
+</navigation>

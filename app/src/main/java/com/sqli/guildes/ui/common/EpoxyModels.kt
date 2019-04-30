@@ -74,7 +74,6 @@ abstract class InfoTextModel : EpoxyModelWithHolder<InfoTextModel.InfoTextViewHo
 }
 
 
-
 @EpoxyModelClass(layout = R.layout.view_loading)
 abstract class LoadingModel: EpoxyModelWithHolder<LoadingModel.LoadingHolder>() {
 

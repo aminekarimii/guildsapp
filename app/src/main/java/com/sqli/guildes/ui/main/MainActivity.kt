@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
+import android.widget.Toast
 import com.google.android.material.snackbar.Snackbar
 import com.sqli.guildes.R
 
@@ -11,6 +12,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.lifecycle.Observer
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.NavigationUI
+import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.navigation.NavigationView
 import com.sqli.guildes.core.extensions.obtainViewModel
 import com.sqli.guildes.core.extensions.replaceFragmentInActivity
@@ -18,12 +24,14 @@ import com.sqli.guildes.core.extensions.setupActionBar
 import com.sqli.guildes.ui.common.BackPressListener
 import com.sqli.guildes.ui.home.HomeFragment
 import kotlinx.android.synthetic.main.activity_main.*
+import log
 
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var mainViewModel: MainViewModel
     private var backPressListener: BackPressListener? = null
+    private lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,9 +42,12 @@ class MainActivity : AppCompatActivity() {
             setDisplayHomeAsUpEnabled(true)
         }
 
-        setupNavigationDrawer()
 
-        replaceFragmentInActivity(HomeFragment.newInstance(), R.id.container)
+        //replaceFragmentInActivity(HomeFragment.newInstance(), R.id.container)
+
+        navController = Navigation.findNavController(findViewById(R.id.mainNavHostFragment))
+        NavigationUI.setupActionBarWithNavController(this, navController, mainRootView)
+        navView.setupWithNavController(navController)
 
         mainViewModel = obtainViewModel().apply {
             snackbar.observe(this@MainActivity, Observer {
@@ -64,31 +75,6 @@ class MainActivity : AppCompatActivity() {
                 else -> super.onOptionsItemSelected(item)
             }
 
-
-    private fun setupNavigationDrawer() {
-        mainRootView.apply {
-            setStatusBarBackground(R.color.colorPrimaryDark)
-        }
-        setupDrawerContent(findViewById(R.id.nav_view))
-    }
-
-    private fun setupDrawerContent(navigationView: NavigationView) {
-        navigationView.setNavigationItemSelectedListener { menuItem ->
-            when (menuItem.itemId) {
-                R.id.home_navigation_menu_item -> { /* Do nothing, we're already on that screen */ }
-                R.id.guilde_navigation_menu_item -> {}
-                R.id.my_contributions_navigation_menu_item -> {}
-                R.id.make_contribution_navigation_menu_item -> {}
-                R.id.all_contributions_navigation_menu_item -> {}
-                R.id.profile_navigation_menu_item -> {}
-                R.id.sign_out_navigation_menu_item -> {}
-            }
-            // Close the navigation drawer when an item is selected.
-            menuItem.isChecked = true
-            mainRootView.closeDrawers()
-            true
-        }
-    }
 
     override fun onBackPressed() {
         if (backPressListener == null || backPressListener?.onBackPressed() == true) {
