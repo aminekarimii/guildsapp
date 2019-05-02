@@ -33,4 +33,6 @@
     <string name="guilde_logo">Guilde logo</string>
     <string name="view_all">Veiw All</string>
     <string name="view_less">Veiw Less</string>
+    <string name="contributions">Contributions</string>
+    <string name="points">Points</string>
 </resources>
