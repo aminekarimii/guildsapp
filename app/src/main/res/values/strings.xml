@@ -1,15 +1,12 @@
 <resources>
     <string name="app_name">Guildes App</string>
 
-    <string name="endpoint">http://10.242.2.190:3000/api/</string>
-
     <string name="navigation_drawer_open">Ouvrir le menu</string>
     <string name="navigation_drawer_close">Fermer le menu</string>
     <string name="nav_header_title">SC Mobile</string>
     <string name="nav_header_subtitle">mobile.maroc@sqli.com</string>
     <string name="nav_header_desc">En-tête de navigation</string>
     <string name="action_settings">Paramètre</string>
-
     <string name="drawer_menu_import">Importer</string>
     <string name="drawer_menu_gallery">Galerie</string>
     <string name="drawer_menu_presentation">Présentation</string>

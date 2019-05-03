@@ -9,13 +9,6 @@ class PreferencesHelper(context: Context) {
 
     private val PREF_FILE_NAME = "guildes_app_pref_file"
 
-    object Constants {
-        const val USER_ID = "_id"
-        const val USERNAME = "username"
-        const val TOKEN = "token"
-    }
-
-
     companion object : SingletonHolder<PreferencesHelper, Context>(::PreferencesHelper)
 
     val mPref: SharedPreferences
