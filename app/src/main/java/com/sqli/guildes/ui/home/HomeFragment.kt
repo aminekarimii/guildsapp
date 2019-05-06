@@ -7,10 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
 import com.sqli.guildes.R
+import com.sqli.guildes.core.Resource
 import com.sqli.guildes.core.extensions.obtainViewModel
 import com.sqli.guildes.ui.main.MainActivity
 import com.sqli.guildes.ui.main.MainViewModel
@@ -25,10 +27,7 @@ class HomeFragment : Fragment() {
     private lateinit var mainViewModel: MainViewModel
     private lateinit var homeViewModel: HomeViewModel
     private lateinit var epoxyController: HomeController
-
-    private val callbacks = object : HomeController.Callbacks {
-        override fun onGuildeItemClicked(id: String, transitionName: String, sharedView: View?) = Unit
-    }
+    private var isLess = true
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View {
@@ -39,6 +38,14 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val glideRequestManager : RequestManager = Glide.with(this)
+        val callbacks = object : HomeController.Callbacks {
+            override fun onGuildeItemClicked(id: String, transitionName: String, sharedView: View?) {
+                HomeFragmentDirections.actionHomeFragmentToGuildeDetailFragment().apply {
+                    guildeIdArg = id
+                    transitionNameArg = transitionName
+                }.also { findNavController().navigate(it) }
+            }
+        }
         epoxyController = HomeController(callbacks, glideRequestManager)
         rvTopGuildes.apply {
             layoutManager = LinearLayoutManager(context)
@@ -46,13 +53,10 @@ class HomeFragment : Fragment() {
         }
 
         tvViewAll.setOnClickListener { val tv = it as TextView
-            if(tv.text == getText(R.string.view_all)) {
-                homeViewModel.loadGuildes(false)
-                tv.text = getText(R.string.view_less)
-            } else {
-                homeViewModel.loadGuildes(true)
-                tv.text = getText(R.string.view_all)
-            }
+            if(isLess) tv.text = getText(R.string.view_less)
+            else tv.text = getText(R.string.view_all)
+            homeViewModel.loadGuildes()
+            isLess = !isLess
         }
     }
 
@@ -62,11 +66,15 @@ class HomeFragment : Fragment() {
 
         homeViewModel = obtainViewModel(HomeViewModel::class.java).apply {
             guildes.observe(this@HomeFragment, Observer {
-                epoxyController.setData(it)
+                epoxyController.setData(
+                        if(it is Resource.Success && isLess)
+                            Resource.Success(it.data.take(3))
+                        else it
+                )
             })
         }
 
-        homeViewModel.loadGuildes(true)
+        homeViewModel.loadGuildes()
     }
 
 }

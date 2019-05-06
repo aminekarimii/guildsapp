@@ -10,6 +10,7 @@ import com.sqli.guildes.data.DataManager
 import com.sqli.guildes.ui.base.BaseViewModel
 import com.sqli.guildes.utils.SingleLiveEvent
 import com.sqli.guildes.core.extensions.disposeWith
+import com.sqli.guildes.utils.ErrorUtil.handleError
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.schedulers.Schedulers
@@ -45,36 +46,15 @@ class LoginViewModel(dataManager: DataManager) : BaseViewModel(dataManager) {
                                 _requestToken.postValue(it)
                             }
                             is Resource.Error -> {
-                                //navigator.handleError("An error occurred while trying to login")
                                 _message.postValue(it.errorMessage)
                             }
                         }},
                         onError = { error ->
-                            handleError(error, "get-request-token")
+                            _message.postValue(handleError(error, "get-request-token"))
                         }
                 )
                 .disposeWith(compositeDisposable)
-    }
 
-    private fun handleError(error: Throwable, caller: String) {
-        error.localizedMessage?.let {
-            log("ERROR $caller -> $it")
-        } ?: log("ERROR $caller ->")
-                .also {
-                    error.printStackTrace()
-                }
-        when (error) {
-            is IOException -> _message.postValue("Please check your internet connection")
-            is TimeoutException -> _message.postValue("Request timed out")
-            else -> _message.postValue("An error occurred")
-        }
-    }
-
-    override fun onCleared() {
-        super.onCleared()
-        if (!compositeDisposable.isDisposed) {
-            compositeDisposable.dispose()
-        }
     }
 
 }

@@ -25,7 +25,6 @@ class HomeController(private val callbacks: Callbacks,
                     guilde {
                         id(id)
                         name(name)
-                        description(description)
                         points(points)
                         glide(glide)
                         transitionName("logo-$id")

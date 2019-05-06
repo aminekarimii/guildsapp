@@ -4,9 +4,16 @@ package com.sqli.guildes.ui.home
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.sqli.guildes.core.Resource
+import com.sqli.guildes.core.extensions.disposeWith
 import com.sqli.guildes.data.DataManager
 import com.sqli.guildes.data.models.Guilde
 import com.sqli.guildes.ui.base.BaseViewModel
+import com.sqli.guildes.utils.ErrorUtil.handleError
+import com.sqli.guildes.utils.SingleLiveEvent
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.rxkotlin.subscribeBy
+import io.reactivex.schedulers.Schedulers
+import log
 
 class HomeViewModel(dataManager : DataManager) : BaseViewModel(dataManager) {
 
@@ -14,16 +21,25 @@ class HomeViewModel(dataManager : DataManager) : BaseViewModel(dataManager) {
     val guildes: LiveData<Resource<List<Guilde>>>
         get() = _guildes
 
-    fun loadGuildes(less : Boolean) {
-        val guildes : List<Guilde> = listOf(
-                Guilde(name = "Aaaaa", description = "Alter accolas ducunt ad brabeuta. The pit is full of light.", points = 100),
-                Guilde(name = "Bbbbbb", description = "Alter accolas ducunt ad brabeuta. The pit is full of light.", points = 100),
-                Guilde(name = "Cbbbbbb", description = "Alter accolas ducunt ad brabeuta. The pit is full of light.", points = 100),
-                Guilde(name = "Dddddd", description = "Alter accolas ducunt ad brabeuta. The pit is full of light.", points = 100),
-                Guilde(name = "Eeeeee", description = "Alter accolas ducunt ad brabeuta. The pit is full of light.", points = 100)
-        )
+    private val _message = SingleLiveEvent<String>()
+    val message: LiveData<String>
+        get() = _message
 
-        val res = Resource.Success(if(less) guildes.take(3) else guildes)
-        _guildes.postValue(res)
+    fun loadGuildes() {
+        _guildes.postValue(Resource.Loading())
+        dataManager.getTopGuildes()
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeBy (
+                        onSuccess =  _guildes::postValue,
+                        onError = {
+                            _message.postValue(handleError(it, "get-request-token"))
+                        }
+                )
+                .disposeWith(compositeDisposable)
+
+
+//        val res = Resource.Success(if(less) guildes.take(3) else guildes)
+
     }
 }
