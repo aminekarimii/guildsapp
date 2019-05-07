@@ -7,9 +7,65 @@
     android:layout_height="match_parent"
     tools:context=".ui.home.HomeFragment"
     android:orientation="vertical"
-    android:background="@color/colorSurface">
+    android:background="@drawable/grad">
 
-    <include layout="@layout/item_guilde" />
+    <androidx.cardview.widget.CardView
+        android:id="@+id/itemGuilde"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorH1"
+        android:layout_marginBottom="10dp"
+        app:cardBackgroundColor="@color/colorPrimary"
+        app:cardCornerRadius="1dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="25dp">
+            <TextView
+                android:id="@+id/tvHomeGuildeName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/textH1"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:text="GuildeName"/>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="15dp"
+                android:padding="10dp"
+                android:background="@drawable/bg_points"
+                android:gravity="center"
+                android:textSize="@dimen/textH2"
+                android:textColor="@color/colorH2">
+                <TextView
+                    android:id="@+id/tvHomeGuildePoints"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/textH2"
+                    android:textColor="@color/colorH2"
+                    android:text="15365"/>
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/line" />
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:contentDescription="@string/app_name"
+                    android:src="@drawable/ic_star" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -24,6 +80,7 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
             android:text="Top Guildes"
+            android:textColor="@color/white"
             android:textSize="@dimen/textH2" />
 
         <TextView
@@ -38,6 +95,7 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:text="@string/view_all"
+            android:textColor="@color/white"
             android:textSize="@dimen/textH2" />
     </RelativeLayout>
 
@@ -49,5 +107,7 @@
         android:layout_marginLeft="@dimen/small"
         android:layout_marginEnd="@dimen/small"
         android:layout_marginRight="@dimen/small"
-        android:padding="@dimen/mini"/>
+        android:padding="@dimen/mini"
+        tools:listitem="@layout/item_guilde"/>
+
 </LinearLayout>

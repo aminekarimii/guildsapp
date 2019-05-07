@@ -4,13 +4,19 @@ import android.view.View
 import androidx.annotation.StringRes
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import com.sqli.guildes.core.Resource
+import com.sqli.guildes.core.extensions.disposeWith
 import com.sqli.guildes.data.DataManager
+import com.sqli.guildes.data.models.User
 import com.sqli.guildes.ui.base.BaseViewModel
 import com.sqli.guildes.ui.common.BackPressListener
 import com.sqli.guildes.ui.common.SnackbarAction
-import com.sqli.guildes.utils.SharedPreferencesDelegate
+import com.sqli.guildes.utils.ErrorUtil
 import com.sqli.guildes.utils.SingleLiveEvent
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.rxkotlin.subscribeBy
+import io.reactivex.schedulers.Schedulers
+import log
 
 class MainViewModel(dataManager: DataManager) : BaseViewModel(dataManager) {
 
@@ -25,6 +31,27 @@ class MainViewModel(dataManager: DataManager) : BaseViewModel(dataManager) {
     private var _backPressListener = MutableLiveData<BackPressListener>()
     val backPressListener: LiveData<BackPressListener>
         get() = _backPressListener
+
+    val currentUser : User?
+        get() = dataManager.currentUserPref
+
+    private var _isAuthenticated = MutableLiveData<Boolean>()
+    val isAuthenticated: LiveData<Boolean>
+        get() = _isAuthenticated
+
+    fun checkAuthetication() {
+        dataManager.getCurrentUser()
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeBy (
+                        onSuccess = {
+                            _isAuthenticated.postValue(it is Resource.Success)
+                        },
+                        onError = {_isAuthenticated.postValue(false) }
+                )
+                .disposeWith(compositeDisposable)
+    }
+
 
     fun showSnackbar(@StringRes message: Int) {
         _snackbar.postValue(SnackbarAction(message))

@@ -1,13 +1,12 @@
 package com.sqli.guildes.ui.common
 
 import android.view.View
-import android.widget.ImageView
 import android.widget.TextView
-import androidx.core.view.ViewCompat
+import androidx.cardview.widget.CardView
 import com.airbnb.epoxy.EpoxyAttribute
 import com.airbnb.epoxy.EpoxyModelClass
 import com.airbnb.epoxy.EpoxyModelWithHolder
-import com.bumptech.glide.RequestManager
+
 import com.sqli.guildes.R
 
 @EpoxyModelClass(layout = R.layout.item_guilde)
@@ -16,28 +15,43 @@ abstract class GuildeModel : EpoxyModelWithHolder<GuildeModel.GuildeViewHolder>(
     @EpoxyAttribute(EpoxyAttribute.Option.DoNotHash)
     lateinit var clickListener: View.OnClickListener
 
-    @EpoxyAttribute lateinit var transitionName: String
-    @EpoxyAttribute lateinit var glide: RequestManager
     @EpoxyAttribute lateinit var name: String
     @EpoxyAttribute var points : Int = 0
 
     override fun bind(holder: GuildeViewHolder) {
         super.bind(holder)
-        ViewCompat.setTransitionName(holder.guildeLogoImg, transitionName)
-        holder.guildeLogoImg.setOnClickListener(clickListener)
-        holder.guildeNametTv.text = name
-        holder.guildePointsTv.text = points.toString()
-    }
-
-    override fun unbind(holder: GuildeViewHolder) {
-        super.unbind(holder)
-        glide.clear(holder.guildeLogoImg)
+        holder.root.setOnClickListener(clickListener)
+        holder.tvGuildeName.text = name
+        holder.tvGuildePoints.text = points.toString()
     }
 
     inner class GuildeViewHolder : KotlinEpoxyHolder() {
-        val guildeLogoImg by bind<ImageView>(R.id.guildeLogoImg)
-        val guildeNametTv by bind<TextView>(R.id.guildeNameTv)
-        val guildePointsTv by bind<TextView>(R.id.guildePointsTv)
+        val root by bind<CardView>(R.id.itemGuilde)
+        val tvGuildeName by bind<TextView>(R.id.tvGuildeName)
+        val tvGuildePoints by bind<TextView>(R.id.tvGuildePoints)
+    }
+}
+
+@EpoxyModelClass(layout = R.layout.item_user)
+abstract class UserModel : EpoxyModelWithHolder<UserModel.UserViewHolder>() {
+
+    @EpoxyAttribute(EpoxyAttribute.Option.DoNotHash)
+    lateinit var clickListener: View.OnClickListener
+
+    @EpoxyAttribute lateinit var fullname: String
+    @EpoxyAttribute lateinit var site: String
+
+    override fun bind(holder: UserViewHolder) {
+        super.bind(holder)
+        holder.root.setOnClickListener(clickListener)
+        holder.tvUserFullName.text = fullname
+        holder.tvUserSite.text = site
+    }
+
+    inner class UserViewHolder : KotlinEpoxyHolder() {
+        val root by bind<CardView>(R.id.itemUser)
+        val tvUserFullName by bind<TextView>(R.id.tvUserFullName)
+        val tvUserSite by bind<TextView>(R.id.tvUserSite)
     }
 }
 

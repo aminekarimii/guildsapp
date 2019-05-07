@@ -16,7 +16,9 @@ import com.google.android.material.navigation.NavigationView
 import com.sqli.guildes.core.extensions.obtainViewModel
 import com.sqli.guildes.core.extensions.setupActionBar
 import com.sqli.guildes.ui.common.BackPressListener
+import com.sqli.guildes.ui.login.LoginActivity
 import kotlinx.android.synthetic.main.activity_main.*
+import log
 
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -34,10 +36,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             setDisplayHomeAsUpEnabled(true)
         }
 
-
         navController = Navigation.findNavController(findViewById(R.id.mainNavHostFragment))
-//      NavigationUI.setupActionBarWithNavController(this, navController, mainRootView)
-//      navView.setupWithNavController(navController)
         navView.setNavigationItemSelectedListener(this)
 
         mainViewModel = obtainViewModel().apply {
@@ -50,13 +49,23 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             })
             toolbarTitle.observe(this@MainActivity, Observer {
                 supportActionBar?.apply {
+                    if(it.isEmpty()) hide()
+                    else show()
                     title = it
                 }
             })
             backPressListener.observe(this@MainActivity, Observer {
                 this@MainActivity.backPressListener = it
             })
+            isAuthenticated.observe(this@MainActivity, Observer {
+                if(!it) {
+                    val i = LoginActivity.navigate(this@MainActivity)
+                    startActivity(i)
+                    finish()
+                }
+            })
         }
+        mainViewModel.checkAuthetication()
     }
 
     override fun onNavigationItemSelected(menuItem: MenuItem): Boolean {
@@ -64,7 +73,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.home_navigation_menu_item ->
                 navController.navigate(R.id.homeFragment)
             R.id.my_guilde_navigation_menu_item ->
-                navController.navigate(R.id.guildeDetailFragment)
+                navController.navigate(R.id.guildeDetailsFragment)
             R.id.my_contributions_navigation_menu_item -> { }
             R.id.make_contribution_navigation_menu_item -> { }
             R.id.all_contributions_navigation_menu_item -> { }

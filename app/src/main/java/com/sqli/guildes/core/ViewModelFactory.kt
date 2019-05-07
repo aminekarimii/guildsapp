@@ -5,6 +5,7 @@ import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.sqli.guildes.data.DataManager
+import com.sqli.guildes.ui.guildedetail.GuildeDetailsViewModel
 import com.sqli.guildes.ui.home.HomeViewModel
 import com.sqli.guildes.ui.login.LoginViewModel
 import com.sqli.guildes.ui.main.MainViewModel
@@ -25,6 +26,8 @@ class ViewModelFactory(private val dataManager: DataManager) : ViewModelProvider
                         MainViewModel(dataManager)
                     isAssignableFrom(HomeViewModel::class.java) ->
                         HomeViewModel(dataManager)
+                    isAssignableFrom(GuildeDetailsViewModel::class.java) ->
+                        GuildeDetailsViewModel(dataManager)
                     else ->
                         throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
                 }

@@ -11,25 +11,20 @@
         android:label="Blank"
         tools:layout="@layout/fragment_home" >
         <action
-            android:id="@+id/action_homeFragment_to_guildeDetailFragment"
-            app:destination="@id/guildeDetailFragment"
+            android:id="@+id/action_homeFragment_to_guildeDetailsFragment"
+            app:destination="@id/guildeDetailsFragment"
             app:enterAnim="@animator/fade_in_short"
             app:exitAnim="@animator/fade_out_short"/>
     </fragment>
 
 
     <fragment
-        android:id="@+id/guildeDetailFragment"
-        android:name="com.sqli.guildes.ui.guildedetail.GuildeDetailFragment"
+        android:id="@+id/guildeDetailsFragment"
+        android:name="com.sqli.guildes.ui.guildedetail.GuildeDetailsFragment"
         android:label="Blank"
-        tools:layout="@layout/fragment_guilde_detail" >
+        tools:layout="@layout/fragment_guilde_details" >
         <argument
             android:name="guildeIdArg"
-            android:defaultValue=" "
-            app:argType="string" />
-
-        <argument
-            android:name="transitionNameArg"
             android:defaultValue=" "
             app:argType="string" />
     </fragment>

@@ -1,4 +1,4 @@
-package com.sqli.guildes.ui.home
+package com.sqli.guildes.ui.common.controllers
 
 import android.view.View
 import com.airbnb.epoxy.TypedEpoxyController
@@ -10,12 +10,11 @@ import com.sqli.guildes.ui.common.guilde
 import com.sqli.guildes.ui.common.infoText
 import com.sqli.guildes.ui.common.loading
 
-class HomeController(private val callbacks: Callbacks,
-                     private val glide: RequestManager)
+class GuildeController(private val callbacks: Callbacks? = null)
     : TypedEpoxyController<Resource<List<Guilde>>>() {
 
     interface Callbacks {
-        fun onGuildeItemClicked(id: String, transitionName: String = "", sharedView: View?)
+        fun onGuildeItemClicked(id: String, sharedView: View?)
     }
 
     override fun buildModels(data: Resource<List<Guilde>>?) {
@@ -26,25 +25,23 @@ class HomeController(private val callbacks: Callbacks,
                         id(id)
                         name(name)
                         points(points)
-                        glide(glide)
-                        transitionName("logo-$id")
-                        clickListener { model, _, clickedView, _ ->
-                            callbacks.onGuildeItemClicked(id, model.transitionName, clickedView)
+                        clickListener { _, _, clickedView, _ ->
+                            callbacks?.onGuildeItemClicked(id, clickedView)
                         }
                     }
                 }
             }
             is Resource.Error -> {
                 infoText {
-                    id("error-top-guildes")
-                    text("Error getting top guildes")
+                    id("error-guildes")
+                    text("Error getting guildes")
                     spanSizeOverride { totalSpanCount, _, _ -> totalSpanCount }
                 }
             }
             is Resource.Loading -> {
                 loading {
-                    id("load-top-guildes")
-                    description("Loading ...")
+                    id("load-guildes")
+                    description("Loading Guildes ...")
                     spanSizeOverride { totalSpanCount, _, _ -> totalSpanCount }
                 }
             }

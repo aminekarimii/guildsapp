@@ -26,6 +26,7 @@ class HomeViewModel(dataManager : DataManager) : BaseViewModel(dataManager) {
         get() = _message
 
     fun loadGuildes() {
+
         _guildes.postValue(Resource.Loading())
         dataManager.getTopGuildes()
                 .subscribeOn(Schedulers.newThread())
@@ -33,13 +34,11 @@ class HomeViewModel(dataManager : DataManager) : BaseViewModel(dataManager) {
                 .subscribeBy (
                         onSuccess =  _guildes::postValue,
                         onError = {
-                            _message.postValue(handleError(it, "get-request-token"))
+                            val err = handleError(it, "loadGuildes")
+                            _message.postValue(err)
                         }
                 )
                 .disposeWith(compositeDisposable)
-
-
-//        val res = Resource.Success(if(less) guildes.take(3) else guildes)
 
     }
 }
