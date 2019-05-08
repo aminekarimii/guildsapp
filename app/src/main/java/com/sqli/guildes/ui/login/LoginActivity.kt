@@ -9,10 +9,25 @@ import com.google.android.material.snackbar.Snackbar
 import com.sqli.guildes.R
 import com.sqli.guildes.core.Resource
 import com.sqli.guildes.core.extensions.obtainViewModel
+import com.sqli.guildes.core.extensions.replaceFragmentInActivity
 import com.sqli.guildes.ui.main.MainActivity
 
-class LoginActivity : AppCompatActivity() , LoginNavigator{
+class LoginActivity : AppCompatActivity(){
 
+    private lateinit var loginViewModel : LoginViewModel
+
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_login)
+
+        replaceFragmentInActivity(LoginFragment.newInstance(), R.id.container)
+
+        loginViewModel = obtainViewModel().apply {
+            isAuthenticated.observe(this@LoginActivity, Observer { if(it) openMainActivity() })
+            message.observe(this@LoginActivity, Observer { handleError(it) })
+        }
+    }
 
     companion object {
         fun navigate (context: Context) : Intent {
@@ -20,43 +35,16 @@ class LoginActivity : AppCompatActivity() , LoginNavigator{
         }
     }
 
-
-    override fun handleError(message: String) {
-        Snackbar.make(findViewById(android.R.id.content), message, Snackbar.LENGTH_SHORT).show()
+    private fun handleError(message: String, length : Int = Snackbar.LENGTH_SHORT) {
+        Snackbar.make(findViewById(android.R.id.content), message, length).show()
     }
 
-    override fun openMainActivity() {
-        startActivity(MainActivity.navigate(this))
+    private fun openMainActivity() {
+        val i = MainActivity.navigate(this)
+        startActivity(i)
         finish()
     }
 
-    private lateinit var mViewModel : LoginViewModel
-
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
-
-
-        mViewModel = obtainViewModel().apply {
-
-            requestToken.observe(this@LoginActivity, Observer {
-                if (it is Resource.Success) openMainActivity()
-            })
-
-            message.observe(this@LoginActivity, Observer { handleError(it) })
-
-        }
-
-        if (savedInstanceState == null) {
-            supportFragmentManager.beginTransaction()
-                    .replace(R.id.container, LoginFragment.newInstance())
-                    .commitNow()
-        }
-    }
-
     fun obtainViewModel(): LoginViewModel = obtainViewModel(LoginViewModel::class.java)
-
-
 
 }

@@ -15,12 +15,10 @@ class LoginFragment : Fragment() {
         fun newInstance() = LoginFragment()
     }
 
-    private lateinit var mViewModel: LoginViewModel
+    private lateinit var loginViewModel: LoginViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View {
-
-        mViewModel = (activity as LoginActivity).obtainViewModel()
 
         return inflater.inflate(R.layout.fragment_login, container, false)
     }
@@ -28,6 +26,8 @@ class LoginFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+
+        loginViewModel = (activity as LoginActivity).obtainViewModel()
 
         inputUsername.onRightDrawableClicked { it.text.clear() }
         btnLogin.setOnClickListener { login() }
@@ -38,6 +38,6 @@ class LoginFragment : Fragment() {
         val username : String = inputUsername.text.toString()
         val password : String = inputPassword.text.toString()
 
-        mViewModel.getRequestToken(username, password)
+        loginViewModel.getRequestToken(username, password)
     }
 }

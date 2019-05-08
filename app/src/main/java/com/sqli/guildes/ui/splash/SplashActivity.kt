@@ -1,40 +1,45 @@
 package com.sqli.guildes.ui.splash
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import androidx.lifecycle.Observer
 import com.sqli.guildes.R
 import com.sqli.guildes.core.extensions.obtainViewModel
 import com.sqli.guildes.ui.login.LoginActivity
 import com.sqli.guildes.ui.main.MainActivity
 
-class SplachActivity : AppCompatActivity(), SplashNavigator {
+class SplashActivity : AppCompatActivity() {
 
-    private lateinit var mViewModel : SplashViewModel
+    companion object {
+        const val SPLASH_SCREEN_DURATION = 3000L
+    }
+
+    private lateinit var splashViewModel : SplashViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_splach)
+        setContentView(R.layout.activity_splash)
 
 
-        mViewModel = obtainViewModel(SplashViewModel::class.java).apply {
-            decideNextActivity.observe(this@SplachActivity, Observer {
+        splashViewModel = obtainViewModel(SplashViewModel::class.java).apply {
+
+            decideNextActivity.observe(this@SplashActivity, Observer {
                 if (it) openMainActivity()
                 else openLoginActivity()
             })
-        }
 
-        mViewModel.startSeeding()
+            Handler().postDelayed( ::startSeeding , SPLASH_SCREEN_DURATION)
+        }
 
     }
 
-    override fun openLoginActivity() {
+    private fun openLoginActivity() {
         startActivity(LoginActivity.navigate(this))
         finish()
     }
 
-    override fun openMainActivity() {
+    private fun openMainActivity() {
         startActivity(MainActivity.navigate(this))
         finish()
     }
