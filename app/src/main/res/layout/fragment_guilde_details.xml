@@ -59,14 +59,8 @@
             <ImageView
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-<<<<<<< HEAD
                 android:contentDescription="@string/app_name"
                 android:src="@drawable/ic_star" />
-=======
-                android:layout_marginTop="4dp"
-                android:contentDescription="@string/app_name"
-                android:src="@drawable/ic_guilde" />
->>>>>>> homescreen
 
         </LinearLayout>
     </RelativeLayout>
