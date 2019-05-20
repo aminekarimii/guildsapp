@@ -1,4 +1,4 @@
-package com.sqli.guildes.ui.common
+package com.sqli.guildes.ui.common.epoxy
 
 import android.view.View
 import com.airbnb.epoxy.EpoxyHolder
@@ -18,10 +18,10 @@ abstract class KotlinEpoxyHolder : EpoxyHolder() {
     }
 
     protected fun <V : View> bind(id: Int): ReadOnlyProperty<KotlinEpoxyHolder, V> =
-        Lazy { holder: KotlinEpoxyHolder, prop ->
-            holder.view.findViewById(id) as V?
-                ?: throw IllegalStateException("View ID $id for '${prop.name}' not found.")
-        }
+            Lazy { holder: KotlinEpoxyHolder, prop ->
+                holder.view.findViewById(id) as V?
+                        ?: throw IllegalStateException("View ID $id for '${prop.name}' not found.")
+            }
 
     /**
      * Taken from Kotterknife.

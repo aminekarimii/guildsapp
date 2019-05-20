@@ -39,7 +39,7 @@ class MainViewModel(dataManager: DataManager) : BaseViewModel(dataManager) {
     val isAuthenticated: LiveData<Boolean>
         get() = _isAuthenticated
 
-    fun checkAuthetication() {
+    fun checkAuthentication() {
         dataManager.getCurrentUser()
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())

@@ -1,14 +1,13 @@
-package com.sqli.guildes.ui.common.controllers
+package com.sqli.guildes.ui.common.epoxy.controllers
 
 import android.view.View
 import com.airbnb.epoxy.TypedEpoxyController
-import com.bumptech.glide.RequestManager
 import com.sqli.guildes.core.Resource
 
 import com.sqli.guildes.data.models.Guilde
-import com.sqli.guildes.ui.common.guilde
-import com.sqli.guildes.ui.common.infoText
-import com.sqli.guildes.ui.common.loading
+import com.sqli.guildes.ui.common.epoxy.models.guilde
+import com.sqli.guildes.ui.common.epoxy.models.infoText
+import com.sqli.guildes.ui.common.epoxy.models.loading
 
 class GuildeController(private val callbacks: Callbacks? = null)
     : TypedEpoxyController<Resource<List<Guilde>>>() {

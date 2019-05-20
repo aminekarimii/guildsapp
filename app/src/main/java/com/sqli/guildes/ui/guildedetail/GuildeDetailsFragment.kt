@@ -6,24 +6,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.bumptech.glide.Glide
-import com.bumptech.glide.RequestManager
 
 import com.sqli.guildes.R
 import com.sqli.guildes.core.Resource
 import com.sqli.guildes.core.extensions.obtainViewModel
-import com.sqli.guildes.data.models.Guilde
-import com.sqli.guildes.ui.common.controllers.GuildeController
-import com.sqli.guildes.ui.common.controllers.UserController
-import com.sqli.guildes.ui.home.HomeFragmentDirections
+import com.sqli.guildes.ui.common.epoxy.controllers.UserController
 import com.sqli.guildes.ui.main.MainActivity
 import com.sqli.guildes.ui.main.MainViewModel
 import kotlinx.android.synthetic.main.fragment_guilde_details.*
 import kotlinx.android.synthetic.main.fragment_guilde_details.tvGuildeName
-import log
-import kotlin.math.log
 
 class GuildeDetailsFragment : Fragment() {
 

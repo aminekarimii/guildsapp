@@ -18,7 +18,6 @@ import com.sqli.guildes.core.extensions.setupActionBar
 import com.sqli.guildes.ui.common.BackPressListener
 import com.sqli.guildes.ui.login.LoginActivity
 import kotlinx.android.synthetic.main.activity_main.*
-import log
 
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -39,6 +38,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         navController = Navigation.findNavController(findViewById(R.id.mainNavHostFragment))
         navView.setNavigationItemSelectedListener(this)
 
+        setupMainViewModel()
+
+        mainViewModel.checkAuthentication()
+    }
+
+    private fun setupMainViewModel() {
         mainViewModel = obtainViewModel().apply {
             snackbar.observe(this@MainActivity, Observer {
                 val snackBar = Snackbar.make(mainRootView, it.message, it.length)
@@ -65,7 +70,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 }
             })
         }
-        mainViewModel.checkAuthetication()
     }
 
     override fun onNavigationItemSelected(menuItem: MenuItem): Boolean {

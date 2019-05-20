@@ -28,8 +28,8 @@
     <string name="profile">Profile</string>
     <string name="sign_out">Sign out</string>
     <string name="guilde_logo">Guilde logo</string>
-    <string name="view_all">Veiw All</string>
-    <string name="view_less">Veiw Less</string>
+    <string name="view_all">View All</string>
+    <string name="view_less">View Less</string>
     <string name="contributors">Contributors</string>
     <string name="points">Points</string>
     <string name="user_pic">User picture</string>

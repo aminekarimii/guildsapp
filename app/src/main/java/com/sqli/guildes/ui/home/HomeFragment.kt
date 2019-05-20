@@ -9,12 +9,10 @@ import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.bumptech.glide.Glide
-import com.bumptech.glide.RequestManager
 import com.sqli.guildes.R
 import com.sqli.guildes.core.Resource
 import com.sqli.guildes.core.extensions.obtainViewModel
-import com.sqli.guildes.ui.common.controllers.GuildeController
+import com.sqli.guildes.ui.common.epoxy.controllers.GuildeController
 import com.sqli.guildes.ui.main.MainActivity
 import com.sqli.guildes.ui.main.MainViewModel
 import kotlinx.android.synthetic.main.fragment_home.*
@@ -38,6 +36,12 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        setupRecycleView()
+
+        setupViewAllTextVew()
+    }
+
+    private fun setupRecycleView() {
         val callbacks = object : GuildeController.Callbacks {
             override fun onGuildeItemClicked(id: String,  sharedView: View?) {
                 HomeFragmentDirections.actionHomeFragmentToGuildeDetailsFragment().apply {
@@ -51,7 +55,9 @@ class HomeFragment : Fragment() {
             guildesController = GuildeController(callbacks)
             setController(guildesController)
         }
+    }
 
+    private fun setupViewAllTextVew() {
         tvViewAll.setOnClickListener { val tv = it as TextView
             if(isLess) tv.text = getText(R.string.view_less)
             else tv.text = getText(R.string.view_all)
