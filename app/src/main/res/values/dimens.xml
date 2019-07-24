@@ -6,8 +6,13 @@
     <dimen name="nav_header_height">176dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="logo_margin">80dp</dimen>
+    <dimen name="tiny">2dp</dimen>
     <dimen name="mini">8dp</dimen>
     <dimen name="small">16dp</dimen>
     <dimen name="medium">32dp</dimen>
     <dimen name="large">64dp</dimen>
+    <dimen name="itemHeight">96dp</dimen>
+    <dimen name="textH1">20sp</dimen>
+    <dimen name="textH2">16sp</dimen>
+    <dimen name="textH3">12sp</dimen>
 </resources>

@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#907D4C</color>
+    <color name="colorPrimary">#533473</color>
+    <color name="colorSecondary">#FFFFFF</color>
     <color name="colorPrimaryDark">#000000</color>
     <color name="colorAccent">#E0E0E0</color>
     <color name="colorBg">#424242</color>
     <color name="colorWhite">#fff</color>
+    <color name="colorSurface">#F4F4F4</color>
+    <color name="colorH1">#444444</color>
+    <color name="colorH2">#7b7b7b</color>
+    <color name="colorH3">#a1a1a1</color>
+    <color name="white">#fff</color>
+    <color name="gradEnd">#DA4453</color>
+    <color name="gradStart">#89216B</color>
 </resources>

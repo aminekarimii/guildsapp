@@ -1,15 +1,12 @@
 <resources>
     <string name="app_name">Guildes App</string>
 
-    <string name="endpoint">http://10.242.2.190:3000/api/</string>
-
     <string name="navigation_drawer_open">Ouvrir le menu</string>
     <string name="navigation_drawer_close">Fermer le menu</string>
     <string name="nav_header_title">SC Mobile</string>
     <string name="nav_header_subtitle">mobile.maroc@sqli.com</string>
     <string name="nav_header_desc">En-tête de navigation</string>
     <string name="action_settings">Paramètre</string>
-
     <string name="drawer_menu_import">Importer</string>
     <string name="drawer_menu_gallery">Galerie</string>
     <string name="drawer_menu_presentation">Présentation</string>
@@ -23,4 +20,17 @@
     <string name="password">Password</string>
     <string name="login">Login</string>
     <string name="invalid_username_password">Please provide a valid email and password.</string>
+    <string name="home">Home</string>
+    <string name="my_guilde">My Guilde</string>
+    <string name="my_contributions">My Contributions</string>
+    <string name="make_contribution">Make Contribution</string>
+    <string name="all_contributions">All Contributions</string>
+    <string name="profile">Profile</string>
+    <string name="sign_out">Sign out</string>
+    <string name="guilde_logo">Guilde logo</string>
+    <string name="view_all">View All</string>
+    <string name="view_less">View Less</string>
+    <string name="contributors">Contributors</string>
+    <string name="points">Points</string>
+    <string name="user_pic">User picture</string>
 </resources>
