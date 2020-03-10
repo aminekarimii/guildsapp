@@ -2,10 +2,7 @@ package com.sqli.guildes.data.models
 
 import android.os.ParcelFileDescriptor
 import android.os.Parcelable
-import androidx.room.ColumnInfo
-import androidx.room.Entity
-import androidx.room.ForeignKey
-import androidx.room.PrimaryKey
+import androidx.room.*
 import com.squareup.moshi.Json
 import kotlinx.android.parcel.Parcelize
 import java.util.*
