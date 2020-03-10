@@ -36,7 +36,6 @@ class ProfileViewModel(dataManager: DataManager) : BaseViewModel(dataManager) {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeBy(
                         onSuccess = {
-                            //log(it.toString())
                             _currentContributor.postValue(it)
                         },
                         onError = {
@@ -54,9 +53,7 @@ class ProfileViewModel(dataManager: DataManager) : BaseViewModel(dataManager) {
                 .subscribeOn(Schedulers.newThread())
                 .subscribeOn(AndroidSchedulers.mainThread())
                 .subscribeBy(
-                        onSuccess = {
-                            _submissions.postValue(it)
-                        },
+                        onSuccess = _submissions::postValue,
                         onError = {
                             val err = ErrorUtil.handleError(it, "loadCurrentUserContributions")
                             _message.postValue(err)

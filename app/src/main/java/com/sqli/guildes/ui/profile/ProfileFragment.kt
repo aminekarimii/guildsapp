@@ -19,7 +19,6 @@ import log
 
 class ProfileFragment : Fragment() {
 
-    private lateinit var mainViewModel: MainViewModel
     private lateinit var profileViewModel: ProfileViewModel
     private lateinit var submissionController: SubmissionController
 
@@ -40,8 +39,7 @@ class ProfileFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        mainViewModel = (activity as MainActivity).obtainViewModel()
-        mainViewModel.updateToolbarTitle("Profile")
+        (activity as MainActivity).obtainViewModel().updateToolbarTitle("Profile")
 
         profileViewModel = obtainViewModel(ProfileViewModel::class.java).apply {
 
@@ -63,7 +61,6 @@ class ProfileFragment : Fragment() {
         }
 
         profileViewModel.loadCurrentUserDetails().loadCurrentUserSubmissions()
-        //profileViewModel
 
     }
 
