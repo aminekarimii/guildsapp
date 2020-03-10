@@ -22,8 +22,7 @@ class HomeViewModel(dataManager : DataManager) : BaseViewModel(dataManager) {
         get() = _guildes
 
     private val _message = SingleLiveEvent<String>()
-    val message: LiveData<String>
-        get() = _message
+    val message: LiveData<String> get()  = _message
 
     fun loadGuildes() {
 
@@ -39,6 +38,5 @@ class HomeViewModel(dataManager : DataManager) : BaseViewModel(dataManager) {
                         }
                 )
                 .disposeWith(compositeDisposable)
-
     }
 }

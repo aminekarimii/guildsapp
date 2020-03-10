@@ -18,6 +18,7 @@ import com.sqli.guildes.core.extensions.setupActionBar
 import com.sqli.guildes.ui.common.BackPressListener
 import com.sqli.guildes.ui.login.LoginActivity
 import kotlinx.android.synthetic.main.activity_main.*
+import log
 
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -81,7 +82,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.my_contributions_navigation_menu_item -> { }
             R.id.make_contribution_navigation_menu_item -> { }
             R.id.all_contributions_navigation_menu_item -> { }
-            R.id.profile_navigation_menu_item -> { }
+            R.id.profile_navigation_menu_item ->
+                navController.navigate(R.id.profileFragment)
             R.id.sign_out_navigation_menu_item -> { }
         }
         mainRootView.closeDrawer(GravityCompat.START)

@@ -7,7 +7,6 @@ import android.os.Bundle
 import androidx.lifecycle.Observer
 import com.google.android.material.snackbar.Snackbar
 import com.sqli.guildes.R
-import com.sqli.guildes.core.Resource
 import com.sqli.guildes.core.extensions.obtainViewModel
 import com.sqli.guildes.core.extensions.replaceFragmentInActivity
 import com.sqli.guildes.ui.main.MainActivity
