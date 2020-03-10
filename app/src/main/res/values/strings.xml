@@ -33,4 +33,6 @@
     <string name="contributors">Contributors</string>
     <string name="points">Points</string>
     <string name="user_pic">User picture</string>
+    <string name="site_name_placeholder">RABAT</string>
+    <string name="tv_vos_contributions">Vos Contributions</string>
 </resources>

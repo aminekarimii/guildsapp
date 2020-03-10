@@ -14,6 +14,15 @@
             android:id="@+id/action_homeFragment_to_guildeDetailsFragment"
             app:destination="@id/guildeDetailsFragment"
             app:enterAnim="@animator/fade_in_short"
+            app:popEnterAnim="@animator/fade_in_short"
+            app:popExitAnim="@animator/fade_out_short"
+            app:exitAnim="@animator/fade_out_short"/>
+        <action
+            android:id="@+id/action_homeFragment_to_profileFragment"
+            app:destination="@id/profileFragment"
+            app:enterAnim="@animator/fade_in_short"
+            app:popEnterAnim="@animator/fade_in_short"
+            app:popExitAnim="@animator/fade_out_short"
             app:exitAnim="@animator/fade_out_short"/>
     </fragment>
 
@@ -28,5 +37,12 @@
             android:defaultValue=" "
             app:argType="string" />
     </fragment>
+
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.sqli.guildes.ui.profile.ProfileFragment"
+        tools:layout="@layout/fragment_profile"
+        android:label="ProfileFragment" />
+
 
 </navigation>
