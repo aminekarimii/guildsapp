@@ -5,14 +5,15 @@ import android.text.TextUtils
 import com.sqli.guildes.core.Constants
 import com.sqli.guildes.core.Resource
 import com.sqli.guildes.data.local.PreferencesHelper
+import com.sqli.guildes.data.models.Contribution
 import com.sqli.guildes.data.models.Guilde
+import com.sqli.guildes.data.models.Submission
 import com.sqli.guildes.data.models.User
 import com.sqli.guildes.data.remote.LoginRequest
 import com.sqli.guildes.data.remote.ApiService
 import com.sqli.guildes.data.remote.utils.NetworkResponse
 import com.sqli.guildes.di.SingletonHolder
 import io.reactivex.Single
-import log
 
 class DataManager (val context: Context) {
 
@@ -29,6 +30,7 @@ class DataManager (val context: Context) {
                 .flatMap { response ->
                     Single.just(when (response) {
                         is NetworkResponse.Success -> {
+                            //log(response.body.token)
                             tokenPref = response.body.token
                             Resource.Success(response.body.token)
                         }
@@ -114,6 +116,22 @@ class DataManager (val context: Context) {
                     }
                     is NetworkResponse.NetworkError -> {
                         Resource.Error(response.error.localizedMessage ?: "Network Error")
+                    }
+                })
+            }
+
+    fun getSubmissionsCurrentUser() : Single<Resource<List<Submission>>> = apiService
+            .getCurrentUserSubmissions("Bearer $tokenPref")
+            .flatMap { response ->
+                Single.just(when (response){
+                    is  NetworkResponse.Success -> {
+                        Resource.Success(response.body)
+                    }
+                    is NetworkResponse.NetworkError -> {
+                        Resource.Error(response.error.localizedMessage ?: "Network Error")
+                    }
+                    is NetworkResponse.ServerError -> {
+                        Resource.Error<List<Submission>>(response.body?.message ?: "Server Error")
                     }
                 })
             }
