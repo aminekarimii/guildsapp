@@ -35,7 +35,7 @@ class DataManager (val context: Context) {
                             Resource.Success(response.body.token)
                         }
                         is NetworkResponse.ServerError -> {
-                            Resource.Error<String>(response.body?.message ?: SERVER_ERROR_MSG)
+                            Resource.Error(response.body?.message ?: SERVER_ERROR_MSG)
                         }
                         is NetworkResponse.NetworkError -> {
                             Resource.Error(response.error.localizedMessage ?: NETWORK_ERROR_MSG)
@@ -60,7 +60,7 @@ class DataManager (val context: Context) {
                         Resource.Success(response.body)
                     }
                     is NetworkResponse.ServerError -> {
-                        Resource.Error<User>(response.body?.message ?: SERVER_ERROR_MSG)
+                        Resource.Error(response.body?.message ?: SERVER_ERROR_MSG)
                     }
                     is NetworkResponse.NetworkError -> {
                         Resource.Error(response.error.localizedMessage ?: NETWORK_ERROR_MSG)
@@ -78,7 +78,7 @@ class DataManager (val context: Context) {
                         Resource.Success(response.body)
                     }
                     is NetworkResponse.ServerError -> {
-                        Resource.Error<List<Guilde>>(response.body?.message ?: SERVER_ERROR_MSG)
+                        Resource.Error(response.body?.message ?: SERVER_ERROR_MSG)
                     }
                     is NetworkResponse.NetworkError -> {
                         Resource.Error(response.error.localizedMessage ?: NETWORK_ERROR_MSG)
@@ -96,7 +96,7 @@ class DataManager (val context: Context) {
                         Resource.Success(response.body)
                     }
                     is NetworkResponse.ServerError -> {
-                        Resource.Error<Guilde>(response.body?.message ?: SERVER_ERROR_MSG)
+                        Resource.Error(response.body?.message ?: SERVER_ERROR_MSG)
                     }
                     is NetworkResponse.NetworkError -> {
                         Resource.Error(response.error.localizedMessage ?: NETWORK_ERROR_MSG)
@@ -112,7 +112,7 @@ class DataManager (val context: Context) {
                         Resource.Success(response.body)
                     }
                     is NetworkResponse.ServerError -> {
-                        Resource.Error<List<User>>(response.body?.message ?: SERVER_ERROR_MSG)
+                        Resource.Error(response.body?.message ?: SERVER_ERROR_MSG)
                     }
                     is NetworkResponse.NetworkError -> {
                         Resource.Error(response.error.localizedMessage ?: NETWORK_ERROR_MSG)
@@ -131,7 +131,7 @@ class DataManager (val context: Context) {
                         Resource.Error(response.error.localizedMessage ?: NETWORK_ERROR_MSG)
                     }
                     is NetworkResponse.ServerError -> {
-                        Resource.Error<List<Submission>>(response.body?.message ?: SERVER_ERROR_MSG)
+                        Resource.Error(response.body?.message ?: SERVER_ERROR_MSG)
                     }
                 })
             }

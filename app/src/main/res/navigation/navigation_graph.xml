@@ -13,17 +13,24 @@
         <action
             android:id="@+id/action_homeFragment_to_guildeDetailsFragment"
             app:destination="@id/guildeDetailsFragment"
-            app:enterAnim="@animator/fade_in_short"
-            app:popEnterAnim="@animator/fade_in_short"
-            app:popExitAnim="@animator/fade_out_short"
-            app:exitAnim="@animator/fade_out_short"/>
+            app:popEnterAnim="@animator/slide_in_left"
+            app:popExitAnim="@animator/slide_out_right"
+            app:enterAnim="@animator/slide_in_right"
+            app:exitAnim="@animator/slide_out_left"/>
         <action
             android:id="@+id/action_homeFragment_to_profileFragment"
             app:destination="@id/profileFragment"
-            app:enterAnim="@animator/fade_in_short"
-            app:popEnterAnim="@animator/fade_in_short"
-            app:popExitAnim="@animator/fade_out_short"
-            app:exitAnim="@animator/fade_out_short"/>
+            app:popEnterAnim="@animator/slide_in_left"
+            app:popExitAnim="@animator/slide_out_right"
+            app:enterAnim="@animator/slide_in_right"
+            app:exitAnim="@animator/slide_out_left" />
+        <action
+            android:id="@+id/action_homeFragment_to_addSubmissionFragment"
+            app:destination="@id/addSubmissionFragment"
+            app:popEnterAnim="@animator/slide_in_left"
+            app:popExitAnim="@animator/slide_out_right"
+            app:enterAnim="@animator/slide_in_right"
+            app:exitAnim="@animator/slide_out_left" />
     </fragment>
 
 
@@ -43,6 +50,11 @@
         android:name="com.sqli.guildes.ui.profile.ProfileFragment"
         tools:layout="@layout/fragment_profile"
         android:label="ProfileFragment" />
+    <fragment
+        android:id="@+id/addSubmissionFragment"
+        android:name="com.sqli.guildes.ui.submissions.addsubmission.AddSubmissionFragment"
+        android:label="fragment_addsubmission"
+        tools:layout="@layout/fragment_addsubmission" />
 
 
 </navigation>

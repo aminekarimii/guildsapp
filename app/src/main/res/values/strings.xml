@@ -35,4 +35,5 @@
     <string name="user_pic">User picture</string>
     <string name="site_name_placeholder">RABAT</string>
     <string name="tv_vos_contributions">Vos Contributions</string>
+    <string name="submit">soumettre</string>
 </resources>

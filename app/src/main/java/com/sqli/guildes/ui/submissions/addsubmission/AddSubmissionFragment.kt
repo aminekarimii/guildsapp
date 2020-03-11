@@ -1,5 +1,17 @@
 package com.sqli.guildes.ui.submissions.addsubmission
 
-class AddSubmissionFragment {
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import com.sqli.guildes.R
+
+class AddSubmissionFragment : Fragment() {
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
+                              savedInstanceState: Bundle?): View {
+        return inflater.inflate(R.layout.fragment_addsubmission, container, false)
+    }
 
 }

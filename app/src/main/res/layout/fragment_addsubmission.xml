@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/login"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/grad"
+    android:paddingLeft="@dimen/small"
+    android:paddingRight="@dimen/small"
+    tools:context=".ui.submissions.addsubmission.AddSubmissionFragment">
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/ic_shape"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="2dp"
+            android:layout_marginRight="6dp"
+            android:paddingStart="@dimen/mini"
+            android:paddingLeft="@dimen/mini"
+            android:paddingRight="@dimen/mini"
+            android:src="@drawable/ic_aries" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="@dimen/small"
+            android:layout_marginRight="@dimen/small"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Bélier"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/textH2" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="21 pts"
+                android:textSize="@dimen/textH3" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/small"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        tools:layout_editor_absoluteX="16dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Type"
+            android:textColor="@color/white"
+            android:textSize="@dimen/textH2"
+            android:textStyle="bold" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layoutUsername"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/mini"
+            app:hintEnabled="false">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/inputUsername"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/submission_text_background"
+                android:hint="@string/username"
+                android:inputType="text"
+                app:boxStrokeColor="@color/colorPrimary" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/small"
+            android:text="Description"
+            android:textColor="@color/white"
+            android:textSize="@dimen/textH2"
+            android:textStyle="bold" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layoutDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/mini"
+            app:hintEnabled="false">
+
+            <EditText
+                android:id="@+id/shipper_field"
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:autofillHints="description"
+                android:background="@drawable/submission_text_background"
+                android:gravity="top"
+                android:hint="Décrit ta contribution ici"
+                android:inputType="textMultiLine"
+                android:overScrollMode="always"
+                android:padding="15dp"
+                android:scrollbarStyle="insideInset"
+                android:scrollbars="vertical" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+    </LinearLayout>
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/medium"
+        android:layout_marginLeft="@dimen/medium"
+        android:layout_marginEnd="@dimen/medium"
+        android:layout_marginRight="@dimen/medium"
+        android:layout_marginBottom="@dimen/large"
+        android:background="@drawable/login_btn_background"
+        android:text="@string/submit"
+        android:textColor="@color/colorWhite"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
