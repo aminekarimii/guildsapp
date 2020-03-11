@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'io.fabric'
+apply plugin: 'org.sonarqube'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'androidx.navigation.safeargs'
 
@@ -155,7 +156,23 @@ dependencies {
     androidTestImplementation 'androidx.test:runner:1.3.0-alpha02'
     androidTestImplementation 'androidx.test:rules:1.3.0-alpha02'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0-alpha02'
-    implementation 'com.android.support:recyclerview-v7:28.0.0'
+    implementation "androidx.recyclerview:recyclerview:1.1.0"
+}
+
+sonarqube {
+    properties{
+        property "sonar.host.url", "http://localhost:9000"
+        property "sonar.jdbc.url", "jdbc:mysql://localhost:3306/sonar"
+        property "sonar.jdbc.driverClassName", "com.mysql.jdbc.Driver"
+        property "sonar.jdbc.username", "admin"
+        property "sonar.jdbc.password", "admin"
+        property "sonar.projectName", "Guildes App"
+        property "sonar.projectKey", "com.sqli.guildes"
+        property "sonar.projectVersion", android.defaultConfig.versionName
+        property "sonar.language", "kotlin"
+        property "sonar.profile", "Android Lint"
+        property "sonar.android.lint.report", "build/outputs/lint-results"
+    }
 }
 
 apply plugin: 'kotlin-android-extensions'
