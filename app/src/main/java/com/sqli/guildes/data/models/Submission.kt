@@ -16,7 +16,8 @@ data class Submission @JvmOverloads constructor(
         var id: String = UUID.randomUUID().toString(),
         var subject : String,
         var validated :Boolean,
-        //Not found on API: @Embedded val contribution: Contribution,
+        //Not found on API:
+        //@Embedded val contribution: Contribution,
         @Embedded val createdBy: User,
         var createdAt: String,
         var updatedAt: String

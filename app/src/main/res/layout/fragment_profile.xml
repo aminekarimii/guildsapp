@@ -92,7 +92,6 @@
                 android:id="@+id/tvProfileGuildePoints"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="15365"
                 android:textColor="@color/colorH2"
                 android:textSize="@dimen/textH2" />
 
