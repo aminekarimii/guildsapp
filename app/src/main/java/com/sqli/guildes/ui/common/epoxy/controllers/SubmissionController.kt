@@ -7,6 +7,7 @@ import com.sqli.guildes.data.models.Submission
 import com.sqli.guildes.ui.common.epoxy.models.infoText
 import com.sqli.guildes.ui.common.epoxy.models.loading
 import com.sqli.guildes.ui.common.epoxy.models.submission
+import com.sqli.guildes.utils.DateUtil.toReadableDateAndTime
 
 class SubmissionController(private val callbacks: Callbacks? = null)
     : TypedEpoxyController<Resource<List<Submission>>>() {
@@ -23,7 +24,7 @@ class SubmissionController(private val callbacks: Callbacks? = null)
                         submission {
                             id(id)
                             subject(subject)
-                            site(createdBy.site)
+                            creationDate(toReadableDateAndTime(createdAt))
                             clickListener { _, _, clickedView, _ ->
                                 callbacks?.onSubmissionClicked(id, clickedView)
                             }

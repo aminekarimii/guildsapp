@@ -18,13 +18,13 @@ abstract class SubmissionModel : EpoxyModelWithHolder<SubmissionModel.Submission
     @EpoxyAttribute
     lateinit var subject: String
     @EpoxyAttribute
-    lateinit var site: String
+    lateinit var creationDate: String
 
     override fun bind(holder: SubmissionViewHolder) {
         super.bind(holder)
         holder.root.setOnClickListener(clickListener)
         holder.tvSubmissionSubject.text = subject
-        holder.tvTimeSubmission.text = site
+        holder.tvTimeSubmission.text = creationDate
     }
 
     inner class SubmissionViewHolder : KotlinEpoxyHolder() {
