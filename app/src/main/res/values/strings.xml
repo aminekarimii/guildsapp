@@ -39,4 +39,7 @@
     <string name="profile_tootlbar_title">Profil</string>
     <string name="make_contrib_tootlbar_title">Contribution</string>
     <string name="home_tootlbar_title">Accueil</string>
+    <string name="type_label_add_sub">Type</string>
+    <string name="description_label_add_sub">Description</string>
+    <string name="desc_hint_contribution">Décrit ta contribution ici</string>
 </resources>

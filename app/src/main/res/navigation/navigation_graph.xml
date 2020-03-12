@@ -52,7 +52,7 @@
         android:label="ProfileFragment" />
     <fragment
         android:id="@+id/addSubmissionFragment"
-        android:name="com.sqli.guildes.ui.submissions.addsubmission.AddSubmissionFragment"
+        android:name="com.sqli.guildes.ui.addsubmission.AddSubmissionFragment"
         android:label="fragment_addsubmission"
         tools:layout="@layout/fragment_addsubmission" />
 

@@ -9,3 +9,8 @@ data class LoginRequest(
         @field:Json(name="username") val username: String,
         @field:Json(name="password") val password: String
 ): Parcelable
+
+@Parcelize
+data class AddSubmissionRequest(
+        @field:Json(name="subject") val subject: String
+): Parcelable

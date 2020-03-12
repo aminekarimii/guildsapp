@@ -51,7 +51,6 @@ class GuildeDetailsFragment : Fragment() {
 
         mainViewModel.updateToolbarTitle("")
 
-
         guildeDetailsViewModel = obtainViewModel(GuildeDetailsViewModel::class.java).apply {
 
             guilde.observe(this@GuildeDetailsFragment, Observer {

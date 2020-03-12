@@ -8,6 +8,7 @@ import com.sqli.guildes.data.local.PreferencesHelper
 import com.sqli.guildes.data.models.Guilde
 import com.sqli.guildes.data.models.Submission
 import com.sqli.guildes.data.models.User
+import com.sqli.guildes.data.remote.AddSubmissionRequest
 import com.sqli.guildes.data.remote.ApiService
 import com.sqli.guildes.data.remote.LoginRequest
 import com.sqli.guildes.data.remote.utils.NetworkResponse
@@ -35,7 +36,7 @@ class DataManager (val context: Context) {
                             Resource.Success(response.body.token)
                         }
                         is NetworkResponse.ServerError -> {
-                            Resource.Error(response.body?.message ?: SERVER_ERROR_MSG)
+                            Resource.Error<String>(response.body?.message ?: SERVER_ERROR_MSG)
                         }
                         is NetworkResponse.NetworkError -> {
                             Resource.Error(response.error.localizedMessage ?: NETWORK_ERROR_MSG)
@@ -60,7 +61,7 @@ class DataManager (val context: Context) {
                         Resource.Success(response.body)
                     }
                     is NetworkResponse.ServerError -> {
-                        Resource.Error(response.body?.message ?: SERVER_ERROR_MSG)
+                        Resource.Error<User>(response.body?.message ?: SERVER_ERROR_MSG)
                     }
                     is NetworkResponse.NetworkError -> {
                         Resource.Error(response.error.localizedMessage ?: NETWORK_ERROR_MSG)
@@ -78,7 +79,7 @@ class DataManager (val context: Context) {
                         Resource.Success(response.body)
                     }
                     is NetworkResponse.ServerError -> {
-                        Resource.Error(response.body?.message ?: SERVER_ERROR_MSG)
+                        Resource.Error<List<Guilde>>(response.body?.message ?: SERVER_ERROR_MSG)
                     }
                     is NetworkResponse.NetworkError -> {
                         Resource.Error(response.error.localizedMessage ?: NETWORK_ERROR_MSG)
@@ -96,7 +97,7 @@ class DataManager (val context: Context) {
                         Resource.Success(response.body)
                     }
                     is NetworkResponse.ServerError -> {
-                        Resource.Error(response.body?.message ?: SERVER_ERROR_MSG)
+                        Resource.Error<Guilde>(response.body?.message ?: SERVER_ERROR_MSG)
                     }
                     is NetworkResponse.NetworkError -> {
                         Resource.Error(response.error.localizedMessage ?: NETWORK_ERROR_MSG)
@@ -112,7 +113,7 @@ class DataManager (val context: Context) {
                         Resource.Success(response.body)
                     }
                     is NetworkResponse.ServerError -> {
-                        Resource.Error(response.body?.message ?: SERVER_ERROR_MSG)
+                        Resource.Error<List<User>>(response.body?.message ?: SERVER_ERROR_MSG)
                     }
                     is NetworkResponse.NetworkError -> {
                         Resource.Error(response.error.localizedMessage ?: NETWORK_ERROR_MSG)
@@ -131,10 +132,27 @@ class DataManager (val context: Context) {
                         Resource.Error(response.error.localizedMessage ?: NETWORK_ERROR_MSG)
                     }
                     is NetworkResponse.ServerError -> {
-                        Resource.Error(response.body?.message ?: SERVER_ERROR_MSG)
+                        Resource.Error<List<Submission>>(response.body?.message ?: SERVER_ERROR_MSG)
                     }
                 })
             }
+
+    fun postSubmission(subject: String): Single<Resource<String>> {
+        return apiService.addSubmission("Bearer $tokenPref", AddSubmissionRequest(subject))
+                .flatMap { response ->
+                    Single.just(when (response) {
+                        is NetworkResponse.Success -> {
+                            Resource.Success(response.body.createdAt)
+                        }
+                        is NetworkResponse.ServerError -> {
+                            Resource.Error<String>(response.body?.message ?: SERVER_ERROR_MSG)
+                        }
+                        is NetworkResponse.NetworkError -> {
+                            Resource.Error(response.error.localizedMessage ?: NETWORK_ERROR_MSG)
+                        }
+                    })
+                }
+    }
 
 }
 
