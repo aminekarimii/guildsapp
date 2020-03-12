@@ -12,12 +12,10 @@ import com.sqli.guildes.core.Resource
 import com.sqli.guildes.core.extensions.obtainViewModel
 import com.sqli.guildes.data.models.User
 import com.sqli.guildes.ui.common.epoxy.controllers.SubmissionController
-import com.sqli.guildes.ui.main.MainActivity
-import com.sqli.guildes.ui.main.MainViewModel
 import kotlinx.android.synthetic.main.fragment_profile.*
 import log
 
-class ProfileFragment : Fragment() {
+class ProfileFragment : Fragment(){
 
     private lateinit var profileViewModel: ProfileViewModel
     private lateinit var submissionController: SubmissionController
@@ -38,8 +36,6 @@ class ProfileFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-
-        (activity as MainActivity).obtainViewModel().updateToolbarTitle("Profile")
 
         profileViewModel = obtainViewModel(ProfileViewModel::class.java).apply {
 

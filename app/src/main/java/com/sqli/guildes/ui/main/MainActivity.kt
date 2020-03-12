@@ -4,22 +4,19 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
-import com.google.android.material.snackbar.Snackbar
-import com.sqli.guildes.R
-
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.lifecycle.Observer
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.google.android.material.navigation.NavigationView
+import com.google.android.material.snackbar.Snackbar
+import com.sqli.guildes.R
 import com.sqli.guildes.core.extensions.obtainViewModel
 import com.sqli.guildes.core.extensions.setupActionBar
 import com.sqli.guildes.ui.common.BackPressListener
 import com.sqli.guildes.ui.login.LoginActivity
 import kotlinx.android.synthetic.main.activity_main.*
-import log
-
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
@@ -75,19 +72,25 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     override fun onNavigationItemSelected(menuItem: MenuItem): Boolean {
         when(menuItem.itemId) {
-            R.id.home_navigation_menu_item ->
+            R.id.home_navigation_menu_item -> {
+                mainViewModel.updateToolbarTitle(getString(R.string.home_tootlbar_title))
                 navController.navigate(R.id.homeFragment)
-            R.id.my_guilde_navigation_menu_item ->
-                navController.navigate(R.id.guildeDetailsFragment)
-            R.id.my_contributions_navigation_menu_item -> { }
-            R.id.make_contribution_navigation_menu_item -> { }
-            R.id.all_contributions_navigation_menu_item -> { }
-            R.id.profile_navigation_menu_item ->
+            }
+
+            R.id.make_contribution_navigation_menu_item -> {
+                mainViewModel.updateToolbarTitle(getString(R.string.make_contrib_tootlbar_title))
+                navController.navigate(R.id.addSubmissionFragment)
+            }
+
+            R.id.profile_navigation_menu_item -> {
+                mainViewModel.updateToolbarTitle(getString(R.string.profile_tootlbar_title))
                 navController.navigate(R.id.profileFragment)
-            R.id.sign_out_navigation_menu_item -> { }
+            }
+
+            R.id.sign_out_navigation_menu_item ->
+                navController.navigate(R.id.homeFragment)
         }
         mainRootView.closeDrawer(GravityCompat.START)
-        //menuItem.isChecked = true
         return true
     }
 
@@ -99,7 +102,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 }
                 else -> super.onOptionsItemSelected(item)
             }
-
 
     override fun onBackPressed() {
         if (backPressListener == null || backPressListener?.onBackPressed() == true) {
