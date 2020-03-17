@@ -32,7 +32,7 @@ class ViewModelFactory(private val dataManager: DataManager) : ViewModelProvider
                         GuildeDetailsViewModel(dataManager)
                     isAssignableFrom(ProfileViewModel::class.java) ->
                         ProfileViewModel(dataManager)
-                    isAssignableFrom(ProfileViewModel::class.java) ->
+                    isAssignableFrom(AddSubmissionViewModel::class.java) ->
                         AddSubmissionViewModel(dataManager)
                     else ->
                         throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")

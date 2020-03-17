@@ -42,4 +42,6 @@
     <string name="type_label_add_sub">Type</string>
     <string name="description_label_add_sub">Description</string>
     <string name="desc_hint_contribution">Décrit ta contribution ici</string>
+    <string name="description__addsubmission">Description</string>
+    <string name="subject">Subject</string>
 </resources>

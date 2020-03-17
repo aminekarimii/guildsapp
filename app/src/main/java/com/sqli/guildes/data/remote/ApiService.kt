@@ -58,7 +58,7 @@ interface ApiService {
     fun getCurrentUserSubmissions(@Header("Authorization") authHeader : String)
             : Single<NetworkResponse<List<Submission>, ErrorResponse>>
 
-    @GET("submissions/add")
+    @POST("submissions/add")
     fun addSubmission(@Header("Authorization") authHeader : String, @Body submission: AddSubmissionRequest)
             : Single<NetworkResponse<AddSubmissionResponse, ErrorResponse>>
 

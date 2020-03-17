@@ -8,7 +8,7 @@
     android:background="@drawable/grad"
     android:paddingLeft="@dimen/small"
     android:paddingRight="@dimen/small"
-    tools:context=".ui.submissions.addsubmission.AddSubmissionFragment">
+    tools:context=".ui.addsubmission.AddSubmissionFragment">
 
 
     <LinearLayout
@@ -67,24 +67,24 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Type"
+            android:text="Subject"
             android:textColor="@color/white"
             android:textSize="@dimen/textH2"
             android:textStyle="bold" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/layoutUsername"
+            android:id="@+id/layoutSubject"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/mini"
             app:hintEnabled="false">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/inputUsername"
+                android:id="@+id/inputSubject"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/submission_text_background"
-                android:hint="@string/username"
+                android:hint="@string/subject"
                 android:inputType="text"
                 app:boxStrokeColor="@color/colorPrimary" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -93,7 +93,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/small"
-            android:text="Description"
+            android:text="@string/description__addsubmission"
             android:textColor="@color/white"
             android:textSize="@dimen/textH2"
             android:textStyle="bold" />
@@ -125,7 +125,7 @@
 
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnLogin"
+        android:id="@+id/btnSubmission"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/medium"
