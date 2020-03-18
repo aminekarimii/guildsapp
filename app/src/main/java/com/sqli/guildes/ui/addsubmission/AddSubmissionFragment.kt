@@ -22,25 +22,45 @@ class AddSubmissionFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+
         addSubmissionViewModel = obtainViewModel(AddSubmissionViewModel::class.java).apply {
+            spinnerOptions.observe(this@AddSubmissionFragment, Observer {
+                it.also { adapter ->
+                    adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                    sp_types_submissions.adapter = adapter
+                }
+            })
+
             submission.observe(this@AddSubmissionFragment, Observer {
                 if (it) {
-                    showSnackbar("Votre contribution est ajoutee")
+                    showSnackbar("Votre Contribution est ajoutée")
                 }
             })
 
             message.observe(this@AddSubmissionFragment, Observer { showSnackbar(it) })
         }
+        addSubmissionViewModel.createSpinnerAdapter(context!!)
         btnSubmission.setOnClickListener { addSubmission() }
+
     }
 
-    fun addSubmission() {
+    private fun addSubmission() {
         val subject = inputSubject.text.toString()
-        addSubmissionViewModel.addSubmission(subject)
+        val description = inputDescription.text.toString()
+        val points = 1
+        var type = ""
+        if (checkSelectedItem()){ type = sp_types_submissions.selectedItem.toString()}
+        addSubmissionViewModel.addSubmission(subject, type, description, points)
     }
 
-    private fun showSnackbar(message: String, length: Int = Snackbar.LENGTH_SHORT) {
-        //TODO Fix this snackbar
-        //Snackbar.make(view!!.findViewById(android.R.id.content), message, length).show()
+    private fun checkSelectedItem(): Boolean {
+        if (sp_types_submissions.selectedItemPosition == 0) {
+            showSnackbar("Veuillez choisir un type de contribution !")
+        }
+        return true
+    }
+
+    private fun showSnackbar(message: String, length: Int = Snackbar.LENGTH_LONG) {
+        Snackbar.make(activity!!.findViewById(android.R.id.content), message, length).show()
     }
 }

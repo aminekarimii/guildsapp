@@ -93,6 +93,22 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/small"
+            android:text="@string/type_addsubmission"
+            android:textColor="@color/white"
+            android:textSize="@dimen/textH2"
+            android:textStyle="bold" />
+
+        <Spinner
+            android:id="@+id/sp_types_submissions"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/mini"
+            android:background="@drawable/submission_text_background" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/small"
             android:text="@string/description__addsubmission"
             android:textColor="@color/white"
             android:textSize="@dimen/textH2"
@@ -106,9 +122,9 @@
             app:hintEnabled="false">
 
             <EditText
-                android:id="@+id/shipper_field"
+                android:id="@+id/inputDescription"
                 android:layout_width="match_parent"
-                android:layout_height="180dp"
+                android:layout_height="150dp"
                 android:autofillHints="description"
                 android:background="@drawable/submission_text_background"
                 android:gravity="top"

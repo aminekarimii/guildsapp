@@ -15,7 +15,9 @@ data class Submission @JvmOverloads constructor(
         @PrimaryKey @ColumnInfo(name = "id") @field:Json(name="_id")
         var id: String = UUID.randomUUID().toString(),
         var subject : String,
-        var validated :Boolean,
+        var type :String,
+        var description :String,
+        var points :Int,
         //Not found on API:
         //@Embedded val contribution: Contribution,
         @Embedded val createdBy: User,

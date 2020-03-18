@@ -44,4 +44,12 @@
     <string name="desc_hint_contribution">Décrit ta contribution ici</string>
     <string name="description__addsubmission">Description</string>
     <string name="subject">Subject</string>
+    <string name="type_addsubmission">"Type "</string>
+
+    <string-array name="submissions_types">
+        <item></item>
+        <item>Presentation</item>
+        <item>Workshop</item>
+        <item>Meetup</item>
+    </string-array>
 </resources>
