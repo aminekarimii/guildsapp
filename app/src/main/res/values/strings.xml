@@ -42,14 +42,22 @@
     <string name="type_label_add_sub">Type</string>
     <string name="description_label_add_sub">Description</string>
     <string name="desc_hint_contribution">Décrit ta contribution ici</string>
-    <string name="description__addsubmission">Description</string>
+    <string name="description_addsubmission">Description</string>
     <string name="subject">Subject</string>
     <string name="type_addsubmission">"Type "</string>
+    <string name="hint_contribution_description">Décrit ta contribution ici</string>
 
     <string-array name="submissions_types">
-        <item></item>
-        <item>Presentation</item>
-        <item>Workshop</item>
-        <item>Meetup</item>
+        <item>Article</item>
+        <item>Atelier/Workshop</item>
+        <item>Présentation</item>
+        <item>Petit déjeuner ISCM</item>
+        <item>Contribution au projet de Transformation OneISC</item>
+        <item>Participation Session Anglais</item>
+        <item>Organiser Session Anglais</item>
+        <item>Organiser un Meetup</item>
+        <item>Création Asset DT</item>
+        <item>Participation Asset DT</item>
+        <item>Participation Innersource</item>
     </string-array>
 </resources>
