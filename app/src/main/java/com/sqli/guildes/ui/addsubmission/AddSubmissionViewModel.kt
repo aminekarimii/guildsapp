@@ -79,7 +79,6 @@ class AddSubmissionViewModel(dataManager: DataManager) : BaseViewModel(dataManag
         val guildName = currentUser!!.guilde.name.replace("é", "e")
                 .replace("è", "e")
                 .toLowerCase(Locale.getDefault())
-        log(guildName)
         return context.resources.getIdentifier(guildName,
                 "drawable", context.packageName)
     }
