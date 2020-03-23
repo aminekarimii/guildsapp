@@ -22,7 +22,7 @@ before_script:
 
 stages:
   - build
-  - test
+#  - test
 
 build:
   stage: build
@@ -32,10 +32,10 @@ build:
     paths:
     - app/build/outputs/
 
-unitTests:
-  stage: test
-  script:
-    - ./gradlew test
+#unitTests:
+#  stage: test
+#  script:
+#    - ./gradlew test
 
 #functionalTests:
 #  stage: test
