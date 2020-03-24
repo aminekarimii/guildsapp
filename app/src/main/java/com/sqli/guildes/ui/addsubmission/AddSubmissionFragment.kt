@@ -70,7 +70,7 @@ class AddSubmissionFragment : Fragment(), AdapterView.OnItemSelectedListener {
 
     private fun setupGuildView(){
         tvGuildeInfoName.text = addSubmissionViewModel.currentUser!!.guilde.name
-        tvGuildInfoPoints.text = "${addSubmissionViewModel.currentUser!!.guilde.points} pt"
+        tvGuildInfoPoints.text = "${addSubmissionViewModel.currentUser!!.guilde.points} pts"
         ivGuildeInfo.setImageDrawable(
                 resources.getDrawable(addSubmissionViewModel.getDrawableRes(context!!))
         )
