@@ -7,7 +7,7 @@ variables:
 
 before_script:
   - apt-get --quiet update --yes
-  - apt-get --quiet install --yes wget tar unzip libc6-i386 lib32stdc++6 lib32gcc1 lib32ncurses5 lib32z1
+  - apt-get --quiet install --yes wget tar unzip libc6-i386 lib32stdc++6 lib32gcc1 lib32ncurses6 lib32z1
   - wget --quiet --output-document=android-sdk.zip https://dl.google.com/android/repository/sdk-tools-linux-4333796.zip
   - unzip android-sdk.zip -d android-sdk-linux > /dev/null
   - echo y | android-sdk-linux/tools/bin/sdkmanager "platforms;android-${ANDROID_COMPILE_SDK}" > /dev/null
@@ -22,7 +22,7 @@ before_script:
 
 stages:
   - build
-  - test
+#  - test
 
 build:
   stage: build
@@ -32,10 +32,10 @@ build:
     paths:
     - app/build/outputs/
 
-unitTests:
-  stage: test
-  script:
-    - ./gradlew test
+#unitTests:
+#  stage: test
+#  script:
+#    - ./gradlew test
 
 #functionalTests:
 #  stage: test
