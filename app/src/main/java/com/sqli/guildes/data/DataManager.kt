@@ -69,6 +69,21 @@ class DataManager(val context: Context) {
                 })
             }
 
+    fun getUserById(userId: String): Single<Resource<User>> = apiService
+            .getUserById("Bearer $tokenPref", userId)
+            .flatMap { response ->
+                Single.just(when (response) {
+                    is NetworkResponse.Success -> {
+                        Resource.Success(response.body)
+                    }
+                    is NetworkResponse.ServerError -> {
+                        Resource.Error<User>(response.body?.message ?: SERVER_ERROR_MSG)
+                    }
+                    is NetworkResponse.NetworkError -> {
+                        Resource.Error(response.error.localizedMessage ?: NETWORK_ERROR_MSG)
+                    }
+                })
+            }
 
     fun getTopGuildes(): Single<Resource<List<Guilde>>> = apiService
             .getTopGuildes("Bearer $tokenPref")
@@ -135,7 +150,23 @@ class DataManager(val context: Context) {
                 })
             }
 
-    fun postSubmission(subject: String, description: String,type: String, points:Int): Single<Resource<String>> {
+    fun getUserContributions(userId: String): Single<Resource<List<Submission>>> = apiService
+            .getUserSubmissions("Bearer $tokenPref", userId)
+            .flatMap { response ->
+                Single.just(when (response) {
+                    is NetworkResponse.Success -> {
+                        Resource.Success(response.body)
+                    }
+                    is NetworkResponse.ServerError -> {
+                        Resource.Error<List<Submission>>(response.body?.message ?: SERVER_ERROR_MSG)
+                    }
+                    is NetworkResponse.NetworkError -> {
+                        Resource.Error(response.error.localizedMessage ?: NETWORK_ERROR_MSG)
+                    }
+                })
+            }
+
+    fun postSubmission(subject: String, description: String, type: String, points: Int): Single<Resource<String>> {
         return apiService.addSubmission("Bearer $tokenPref",
                         AddSubmissionRequest(subject, type, description, points))
                 .flatMap { response ->

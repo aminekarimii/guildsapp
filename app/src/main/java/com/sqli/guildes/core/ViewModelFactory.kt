@@ -12,6 +12,7 @@ import com.sqli.guildes.ui.login.LoginViewModel
 import com.sqli.guildes.ui.main.MainViewModel
 import com.sqli.guildes.ui.profile.ProfileViewModel
 import com.sqli.guildes.ui.splash.SplashViewModel
+import com.sqli.guildes.ui.usersubmissions.UserSubmissionsViewModel
 
 
 class ViewModelFactory(private val dataManager: DataManager) : ViewModelProvider.NewInstanceFactory() {
@@ -34,6 +35,8 @@ class ViewModelFactory(private val dataManager: DataManager) : ViewModelProvider
                         ProfileViewModel(dataManager)
                     isAssignableFrom(AddSubmissionViewModel::class.java) ->
                         AddSubmissionViewModel(dataManager)
+                    isAssignableFrom(UserSubmissionsViewModel::class.java) ->
+                        UserSubmissionsViewModel(dataManager)
                     else ->
                         throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
                 }

@@ -36,6 +36,10 @@ interface ApiService {
     fun getCurrentUserDetails(@Header("Authorization") authHeader : String)
             : Single<NetworkResponse<User, ErrorResponse>>
 
+    @GET("users/find/{userId}")
+    fun getUserById(@Header("Authorization") authHeader : String, @Path("userId") userId: String)
+            : Single<NetworkResponse<User, ErrorResponse>>
+
     @GET("users/guilde/{id}")
     fun getGuildeConstributors(@Header("Authorization") authHeader : String,
                                @Path("id") guildeId : String)
@@ -56,6 +60,10 @@ interface ApiService {
 
     @GET("submissions/me")
     fun getCurrentUserSubmissions(@Header("Authorization") authHeader : String)
+            : Single<NetworkResponse<List<Submission>, ErrorResponse>>
+
+    @GET("submissions/user/{id}")
+    fun getUserSubmissions(@Header("Authorization") authHeader : String, @Path("id") id: String)
             : Single<NetworkResponse<List<Submission>, ErrorResponse>>
 
     @POST("submissions/add")
