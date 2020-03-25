@@ -1,21 +1,21 @@
 package com.sqli.guildes.ui.guildedetail
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-
 import com.sqli.guildes.R
 import com.sqli.guildes.core.Resource
 import com.sqli.guildes.core.extensions.obtainViewModel
 import com.sqli.guildes.ui.common.epoxy.controllers.UserController
+import com.sqli.guildes.ui.common.epoxy.interfaces.Callbacks
 import com.sqli.guildes.ui.main.MainActivity
 import com.sqli.guildes.ui.main.MainViewModel
 import kotlinx.android.synthetic.main.fragment_guilde_details.*
-import kotlinx.android.synthetic.main.fragment_guilde_details.tvGuildeName
 
 class GuildeDetailsFragment : Fragment() {
 
@@ -37,12 +37,26 @@ class GuildeDetailsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        setupRecycleView()
+    }
+
+    private fun setupRecycleView() {
+        val callback = object : Callbacks {
+            override fun onItemClicked(id: String, sharedView: View?) {
+                GuildeDetailsFragmentDirections.actionGuildeDetailsFragmentToUserSubmissionsFragment()
+                        .apply {
+                            userIdArg = id
+                        }.also { findNavController().navigate(it) }
+            }
+        }
+
         rvContributors.apply {
             layoutManager = LinearLayoutManager(context)
-            contributorsControllers = UserController()
+            contributorsControllers = UserController(callback)
             setController(contributorsControllers)
         }
     }
+
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)

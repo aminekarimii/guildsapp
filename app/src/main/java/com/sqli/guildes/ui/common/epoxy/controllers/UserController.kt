@@ -5,16 +5,13 @@ import com.airbnb.epoxy.TypedEpoxyController
 import com.sqli.guildes.core.Resource
 
 import com.sqli.guildes.data.models.User
+import com.sqli.guildes.ui.common.epoxy.interfaces.Callbacks
 import com.sqli.guildes.ui.common.epoxy.models.infoText
 import com.sqli.guildes.ui.common.epoxy.models.loading
 import com.sqli.guildes.ui.common.epoxy.models.user
 
 class UserController(private val callbacks: Callbacks? = null)
     : TypedEpoxyController<Resource<List<User>>>() {
-
-    interface Callbacks {
-        fun onUserItemClicked(id: String, sharedView: View?)
-    }
 
     override fun buildModels(data: Resource<List<User>>?) {
         when(data) {
@@ -26,7 +23,7 @@ class UserController(private val callbacks: Callbacks? = null)
                             fullname("$firstname $lastname")
                             site(site)
                             clickListener { _, _, clickedView, _ ->
-                                callbacks?.onUserItemClicked(id, clickedView)
+                                callbacks?.onItemClicked(id, clickedView)
                             }
                         }
                     }
