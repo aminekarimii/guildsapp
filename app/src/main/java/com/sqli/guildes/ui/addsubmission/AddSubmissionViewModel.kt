@@ -35,7 +35,7 @@ class AddSubmissionViewModel(dataManager: DataManager) : BaseViewModel(dataManag
 
     fun addSubmission(subject: String, description: String, type: String, points: Int) {
         if (!isInputsValid(subject, description, type, points))
-            return _message.postValue("Please complete the inputs")
+            return _message.postValue("S'il vous plaît remplir tous les champs !")
         dataManager.postSubmission(subject, type, description, points)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())

@@ -13,4 +13,7 @@
     <color name="white">#fff</color>
     <color name="gradEnd">#DA4453</color>
     <color name="gradStart">#89216B</color>
+<!-- SQLI Colors   -->
+    <color name="lightblue_400">#54beea</color>
+    <color name="deep_purple_400">#371450</color>
 </resources>
