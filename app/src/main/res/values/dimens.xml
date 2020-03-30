@@ -15,4 +15,7 @@
     <dimen name="textH1">20sp</dimen>
     <dimen name="textH2">16sp</dimen>
     <dimen name="textH3">12sp</dimen>
+    <dimen name="width_height_icon">30dp</dimen>
+    <dimen name="item_corner_radius">5dp</dimen>
+    <dimen name="item_linear_padding">15dp</dimen>
 </resources>

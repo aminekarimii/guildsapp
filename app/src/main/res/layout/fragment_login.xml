@@ -5,7 +5,7 @@
     android:id="@+id/login"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorBg"
+    android:background="@color/white"
     android:paddingLeft="@dimen/small"
     android:paddingRight="@dimen/small"
     tools:context=".ui.login.LoginFragment">
@@ -46,6 +46,7 @@
             android:id="@+id/inputUsername"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            app:boxStrokeColor="@color/colorPrimary"
             android:background="@drawable/login_text_background"
             android:drawableEnd="@drawable/ic_highlight_off_black_24dp"
             android:drawableRight="@drawable/ic_highlight_off_black_24dp"

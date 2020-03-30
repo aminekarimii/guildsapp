@@ -5,7 +5,9 @@ import android.os.Handler
 import android.os.Looper
 import android.widget.Toast
 import com.sqli.guildes.core.Constants
+import com.sqli.guildes.data.models.Contribution
 import com.sqli.guildes.data.models.Guilde
+import com.sqli.guildes.data.models.Submission
 import com.sqli.guildes.data.models.User
 import com.sqli.guildes.data.remote.utils.ErrorResponse
 import com.sqli.guildes.data.remote.utils.KotlinRxJava2CallAdapterFactory
@@ -51,6 +53,10 @@ interface ApiService {
     @GET("guildes/top")
     fun getTopGuildes(@Header("Authorization") authHeader : String)
             : Single<NetworkResponse<List<Guilde>, ErrorResponse>>
+
+    @GET("submissions/me")
+    fun getCurrentUserSubmissions(@Header("Authorization") authHeader : String)
+            : Single<NetworkResponse<List<Submission>, ErrorResponse>>
 
 
     companion object {

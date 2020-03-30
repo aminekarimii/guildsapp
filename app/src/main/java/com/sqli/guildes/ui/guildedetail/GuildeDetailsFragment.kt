@@ -54,12 +54,14 @@ class GuildeDetailsFragment : Fragment() {
 
         guildeDetailsViewModel = obtainViewModel(GuildeDetailsViewModel::class.java).apply {
 
-            guilde.observe(this@GuildeDetailsFragment, Observer { when (it) {
-                is Resource.Success -> with(it.data) {
-                    tvGuildeName.text = name
-                    tvGuildePoints.text = "$points"
+            guilde.observe(this@GuildeDetailsFragment, Observer {
+                when (it) {
+                    is Resource.Success -> with(it.data) {
+                        tvGuildeName.text = name
+                        tvGuildePoints.text = "$points"
+                    }
                 }
-            }})
+            })
 
             guildeContributors.observe(this@GuildeDetailsFragment, Observer {
                 contributorsControllers.setData(it)
@@ -71,7 +73,7 @@ class GuildeDetailsFragment : Fragment() {
     }
 
     private fun loadData() {
-        var guildeId : String? = GuildeDetailsFragmentArgs.fromBundle(arguments!!).guildeIdArg
+        var guildeId: String? = GuildeDetailsFragmentArgs.fromBundle(arguments!!).guildeIdArg
         if (guildeId!!.isBlank()) {
             guildeId = mainViewModel.currentUser?.guilde?.id
         }

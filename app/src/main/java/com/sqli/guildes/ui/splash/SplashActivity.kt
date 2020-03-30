@@ -21,7 +21,6 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
-
         splashViewModel = obtainViewModel(SplashViewModel::class.java).apply {
 
             decideNextActivity.observe(this@SplashActivity, Observer {
@@ -31,7 +30,6 @@ class SplashActivity : AppCompatActivity() {
 
             Handler().postDelayed( ::startSeeding , SPLASH_SCREEN_DURATION)
         }
-
     }
 
     private fun openLoginActivity() {

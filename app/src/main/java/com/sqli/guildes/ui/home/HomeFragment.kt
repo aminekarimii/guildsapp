@@ -43,8 +43,9 @@ class HomeFragment : Fragment() {
 
     private fun setupRecycleView() {
         val callbacks = object : GuildeController.Callbacks {
-            override fun onGuildeItemClicked(id: String,  sharedView: View?) {
-                HomeFragmentDirections.actionHomeFragmentToGuildeDetailsFragment().apply {
+            override fun onGuildeItemClicked(id: String, sharedView: View?) {
+                HomeFragmentDirections.actionHomeFragmentToGuildeDetailsFragment()
+                        .apply {
                     guildeIdArg = id
                 }.also { findNavController().navigate(it) }
             }
@@ -58,8 +59,9 @@ class HomeFragment : Fragment() {
     }
 
     private fun setupViewAllTextVew() {
-        tvViewAll.setOnClickListener { val tv = it as TextView
-            if(isLess) tv.text = getText(R.string.view_less)
+        tvViewAll.setOnClickListener {
+            val tv = it as TextView
+            if (isLess) tv.text = getText(R.string.view_less)
             else tv.text = getText(R.string.view_all)
             homeViewModel.loadGuildes()
             isLess = !isLess
@@ -77,7 +79,7 @@ class HomeFragment : Fragment() {
         homeViewModel = obtainViewModel(HomeViewModel::class.java).apply {
             guildes.observe(this@HomeFragment, Observer {
                 guildesController.setData(
-                        if(it is Resource.Success && isLess)
+                        if (it is Resource.Success && isLess)
                             Resource.Success(it.data.take(3))
                         else it
                 )
