@@ -9,6 +9,7 @@ import com.sqli.guildes.ui.guildedetail.GuildeDetailsViewModel
 import com.sqli.guildes.ui.home.HomeViewModel
 import com.sqli.guildes.ui.login.LoginViewModel
 import com.sqli.guildes.ui.main.MainViewModel
+import com.sqli.guildes.ui.profile.ProfileViewModel
 import com.sqli.guildes.ui.splash.SplashViewModel
 
 
@@ -28,6 +29,8 @@ class ViewModelFactory(private val dataManager: DataManager) : ViewModelProvider
                         HomeViewModel(dataManager)
                     isAssignableFrom(GuildeDetailsViewModel::class.java) ->
                         GuildeDetailsViewModel(dataManager)
+                    isAssignableFrom(ProfileViewModel::class.java) ->
+                        ProfileViewModel(dataManager)
                     else ->
                         throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
                 }

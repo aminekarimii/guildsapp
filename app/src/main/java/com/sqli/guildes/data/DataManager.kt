@@ -6,18 +6,20 @@ import com.sqli.guildes.core.Constants
 import com.sqli.guildes.core.Resource
 import com.sqli.guildes.data.local.PreferencesHelper
 import com.sqli.guildes.data.models.Guilde
+import com.sqli.guildes.data.models.Submission
 import com.sqli.guildes.data.models.User
-import com.sqli.guildes.data.remote.LoginRequest
 import com.sqli.guildes.data.remote.ApiService
+import com.sqli.guildes.data.remote.LoginRequest
 import com.sqli.guildes.data.remote.utils.NetworkResponse
 import com.sqli.guildes.di.SingletonHolder
 import io.reactivex.Single
-import log
 
 class DataManager (val context: Context) {
 
     companion object : SingletonHolder<DataManager, Context>(::DataManager)
 
+    private val SERVER_ERROR_MSG = "Server Error"
+    private val NETWORK_ERROR_MSG = "Network Error"
     private var apiService: ApiService = ApiService.makeService()
     private var prefsHelper : PreferencesHelper = PreferencesHelper.getInstance(context.applicationContext)
 
@@ -33,10 +35,10 @@ class DataManager (val context: Context) {
                             Resource.Success(response.body.token)
                         }
                         is NetworkResponse.ServerError -> {
-                            Resource.Error<String>(response.body?.message ?: "Server Error")
+                            Resource.Error(response.body?.message ?: SERVER_ERROR_MSG)
                         }
                         is NetworkResponse.NetworkError -> {
-                            Resource.Error(response.error.localizedMessage ?: "Network Error")
+                            Resource.Error(response.error.localizedMessage ?: NETWORK_ERROR_MSG)
                         }
                     })
                 }
@@ -58,10 +60,10 @@ class DataManager (val context: Context) {
                         Resource.Success(response.body)
                     }
                     is NetworkResponse.ServerError -> {
-                        Resource.Error<User>(response.body?.message ?: "Server Error")
+                        Resource.Error(response.body?.message ?: SERVER_ERROR_MSG)
                     }
                     is NetworkResponse.NetworkError -> {
-                        Resource.Error(response.error.localizedMessage ?: "Network Error")
+                        Resource.Error(response.error.localizedMessage ?: NETWORK_ERROR_MSG)
                     }
                 })
             }
@@ -76,10 +78,10 @@ class DataManager (val context: Context) {
                         Resource.Success(response.body)
                     }
                     is NetworkResponse.ServerError -> {
-                        Resource.Error<List<Guilde>>(response.body?.message ?: "Server Error")
+                        Resource.Error(response.body?.message ?: SERVER_ERROR_MSG)
                     }
                     is NetworkResponse.NetworkError -> {
-                        Resource.Error(response.error.localizedMessage ?: "Network Error")
+                        Resource.Error(response.error.localizedMessage ?: NETWORK_ERROR_MSG)
                     }
                 })
             }
@@ -94,10 +96,10 @@ class DataManager (val context: Context) {
                         Resource.Success(response.body)
                     }
                     is NetworkResponse.ServerError -> {
-                        Resource.Error<Guilde>(response.body?.message ?: "Server Error")
+                        Resource.Error(response.body?.message ?: SERVER_ERROR_MSG)
                     }
                     is NetworkResponse.NetworkError -> {
-                        Resource.Error(response.error.localizedMessage ?: "Network Error")
+                        Resource.Error(response.error.localizedMessage ?: NETWORK_ERROR_MSG)
                     }
                 })
             }
@@ -110,10 +112,26 @@ class DataManager (val context: Context) {
                         Resource.Success(response.body)
                     }
                     is NetworkResponse.ServerError -> {
-                        Resource.Error<List<User>>(response.body?.message ?: "Server Error")
+                        Resource.Error(response.body?.message ?: SERVER_ERROR_MSG)
                     }
                     is NetworkResponse.NetworkError -> {
-                        Resource.Error(response.error.localizedMessage ?: "Network Error")
+                        Resource.Error(response.error.localizedMessage ?: NETWORK_ERROR_MSG)
+                    }
+                })
+            }
+
+    fun getSubmissionsCurrentUser() : Single<Resource<List<Submission>>> = apiService
+            .getCurrentUserSubmissions("Bearer $tokenPref")
+            .flatMap { response ->
+                Single.just(when (response){
+                    is  NetworkResponse.Success -> {
+                        Resource.Success(response.body)
+                    }
+                    is NetworkResponse.NetworkError -> {
+                        Resource.Error(response.error.localizedMessage ?: NETWORK_ERROR_MSG)
+                    }
+                    is NetworkResponse.ServerError -> {
+                        Resource.Error(response.body?.message ?: SERVER_ERROR_MSG)
                     }
                 })
             }

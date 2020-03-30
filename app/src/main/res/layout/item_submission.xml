@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/itemGuilde"
+    android:id="@+id/itemContribution"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_marginBottom="@dimen/mini"
-    app:cardCornerRadius="5dp">
+    app:cardCornerRadius="@dimen/item_corner_radius">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -16,8 +16,8 @@
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="@dimen/width_height_icon"
+            android:layout_height="@dimen/width_height_icon"
             android:contentDescription="@string/app_name"
             android:src="@drawable/ic_guilde"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -28,44 +28,41 @@
             android:id="@+id/view"
             android:layout_width="1dp"
             android:layout_height="0dp"
-            android:layout_marginStart="@dimen/small"
             android:layout_marginLeft="@dimen/small"
             android:background="@drawable/line"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageView"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0" />
-
+            app:layout_constraintVertical_bias="0"
+            android:layout_marginStart="@dimen/small" />
 
         <TextView
-            android:id="@+id/tvGuildeName"
+            android:id="@+id/tvSubmissionSubject"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/small"
             android:layout_marginLeft="@dimen/small"
             android:textColor="@color/colorH1"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/tvGuildePoints"
+            app:layout_constraintBottom_toTopOf="@+id/tvTimeSubmission"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/view"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="GuildeName" />
+            tools:text="Contribution Subject" />
 
         <TextView
-            android:id="@+id/tvGuildePoints"
+            android:id="@+id/tvTimeSubmission"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/small"
             android:layout_marginLeft="@dimen/small"
-            android:layout_marginTop="1dp"
             android:textColor="@color/colorH2"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0"
             app:layout_constraintStart_toEndOf="@+id/view"
-            app:layout_constraintTop_toBottomOf="@+id/tvGuildeName"
-            tools:text="15365" />
+            app:layout_constraintTop_toBottomOf="@+id/tvSubmissionSubject"
+            tools:text="Crée le 05/03 a 12h31" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </androidx.cardview.widget.CardView>

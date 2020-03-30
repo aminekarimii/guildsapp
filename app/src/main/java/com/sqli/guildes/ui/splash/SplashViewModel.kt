@@ -15,7 +15,6 @@ class SplashViewModel (dataManager : DataManager) : BaseViewModel(dataManager) {
     val decideNextActivity: LiveData<Boolean>
         get() = _decideNextActivity
 
-
     fun startSeeding() = _decideNextActivity.postValue(dataManager.isAuthenticated())
 
 
