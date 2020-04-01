@@ -8,130 +8,161 @@
     android:background="@drawable/grad"
     android:paddingLeft="@dimen/small"
     android:paddingRight="@dimen/small"
-    tools:context=".ui.submissions.addsubmission.AddSubmissionFragment">
+    tools:context=".ui.addsubmission.AddSubmissionFragment">
 
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/linearLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
         android:background="@drawable/ic_shape"
+        android:layout_marginTop="@dimen/small"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginEnd="2dp"
-            android:layout_marginRight="6dp"
-            android:paddingStart="@dimen/mini"
-            android:paddingLeft="@dimen/mini"
-            android:paddingRight="@dimen/mini"
-            android:src="@drawable/ic_aries" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:id="@+id/ivGuildeInfo"
+            android:layout_width="52dp"
+            android:layout_height="52dp"
+            android:layout_marginStart="@dimen/mini"
+            android:layout_marginLeft="@dimen/mini"
+            android:layout_marginTop="@dimen/small"
             android:layout_marginEnd="@dimen/small"
             android:layout_marginRight="@dimen/small"
-            android:gravity="center"
-            android:orientation="vertical">
+            android:layout_marginBottom="@dimen/small"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/andromede" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Bélier"
-                android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/textH2" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="21 pts"
-                android:textSize="@dimen/textH3" />
-        </LinearLayout>
+        <TextView
+            android:id="@+id/tvGuildeInfoName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/mini"
+            android:layout_marginLeft="@dimen/small"
+            android:layout_marginEnd="@dimen/small"
+            android:layout_marginRight="@dimen/small"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/textH2"
+            app:layout_constraintBottom_toTopOf="@+id/tvGuildInfoPoints"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/ivGuildeInfo"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Andromede" />
 
-    </LinearLayout>
+        <TextView
+            android:id="@+id/tvGuildInfoPoints"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/textH3"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/tvGuildeInfoName"
+            app:layout_constraintTop_toBottomOf="@+id/tvGuildeInfoName"
+            tools:text="21 pts" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/textView4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/small"
-        android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        tools:layout_editor_absoluteX="16dp">
+        android:text="Subject"
+        android:textColor="@color/white"
+        android:textSize="@dimen/textH2"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Type"
-            android:textColor="@color/white"
-            android:textSize="@dimen/textH2"
-            android:textStyle="bold" />
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/layoutUsername"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/mini"
-            app:hintEnabled="false">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/inputUsername"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/submission_text_background"
-                android:hint="@string/username"
-                android:inputType="text"
-                app:boxStrokeColor="@color/colorPrimary" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/small"
-            android:text="Description"
-            android:textColor="@color/white"
-            android:textSize="@dimen/textH2"
-            android:textStyle="bold" />
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/layoutDescription"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/mini"
-            app:hintEnabled="false">
-
-            <EditText
-                android:id="@+id/shipper_field"
-                android:layout_width="match_parent"
-                android:layout_height="180dp"
-                android:autofillHints="description"
-                android:background="@drawable/submission_text_background"
-                android:gravity="top"
-                android:hint="Décrit ta contribution ici"
-                android:inputType="textMultiLine"
-                android:overScrollMode="always"
-                android:padding="15dp"
-                android:scrollbarStyle="insideInset"
-                android:scrollbars="vertical" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-
-    </LinearLayout>
-
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnLogin"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layoutSubject"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/medium"
-        android:layout_marginLeft="@dimen/medium"
-        android:layout_marginEnd="@dimen/medium"
-        android:layout_marginRight="@dimen/medium"
+        app:hintEnabled="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/inputSubject"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/submission_text_background"
+            android:hint="@string/subject"
+            android:inputType="text"
+            app:boxStrokeColor="@color/colorPrimary" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/small"
+        android:text="@string/type_addsubmission"
+        android:textColor="@color/white"
+        android:textSize="@dimen/textH2"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layoutSubject" />
+
+    <Spinner
+        android:id="@+id/sp_types_submissions"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        tools:layout_height="60dp"
+        android:background="@drawable/submission_text_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/small"
+        android:text="@string/description_addsubmission"
+        android:textColor="@color/white"
+        android:textSize="@dimen/textH2"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sp_types_submissions" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layoutDescription"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:hintEnabled="false"
+        android:layout_marginBottom="@dimen/medium"
+        app:layout_constraintVertical_bias="0"
+        app:layout_constraintBottom_toTopOf="@+id/btnSubmission"
+        app:layout_constraintTop_toBottomOf="@+id/textView2">
+
+        <EditText
+            android:id="@+id/inputDescription"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:autofillHints="description"
+            android:background="@drawable/submission_text_background"
+            android:gravity="top"
+            android:hint="@string/hint_contribution_description"
+            android:inputType="textMultiLine"
+            android:overScrollMode="always"
+            android:padding="15dp"
+            android:scrollbarStyle="insideInset"
+            android:scrollbars="vertical" />
+    </com.google.android.material.textfield.TextInputLayout>
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnSubmission"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/large"
         android:background="@drawable/login_btn_background"
         android:text="@string/submit"
@@ -139,5 +170,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -13,6 +13,7 @@ import com.sqli.guildes.R
 import com.sqli.guildes.core.Resource
 import com.sqli.guildes.core.extensions.obtainViewModel
 import com.sqli.guildes.ui.common.epoxy.controllers.GuildeController
+import com.sqli.guildes.ui.common.epoxy.interfaces.Callbacks
 import com.sqli.guildes.ui.main.MainActivity
 import com.sqli.guildes.ui.main.MainViewModel
 import kotlinx.android.synthetic.main.fragment_home.*
@@ -42,8 +43,8 @@ class HomeFragment : Fragment() {
     }
 
     private fun setupRecycleView() {
-        val callbacks = object : GuildeController.Callbacks {
-            override fun onGuildeItemClicked(id: String, sharedView: View?) {
+        val callbacks = object : Callbacks {
+            override fun onItemClicked(id: String, sharedView: View?) {
                 HomeFragmentDirections.actionHomeFragmentToGuildeDetailsFragment()
                         .apply {
                     guildeIdArg = id

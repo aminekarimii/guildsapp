@@ -160,7 +160,7 @@ dependencies {
 }
 
 sonarqube {
-    properties{
+    properties {
         property "sonar.host.url", "http://localhost:9000"
         property "sonar.jdbc.url", "jdbc:mysql://localhost:3306/sonar"
         property "sonar.jdbc.driverClassName", "com.mysql.jdbc.Driver"

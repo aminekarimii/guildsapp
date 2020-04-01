@@ -2,35 +2,35 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/navigation_graph"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/homeFragment"
+    android:id="@+id/navigation_graph">
 
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.sqli.guildes.ui.home.HomeFragment"
         android:label="Blank"
-        tools:layout="@layout/fragment_home" >
+        tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_homeFragment_to_guildeDetailsFragment"
             app:destination="@id/guildeDetailsFragment"
-            app:popEnterAnim="@animator/slide_in_left"
-            app:popExitAnim="@animator/slide_out_right"
             app:enterAnim="@animator/slide_in_right"
-            app:exitAnim="@animator/slide_out_left"/>
+            app:exitAnim="@animator/slide_out_left"
+            app:popEnterAnim="@animator/slide_in_left"
+            app:popExitAnim="@animator/slide_out_right" />
         <action
             android:id="@+id/action_homeFragment_to_profileFragment"
             app:destination="@id/profileFragment"
-            app:popEnterAnim="@animator/slide_in_left"
-            app:popExitAnim="@animator/slide_out_right"
             app:enterAnim="@animator/slide_in_right"
-            app:exitAnim="@animator/slide_out_left" />
+            app:exitAnim="@animator/slide_out_left"
+            app:popEnterAnim="@animator/slide_in_left"
+            app:popExitAnim="@animator/slide_out_right" />
         <action
             android:id="@+id/action_homeFragment_to_addSubmissionFragment"
             app:destination="@id/addSubmissionFragment"
-            app:popEnterAnim="@animator/slide_in_left"
-            app:popExitAnim="@animator/slide_out_right"
             app:enterAnim="@animator/slide_in_right"
-            app:exitAnim="@animator/slide_out_left" />
+            app:exitAnim="@animator/slide_out_left"
+            app:popEnterAnim="@animator/slide_in_left"
+            app:popExitAnim="@animator/slide_out_right" />
     </fragment>
 
 
@@ -38,23 +38,39 @@
         android:id="@+id/guildeDetailsFragment"
         android:name="com.sqli.guildes.ui.guildedetail.GuildeDetailsFragment"
         android:label="Blank"
-        tools:layout="@layout/fragment_guilde_details" >
+        tools:layout="@layout/fragment_guilde_details">
         <argument
             android:name="guildeIdArg"
             android:defaultValue=" "
             app:argType="string" />
+        <action
+            android:id="@+id/action_guildeDetailsFragment_to_userSubmissionsFragment"
+            app:destination="@id/userSubmissionsFragment"
+            app:enterAnim="@animator/slide_in_right"
+            app:exitAnim="@animator/slide_out_left"
+            app:popEnterAnim="@animator/slide_in_left"
+            app:popExitAnim="@animator/slide_out_right" />
     </fragment>
 
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.sqli.guildes.ui.profile.ProfileFragment"
-        tools:layout="@layout/fragment_profile"
-        android:label="ProfileFragment" />
+        android:label="ProfileFragment"
+        tools:layout="@layout/fragment_profile" />
     <fragment
         android:id="@+id/addSubmissionFragment"
-        android:name="com.sqli.guildes.ui.submissions.addsubmission.AddSubmissionFragment"
+        android:name="com.sqli.guildes.ui.addsubmission.AddSubmissionFragment"
         android:label="fragment_addsubmission"
         tools:layout="@layout/fragment_addsubmission" />
+    <fragment
+        android:id="@+id/userSubmissionsFragment"
+        android:name="com.sqli.guildes.ui.usersubmissions.UserSubmissionsFragment"
+        android:label="UserSubmissionsFragment">
+        <argument
+            android:name="userIdArg"
+            android:defaultValue=" "
+            app:argType="string" />
+    </fragment>
 
 
 </navigation>
