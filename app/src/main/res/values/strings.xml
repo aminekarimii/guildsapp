@@ -48,7 +48,7 @@
     <string name="hint_contribution_description">Décrit ta contribution ici</string>
 
     <string-array name="submissions_types">
-        <item>Article</item>
+        <item name="Article">Article</item>
         <item>Atelier/Workshop</item>
         <item>Présentation</item>
         <item>Petit déjeuner ISCM</item>

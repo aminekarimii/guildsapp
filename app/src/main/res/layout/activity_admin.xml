@@ -15,7 +15,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/mainToolbar"
+            android:id="@+id/adminToolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             app:layout_scrollFlags="scroll|enterAlways|snap"
@@ -37,7 +37,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:defaultNavHost="true"
-            app:navGraph="@navigation/navigation_graph" />
+            app:navGraph="@navigation/admin_navigation_graph" />
     </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
