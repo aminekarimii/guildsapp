@@ -47,6 +47,8 @@ class DataManager(val context: Context) {
 
     fun isAuthenticated(): Boolean = !TextUtils.isEmpty(tokenPref)
 
+    fun isAdmin(): Boolean = currentUserPref!!.isAdmin
+
     fun signOut() {
         //db.clear()
         prefsHelper.clear()

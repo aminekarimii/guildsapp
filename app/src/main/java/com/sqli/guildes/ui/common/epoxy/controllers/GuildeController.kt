@@ -11,7 +11,6 @@ import com.sqli.guildes.ui.common.epoxy.models.loading
 class GuildeController(private val callbacks: Callbacks? = null)
     : TypedEpoxyController<Resource<List<Guilde>>>() {
 
-
     override fun buildModels(data: Resource<List<Guilde>>?) {
         when (data) {
             is Resource.Success ->

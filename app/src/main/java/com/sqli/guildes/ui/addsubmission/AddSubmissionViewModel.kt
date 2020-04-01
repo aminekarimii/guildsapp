@@ -34,8 +34,8 @@ class AddSubmissionViewModel(dataManager: DataManager) : BaseViewModel(dataManag
     val spinnerOptions: LiveData<ArrayAdapter<CharSequence>> get() = _spinnerOptions
 
     fun addSubmission(subject: String, description: String, type: String, points: Int) {
-        if (!isInputsValid(subject, description, type, points))
-            return _message.postValue("Please complete the inputs")
+        if (!areInputsValid(subject, description, type, points))
+            return _message.postValue("S'il vous plaît remplir tous les champs !")
         dataManager.postSubmission(subject, type, description, points)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -53,7 +53,7 @@ class AddSubmissionViewModel(dataManager: DataManager) : BaseViewModel(dataManag
                 ).disposeWith(compositeDisposable)
     }
 
-    private fun isInputsValid(subject: String, description: String, type: String, points: Int)
+    private fun areInputsValid(subject: String, description: String, type: String, points: Int)
             : Boolean = !TextUtils.isEmpty(subject)
             && !TextUtils.isEmpty(description)
             && !TextUtils.isEmpty(type)

@@ -22,10 +22,10 @@
         android:id="@+id/tvUContribName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/small"
-        android:layout_marginLeft="@dimen/small"
-        android:layout_marginEnd="@dimen/mini"
-        android:layout_marginRight="@dimen/mini"
+        android:layout_marginStart="@dimen/mini"
+        android:layout_marginLeft="@dimen/mini"
+        android:layout_marginEnd="@dimen/small"
+        android:layout_marginRight="@dimen/small"
         android:lines="2"
         android:textColor="@color/white"
         android:textSize="@dimen/textH1"
@@ -36,7 +36,7 @@
         app:layout_constraintHorizontal_bias="0"
         app:layout_constraintStart_toStartOf="@+id/guideline"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="firtname" />
+        tools:text="firstname" />
 
     <TextView
         android:id="@+id/tvUContribLName"
@@ -70,11 +70,16 @@
 
     <com.airbnb.epoxy.EpoxyRecyclerView
         android:id="@+id/rvUserContributions"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginStart="@dimen/small"
+        android:layout_marginLeft="@dimen/small"
         android:layout_marginTop="@dimen/mini"
-        android:padding="@dimen/mini"
+        android:layout_marginEnd="@dimen/small"
+        android:layout_marginRight="@dimen/small"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView_icon"
         app:layout_constraintVertical_bias="0"
         tools:listitem="@layout/item_submission" />
