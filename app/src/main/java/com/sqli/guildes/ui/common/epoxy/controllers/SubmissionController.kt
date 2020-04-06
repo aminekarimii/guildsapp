@@ -48,7 +48,7 @@ class SubmissionController(private val callbacks: Callbacks? = null)
             is Resource.Loading -> {
                 loading {
                     id("load-submissions")
-                    description("Loading Your Submissions ...")
+                    description("Loading Submissions ...")
                     spanSizeOverride { totalSpanCount, _, _ -> totalSpanCount }
                 }
             }

@@ -13,13 +13,12 @@ import com.sqli.guildes.core.extensions.obtainViewModel
 import com.sqli.guildes.data.models.Submission
 import com.sqli.guildes.ui.common.epoxy.controllers.SubmissionController
 import kotlinx.android.synthetic.main.fragment_admin.*
-import log
 
 class AdminFragment : Fragment() {
 
-    companion object {
+    /*companion object {
         fun newInstance() = AdminFragment()
-    }
+    }*/
 
     private lateinit var adminViewModel: AdminViewModel
     private lateinit var submissionController: SubmissionController
@@ -36,31 +35,22 @@ class AdminFragment : Fragment() {
             submissionController = SubmissionController()
             setController(submissionController)
         }
-
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         adminViewModel = obtainViewModel(AdminViewModel::class.java).apply {
             submissions.observe(this@AdminFragment, Observer {
-                when (it) {
-                    is Resource.Success -> {
-                        setViews(it.data)
-                        submissionController.setData(it)
-                    }
-                    is Resource.Error -> {
-                        //TODO : handle error message
-                        log("ERROOR"+it.errorMessage)
-                    }
-                }
+                submissionController.setData(it)
+                if (it is Resource.Success)
+                    setViews(it.data)
             })
         }
         adminViewModel.loadAllSubmissions()
     }
 
-    private fun setViews(listSubmissions:List<Submission>) {
+    private fun setViews(listSubmissions: List<Submission>) {
         tvContribTotal.text = listSubmissions.size.toString()
         invalidatedContibs.text = listSubmissions.count { !it.validated }.toString()
     }
-
 }

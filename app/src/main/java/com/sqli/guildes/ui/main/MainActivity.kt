@@ -88,7 +88,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             }
 
             R.id.sign_out_navigation_menu_item ->
-                navController.navigate(R.id.homeFragment)
+                mainViewModel.dataManager.signOut()
         }
         mainRootView.closeDrawer(GravityCompat.START)
         return true
