@@ -47,6 +47,8 @@
     <string name="type_addsubmission">"Type "</string>
     <string name="hint_contribution_description">Décrit ta contribution ici</string>
     <string name="tv_contributions_total">Contributions Total</string>
+    <string name="ntework_error_msg">Network Error</string>
+    <string name="server_error_msg">Server Error</string>
 
     <string-array name="submissions_types">
         <item name="Article">Article</item>

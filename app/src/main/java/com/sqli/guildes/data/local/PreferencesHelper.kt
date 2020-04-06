@@ -5,7 +5,6 @@ import android.content.Context
 import android.content.Context.MODE_PRIVATE
 import android.content.SharedPreferences
 import com.sqli.guildes.core.Constants.USER
-import com.sqli.guildes.data.DataManager
 import com.sqli.guildes.data.models.User
 import com.sqli.guildes.di.SingletonHolder
 import com.squareup.moshi.JsonAdapter
@@ -24,7 +23,6 @@ class PreferencesHelper(context: Context) {
     private val userAdapter: JsonAdapter<User> = moshi.adapter(User::class.java)
 
     fun clear() = prefs.edit().clear().apply()
-
 
 
     inner class UserPrefDelegate {
