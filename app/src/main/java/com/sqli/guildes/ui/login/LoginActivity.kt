@@ -27,13 +27,12 @@ class LoginActivity : AppCompatActivity() {
             isAuthenticated.observe(this@LoginActivity, Observer {
                 if (it) {
                     isAdmin.observe(this@LoginActivity, Observer {
-                        if (it) openAdminActitiy() else openMainActivity()
+                        if (it) openAdminActivity() else openMainActivity()
                     })
                 }
             })
             message.observe(this@LoginActivity, Observer { handleError(it) })
         }
-        //loginViewModel.getCurrentUser()
     }
 
     companion object {
@@ -52,7 +51,7 @@ class LoginActivity : AppCompatActivity() {
         finish()
     }
 
-    private fun openAdminActitiy() {
+    private fun openAdminActivity() {
         val i = AdminActivity.navigate(this)
         startActivity(i)
         finish()

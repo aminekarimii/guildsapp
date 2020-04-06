@@ -46,6 +46,7 @@
     <string name="subject">Subject</string>
     <string name="type_addsubmission">"Type "</string>
     <string name="hint_contribution_description">Décrit ta contribution ici</string>
+    <string name="tv_contributions_total">Contributions Total</string>
 
     <string-array name="submissions_types">
         <item name="Article">Article</item>

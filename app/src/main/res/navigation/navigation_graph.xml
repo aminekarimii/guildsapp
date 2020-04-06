@@ -2,8 +2,8 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    app:startDestination="@id/homeFragment"
-    android:id="@+id/navigation_graph">
+    android:id="@+id/navigation_graph"
+    app:startDestination="@id/homeFragment">
 
     <fragment
         android:id="@+id/homeFragment"
@@ -65,7 +65,8 @@
     <fragment
         android:id="@+id/userSubmissionsFragment"
         android:name="com.sqli.guildes.ui.usersubmissions.UserSubmissionsFragment"
-        android:label="UserSubmissionsFragment">
+        android:label="UserSubmissionsFragment"
+        tools:layout="@layout/fragment_user_contributions">
         <argument
             android:name="userIdArg"
             android:defaultValue=" "

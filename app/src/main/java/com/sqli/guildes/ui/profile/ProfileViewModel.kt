@@ -29,7 +29,7 @@ class ProfileViewModel(dataManager: DataManager) : BaseViewModel(dataManager) {
     private val _message = SingleLiveEvent<String>()
     val message: LiveData<String> get() = _message
 
-    fun loadCurrentUserDetails() :ProfileViewModel{
+    fun loadCurrentUserDetails() : ProfileViewModel{
         _currentContributor.postValue(Resource.Loading())
         dataManager.getCurrentUser()
                 .subscribeOn(Schedulers.newThread())

@@ -44,12 +44,13 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
+                android:id="@+id/invalidatedContibs"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/mini"
                 android:layout_marginBottom="@dimen/small"
                 android:gravity="center_horizontal"
-                android:text="22"
+                tools:text="22"
                 android:textAlignment="center"
                 android:textColor="@color/deep_purple_400"
                 android:textSize="@dimen/textH1"
@@ -88,7 +89,7 @@
                 android:layout_marginTop="@dimen/small"
                 android:layout_marginRight="@dimen/mini"
                 android:gravity="center_horizontal"
-                android:text="Contributions Total"
+                android:text="@string/tv_contributions_total"
                 android:textAlignment="center"
                 android:textSize="@dimen/textH3"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -96,6 +97,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
+                android:id="@+id/tvContribTotal"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/mini"
@@ -113,7 +115,7 @@
     </androidx.cardview.widget.CardView>
 
     <com.airbnb.epoxy.EpoxyRecyclerView
-        android:id="@+id/rvAdminHome"
+        android:id="@+id/rvAdminFragment"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="@dimen/small"
@@ -125,7 +127,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardView1"
-        tools:listitem="@layout/item_submission" />
-
+        tools:itemCount="5"
+        tools:listitem="@layout/item_submission"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

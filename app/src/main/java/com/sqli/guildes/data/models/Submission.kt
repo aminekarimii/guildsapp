@@ -21,6 +21,7 @@ data class Submission @JvmOverloads constructor(
         //Not found on API:
         //@Embedded val contribution: Contribution,
         @Embedded val createdBy: User,
+        var validated: Boolean,
         var createdAt: String,
         var updatedAt: String
 ) : Parcelable

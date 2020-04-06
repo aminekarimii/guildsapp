@@ -1,13 +1,19 @@
 package com.sqli.guildes.ui.admin
 
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.sqli.guildes.R
+import com.sqli.guildes.core.Resource
+import com.sqli.guildes.core.extensions.obtainViewModel
+import com.sqli.guildes.data.models.Submission
+import com.sqli.guildes.ui.common.epoxy.controllers.SubmissionController
+import kotlinx.android.synthetic.main.fragment_admin.*
+import log
 
 class AdminFragment : Fragment() {
 
@@ -15,16 +21,46 @@ class AdminFragment : Fragment() {
         fun newInstance() = AdminFragment()
     }
 
-    private lateinit var viewModel: AdminViewModel
+    private lateinit var adminViewModel: AdminViewModel
+    private lateinit var submissionController: SubmissionController
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_admin, container, false)
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        rvAdminFragment.apply {
+            layoutManager = LinearLayoutManager(context)
+            submissionController = SubmissionController()
+            setController(submissionController)
+        }
+
+    }
+
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(AdminViewModel::class.java)
+        adminViewModel = obtainViewModel(AdminViewModel::class.java).apply {
+            submissions.observe(this@AdminFragment, Observer {
+                when (it) {
+                    is Resource.Success -> {
+                        setViews(it.data)
+                        submissionController.setData(it)
+                    }
+                    is Resource.Error -> {
+                        //TODO : handle error message
+                        log("ERROOR"+it.errorMessage)
+                    }
+                }
+            })
+        }
+        adminViewModel.loadAllSubmissions()
+    }
+
+    private fun setViews(listSubmissions:List<Submission>) {
+        tvContribTotal.text = listSubmissions.size.toString()
+        invalidatedContibs.text = listSubmissions.count { !it.validated }.toString()
     }
 
 }

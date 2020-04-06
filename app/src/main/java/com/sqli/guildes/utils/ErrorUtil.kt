@@ -8,8 +8,7 @@ object ErrorUtil {
     fun handleError(error: Throwable, caller: String) : String {
         error.localizedMessage?.let {
             log("ERROR $caller -> $it")
-        } ?: log("ERROR $caller ->")
-                .also {
+        } ?: log("ERROR $caller ->").also {
                     error.printStackTrace()
                 }
         return when (error) {

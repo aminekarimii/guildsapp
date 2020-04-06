@@ -51,7 +51,6 @@ class ProfileFragment : Fragment(){
             })
 
             submissions.observe(this@ProfileFragment, Observer {
-                log(it.toString())
                 submissionController.setData(it)
             })
         }

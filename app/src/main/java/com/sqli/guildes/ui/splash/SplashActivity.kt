@@ -26,8 +26,8 @@ class SplashActivity : AppCompatActivity() {
 
             decideNextActivity.observe(this@SplashActivity, Observer {
                 if (it) {
-                    isAdmin.observe(this@SplashActivity, Observer {
-                        if (it) openAdminActivity() else openMainActivity()
+                    isAdmin.observe(this@SplashActivity, Observer {admin ->
+                        if (admin) openAdminActivity() else openMainActivity()
                     })
                 } else openLoginActivity()
             })
