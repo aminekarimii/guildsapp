@@ -12,7 +12,6 @@ import com.sqli.guildes.core.extensions.disposeWith
 import com.sqli.guildes.data.DataManager
 import com.sqli.guildes.data.models.User
 import com.sqli.guildes.ui.base.BaseViewModel
-import com.sqli.guildes.utils.ErrorUtil
 import com.sqli.guildes.utils.SingleLiveEvent
 import com.sqli.guildes.utils.StringUtl.formatGuild
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -24,8 +23,8 @@ class AddSubmissionViewModel(dataManager: DataManager) : BaseViewModel(dataManag
     private val _submission = SingleLiveEvent<Boolean>()
     val submission: LiveData<Boolean> get() = _submission
 
-    private val _message = MutableLiveData<String>()
-    val message: LiveData<String> get() = _message
+    private val _message = MutableLiveData<Int>()
+    val message: LiveData<Int> get() = _message
 
     val currentUser: User?
         get() = dataManager.currentUserPref
@@ -34,8 +33,9 @@ class AddSubmissionViewModel(dataManager: DataManager) : BaseViewModel(dataManag
     val spinnerOptions: LiveData<ArrayAdapter<CharSequence>> get() = _spinnerOptions
 
     fun addSubmission(subject: String, description: String, type: String, points: Int) {
-        if (!isInputsValid(subject, description, type, points))
-            return _message.postValue("S'il vous plaît remplir tous les champs !")
+        if (!areInputsValid(subject, description, type, points))
+            return _message.postValue(R.string.guild_empty_field)
+
         dataManager.postSubmission(subject, type, description, points)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -43,17 +43,16 @@ class AddSubmissionViewModel(dataManager: DataManager) : BaseViewModel(dataManag
                         onSuccess = {
                             when (it) {
                                 is Resource.Success -> _submission.postValue(true)
-                                is Resource.Error -> _message.postValue(it.errorMessage)
+                                is Resource.Error -> _message.postValue(R.string.guild_network_error)
                             }
                         },
                         onError = {
-                            val err = ErrorUtil.handleError(it, "postNewSubmission")
-                            _message.postValue(err)
+                            _message.postValue(R.string.guild_error)
                         }
                 ).disposeWith(compositeDisposable)
     }
 
-    private fun isInputsValid(subject: String, description: String, type: String, points: Int)
+    private fun areInputsValid(subject: String, description: String, type: String, points: Int)
             : Boolean = !TextUtils.isEmpty(subject)
             && !TextUtils.isEmpty(description)
             && !TextUtils.isEmpty(type)
@@ -70,8 +69,8 @@ class AddSubmissionViewModel(dataManager: DataManager) : BaseViewModel(dataManag
         return SUBMISSIONS_TYPES.toList()[position].second
     }
 
-    fun getSubmissionType(position: Int): String {
-        return SUBMISSIONS_TYPES.toList()[position].first
+    fun getSubmissionType(context: Context, position: Int): String {
+        return context.getString(SUBMISSIONS_TYPES.toList()[position].first)
     }
 
     fun getDrawableRes(context: Context): Int {

@@ -29,7 +29,7 @@ class ProfileFragment : Fragment(){
         super.onViewCreated(view, savedInstanceState)
         rvProfileContributions.apply {
             layoutManager = LinearLayoutManager(context)
-            submissionController = SubmissionController()
+            submissionController = SubmissionController(context)
             setController(submissionController)
         }
     }

@@ -47,17 +47,38 @@
     <string name="type_addsubmission">"Type "</string>
     <string name="hint_contribution_description">Décrit ta contribution ici</string>
 
+    <string name="guilds_points">%1$d pts</string>
+    <string name="guild_empty_field">Vous devez remplir tous les champs !</string>
+    <string name="submission_message">Votre Contribution est ajoutée</string>
+    <string name="guild_network_error">Erreur de serveur, veuillez essayer plus tard.</string>
+    <string name="guild_error">Veuillez essayer plus tard.</string>
+    <string name="date_template">le %1$s à %2$s</string>
+
+    <string name="article">Article</string>
+    <string name="atelier_workshop">Atelier/Workshop </string>
+    <string name="presentation">Présentation </string>
+    <string name="breakfast_iscm">Petit déjeuner ISCM </string>
+    <string name="contribution_project_OneISC">Contribution au projet de Transformation OneISC </string>
+    <string name="english_participation">Participation Session Anglais </string>
+    <string name="english_session_organisation">Organiser Session Anglais </string>
+    <string name="meetup_organisation">Organiser un Meetup </string>
+    <string name="creation_dt_asset">Création Asset DT </string>
+    <string name="participation_dt_asset">Participation Asset DT </string>
+    <string name="participation_innersource">Participation Innersource </string>
+    <string name="user_error_msg">Error getting users</string>
+    <string name="loading_submissions_msg">Loading Your Submissions…</string>
+
     <string-array name="submissions_types">
-        <item>Article</item>
-        <item>Atelier/Workshop</item>
-        <item>Présentation</item>
-        <item>Petit déjeuner ISCM</item>
-        <item>Contribution au projet de Transformation OneISC</item>
-        <item>Participation Session Anglais</item>
-        <item>Organiser Session Anglais</item>
-        <item>Organiser un Meetup</item>
-        <item>Création Asset DT</item>
-        <item>Participation Asset DT</item>
-        <item>Participation Innersource</item>
+        <item>@string/article</item>
+        <item>@string/atelier_workshop</item>
+        <item>@string/presentation</item>
+        <item>@string/breakfast_iscm</item>
+        <item>@string/contribution_project_OneISC</item>
+        <item>@string/english_participation</item>
+        <item>@string/english_session_organisation</item>
+        <item>@string/meetup_organisation</item>
+        <item>@string/creation_dt_asset</item>
+        <item>@string/participation_dt_asset</item>
+        <item>@string/participation_innersource</item>
     </string-array>
 </resources>

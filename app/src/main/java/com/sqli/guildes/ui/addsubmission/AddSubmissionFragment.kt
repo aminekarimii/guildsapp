@@ -1,5 +1,6 @@
 package com.sqli.guildes.ui.addsubmission
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -15,8 +16,8 @@ import kotlinx.android.synthetic.main.fragment_addsubmission.*
 class AddSubmissionFragment : Fragment(), AdapterView.OnItemSelectedListener {
 
     private lateinit var addSubmissionViewModel: AddSubmissionViewModel
-    private var points:Int = 0
-    private var type:String = ""
+    private var points: Int = 0
+    private var type: String = ""
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View {
@@ -36,12 +37,14 @@ class AddSubmissionFragment : Fragment(), AdapterView.OnItemSelectedListener {
             })
 
             submission.observe(this@AddSubmissionFragment, Observer {
-                if (it) { showSnackbar("Votre Contribution est ajoutée") }
+                if (it) {
+                    showSnackbar(R.id.login, R.string.submission_message)
+                }
             })
 
-            message.observe(this@AddSubmissionFragment, Observer { showSnackbar(it) })
+            message.observe(this@AddSubmissionFragment, Observer { showSnackbar(R.id.login, it) })
         }
-        setupGuildView()
+        setupGuildView(this.context!!)
         addSubmissionViewModel.createSpinnerAdapter(context!!)
         btnSubmission.setOnClickListener { addSubmission() }
 
@@ -55,25 +58,22 @@ class AddSubmissionFragment : Fragment(), AdapterView.OnItemSelectedListener {
         addSubmissionViewModel.addSubmission(subject, type, description, points)
     }
 
-    private fun showSnackbar(message: String, length: Int = Snackbar.LENGTH_LONG) {
-        Snackbar.make(activity!!.findViewById(android.R.id.content), message, length).show()
-    }
-
     override fun onNothingSelected(parent: AdapterView<*>?) {
         TODO("Not yet implemented")
     }
 
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-        this.type = addSubmissionViewModel.getSubmissionType(position)
+        this.type = addSubmissionViewModel.getSubmissionType(view!!.context, position)
         this.points = addSubmissionViewModel.getSubmissionPoints(position)
     }
 
-    private fun setupGuildView(){
+    private fun setupGuildView(context: Context) {
         tvGuildeInfoName.text = addSubmissionViewModel.currentUser!!.guilde.name
-        tvGuildInfoPoints.text = "${addSubmissionViewModel.currentUser!!.guilde.points} pts"
-        ivGuildeInfo.setImageDrawable(
-                resources.getDrawable(addSubmissionViewModel.getDrawableRes(context!!))
-        )
+        tvGuildInfoPoints.text = getString(R.string.guilds_points, addSubmissionViewModel.currentUser!!.guilde.points)
+        ivGuildeInfo.setImageDrawable(resources.getDrawable(addSubmissionViewModel.getDrawableRes(context)))
+    }
 
+    private fun showSnackbar(viewRes: Int, message: Int, length: Int = Snackbar.LENGTH_LONG) {
+        Snackbar.make(activity!!.findViewById(viewRes), message, length).show()
     }
 }
