@@ -13,10 +13,11 @@ import com.sqli.guildes.data.DataManager
 import com.sqli.guildes.data.models.User
 import com.sqli.guildes.ui.base.BaseViewModel
 import com.sqli.guildes.utils.SingleLiveEvent
-import com.sqli.guildes.utils.StringUtl.formatGuild
+import com.sqli.guildes.utils.StringUtil.formatName
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.schedulers.Schedulers
+import java.util.*
 
 class AddSubmissionViewModel(dataManager: DataManager) : BaseViewModel(dataManager) {
 
@@ -75,7 +76,7 @@ class AddSubmissionViewModel(dataManager: DataManager) : BaseViewModel(dataManag
 
     fun getDrawableRes(context: Context): Int {
         return context.resources.getIdentifier(
-                formatGuild(currentUser!!.guilde.name),
+                currentUser!!.guilde.name.formatName().toLowerCase(Locale.ROOT),
                 "drawable", context.packageName
         )
     }

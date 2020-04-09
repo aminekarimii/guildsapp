@@ -160,18 +160,18 @@ dependencies {
 }
 
 sonarqube {
-    properties{
-        property "sonar.host.url", "http://localhost:9000"
-        property "sonar.jdbc.url", "jdbc:mysql://localhost:3306/sonar"
-        property "sonar.jdbc.driverClassName", "com.mysql.jdbc.Driver"
-        property "sonar.jdbc.username", "admin"
-        property "sonar.jdbc.password", "admin"
-        property "sonar.projectName", "Guildes App"
-        property "sonar.projectKey", "com.sqli.guildes"
-        property "sonar.projectVersion", android.defaultConfig.versionName
-        property "sonar.language", "kotlin"
-        property "sonar.profile", "Android Lint"
-        property "sonar.android.lint.report", "build/outputs/lint-results"
+    properties {
+        property "String", "sonar.host.url", project.SONAR_URL
+        property "String", "sonar.jdbc.url", project.SONAR_JDBC_URL
+        property "String", "sonar.jdbc.driverClassName", project.SONAR_JDBC_DRIVERCLASSNAME
+        property "String", "sonar.jdbc.username", project.SONAR_JDBC_USERNAME
+        property "String", "sonar.jdbc.password", project.SONAR_JDBC_PASSWORD
+        property "String", "sonar.projectName", project.SONAR_PROJECTNAME
+        property "String", "sonar.projectKey", project.SONAR_PROJECTKEY
+        property "String", "sonar.projectVersion", project.SONAR_PROJECTVERSION
+        property "String", "sonar.language", project.SONAR_LANGUAGE
+        property "String", "sonar.profile", project.SONAR_PROFILE
+        property "String", "sonar.android.lint.report", project.SONAR_ANDROID_LINT_REPORT
     }
 }
 
