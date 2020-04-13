@@ -44,7 +44,7 @@
     <string name="desc_hint_contribution">Décrit ta contribution ici</string>
     <string name="description_addsubmission">Description</string>
     <string name="subject">Subject</string>
-    <string name="type_addsubmission">"Type "</string>
+    <string name="type_addsubmission">Type</string>
     <string name="hint_contribution_description">Décrit ta contribution ici</string>
 
     <string name="guilds_points">%1$d pts</string>

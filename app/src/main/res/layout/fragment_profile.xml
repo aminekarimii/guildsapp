@@ -19,7 +19,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
     <TextView
         android:id="@+id/tvProfileFName"
         android:layout_width="wrap_content"
@@ -72,7 +71,7 @@
         tools:text="Belier" />
 
     <View
-        android:id="@+id/linearLayout3"
+        android:id="@+id/background_points"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/bg_points"
@@ -80,9 +79,9 @@
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="@+id/tvProfileGuildePoints"
         app:layout_constraintEnd_toEndOf="@+id/star_ic"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/tvProfileGuildePoints"
         app:layout_constraintTop_toTopOf="@+id/tvProfileGuildePoints"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
@@ -134,7 +133,7 @@
         android:textSize="@dimen/textH2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
+        app:layout_constraintTop_toBottomOf="@+id/background_points" />
 
     <com.airbnb.epoxy.EpoxyRecyclerView
         android:id="@+id/rvProfileContributions"
