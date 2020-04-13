@@ -8,67 +8,52 @@
     android:background="@drawable/grad"
     tools:context=".ui.profile.ProfileFragment">
 
-    <androidx.cardview.widget.CardView
+    <View
         android:id="@+id/cardView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorH1"
-        app:cardBackgroundColor="@color/colorPrimary"
+        android:layout_height="0dp"
+        android:background="@color/colorPrimary"
+        app:layout_constraintBottom_toTopOf="@+id/guideline_horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/medium">
+    <TextView
+        android:id="@+id/tvProfileFName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/small"
+        android:layout_marginLeft="@dimen/small"
+        android:layout_marginEnd="@dimen/mini"
+        android:layout_marginRight="@dimen/mini"
+        android:textColor="@color/white"
+        android:textSize="@dimen/textH2"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintBottom_toTopOf="@+id/guideline_horizontal"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_vertical"
+        app:layout_constraintHorizontal_bias="1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Amine" />
 
-            <TextView
-                android:id="@+id/tvProfileFName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/small"
-                android:layout_marginLeft="@dimen/small"
-                android:layout_marginEnd="@dimen/mini"
-                android:layout_marginRight="@dimen/mini"
-                android:textColor="@color/white"
-                android:textSize="@dimen/textH2"
-                app:layout_constrainedWidth="true"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/guideline"
-                app:layout_constraintHorizontal_bias="1"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:text="Amine" />
+    <TextView
+        android:id="@+id/tvProfileLName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/mini"
+        android:layout_marginLeft="@dimen/mini"
+        android:layout_marginEnd="@dimen/small"
+        android:layout_marginRight="@dimen/small"
+        android:textColor="@color/white"
+        android:textSize="@dimen/textH2"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintBottom_toTopOf="@+id/guideline_horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toStartOf="@+id/guideline_vertical"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Karimi" />
 
-            <TextView
-                android:id="@+id/tvProfileLName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/mini"
-                android:layout_marginLeft="@dimen/mini"
-                android:layout_marginEnd="@dimen/small"
-                android:layout_marginRight="@dimen/small"
-                android:textColor="@color/white"
-                android:textSize="@dimen/textH2"
-                app:layout_constrainedWidth="true"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0"
-                app:layout_constraintStart_toStartOf="@+id/guideline"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:text="Karimi" />
-
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guideline"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintGuide_percent="0.5"
-                app:layout_constraintTop_toTopOf="parent" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
 
     <TextView
         android:id="@+id/tvProfileGuildeName"
@@ -84,57 +69,70 @@
         app:layout_constraintTop_toBottomOf="@+id/cardView"
         tools:text="Belier" />
 
-    <LinearLayout
-        android:id="@+id/linearLayout3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/mini"
+    <View
+        android:id="@+id/background_points"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:background="@drawable/bg_points"
         android:gravity="center"
         android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="@+id/tvProfileGuildePoints"
+        app:layout_constraintEnd_toEndOf="@+id/star_ic"
+        app:layout_constraintStart_toStartOf="@+id/tvProfileGuildePoints"
+        app:layout_constraintTop_toTopOf="@+id/tvProfileGuildePoints"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/tvProfileGuildePoints"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/mini"
         android:padding="@dimen/mini"
         android:textColor="@color/colorH2"
         android:textSize="@dimen/textH2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvProfileGuildeName">
+        app:layout_constraintEnd_toStartOf="@+id/star_ic"
+        app:layout_constraintStart_toStartOf="@+id/tvProfileGuildeName"
+        app:layout_constraintTop_toBottomOf="@+id/tvProfileGuildeName"
+        tools:text="23183" />
 
-        <TextView
-            android:id="@+id/tvProfileGuildePoints"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/colorH2"
-            android:textSize="@dimen/textH2" />
+    <View
+        android:id="@+id/line"
+        android:layout_width="1dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/mini"
+        android:layout_marginBottom="@dimen/mini"
+        android:background="@drawable/line"
+        app:layout_constraintBottom_toBottomOf="@+id/tvProfileGuildePoints"
+        app:layout_constraintEnd_toStartOf="@+id/star_ic"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/tvProfileGuildePoints"
+        app:layout_constraintTop_toTopOf="@+id/tvProfileGuildePoints" />
 
-        <View
-            android:layout_width="1dp"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="@dimen/mini"
-            android:layout_marginRight="@dimen/mini"
-            android:background="@drawable/line" />
-
-        <ImageView
-            android:layout_width="@dimen/width_height_icon"
-            android:layout_height="@dimen/width_height_icon"
-            android:contentDescription="@string/app_name"
-            android:src="@drawable/ic_star" />
-
-    </LinearLayout>
+    <ImageView
+        android:id="@+id/star_ic"
+        android:layout_width="@dimen/width_height_icon"
+        android:layout_height="@dimen/width_height_icon"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/ic_star"
+        app:layout_constraintBottom_toBottomOf="@+id/tvProfileGuildePoints"
+        app:layout_constraintEnd_toEndOf="@+id/tvProfileGuildeName"
+        app:layout_constraintStart_toEndOf="@+id/tvProfileGuildePoints"
+        app:layout_constraintTop_toTopOf="@+id/tvProfileGuildePoints" />
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/small"
         android:layout_marginLeft="@dimen/small"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="@dimen/small"
-        android:layout_marginRight="@dimen/small"
-        android:layout_marginBottom="@dimen/mini"
+        android:layout_marginTop="@dimen/mini"
         android:text="@string/your_contributions"
         android:textColor="@color/white"
         android:textSize="@dimen/textH2"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/background_points" />
 
     <com.airbnb.epoxy.EpoxyRecyclerView
         android:id="@+id/rvProfileContributions"
@@ -142,8 +140,8 @@
         android:layout_height="0dp"
         android:layout_marginStart="@dimen/small"
         android:layout_marginLeft="@dimen/small"
-        android:layout_marginEnd="@dimen/small"
         android:layout_marginTop="@dimen/mini"
+        android:layout_marginEnd="@dimen/small"
         android:layout_marginRight="@dimen/small"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -151,4 +149,22 @@
         app:layout_constraintTop_toBottomOf="@+id/textView"
         tools:itemCount="5"
         tools:listitem="@layout/item_submission" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="@id/guideline_horizontal"
+        app:layout_constraintGuide_percent="0.5"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintGuide_percent="0.15"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
