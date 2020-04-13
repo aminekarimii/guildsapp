@@ -16,5 +16,4 @@ class SplashViewModel(dataManager: DataManager) : BaseViewModel(dataManager) {
         val isAuth = dataManager.isAuthenticated()
         _decideNextActivity.postValue(isAuth)
     }
-
 }

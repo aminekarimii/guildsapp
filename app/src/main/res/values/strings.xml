@@ -67,6 +67,7 @@
     <string name="participation_innersource">Participation Innersource </string>
     <string name="user_error_msg">Error getting users</string>
     <string name="loading_submissions_msg">Loading Your Submissions…</string>
+    <string name="contributions_empty">Pas de contributions</string>
 
     <string-array name="submissions_types">
         <item>@string/article</item>
