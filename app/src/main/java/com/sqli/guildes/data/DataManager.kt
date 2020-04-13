@@ -13,6 +13,7 @@ import com.sqli.guildes.data.remote.AddSubmissionRequest
 import com.sqli.guildes.data.remote.ApiService
 import com.sqli.guildes.data.remote.LoginRequest
 import com.sqli.guildes.data.remote.utils.NetworkResponse
+import com.sqli.guildes.data.utils.UsersTypes
 import com.sqli.guildes.di.SingletonHolder
 import io.reactivex.Single
 
@@ -46,9 +47,16 @@ class DataManager(val context: Context) {
                 }
     }
 
-    fun isAuthenticated(): Boolean = !TextUtils.isEmpty(tokenPref)
+    fun isAuthenticated(): Int {
+        if (!TextUtils.isEmpty(tokenPref))
+            if (currentUserPref!!.isAdmin) {
+                return UsersTypes.ADMIN.ordinal
+            } else {
+                return UsersTypes.CONTRIBUTOR.ordinal
+            }
+        return -1
+    }
 
-    fun isAdmin(): Boolean = currentUserPref!!.isAdmin
 
     fun signOut() {
         //db.clear()

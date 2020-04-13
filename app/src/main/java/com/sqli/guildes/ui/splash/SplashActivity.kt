@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.sqli.guildes.R
 import com.sqli.guildes.core.extensions.obtainViewModel
+import com.sqli.guildes.data.utils.UsersTypes
 import com.sqli.guildes.ui.admin.AdminActivity
 import com.sqli.guildes.ui.login.LoginActivity
 import com.sqli.guildes.ui.main.MainActivity
@@ -25,15 +26,14 @@ class SplashActivity : AppCompatActivity() {
         splashViewModel = obtainViewModel(SplashViewModel::class.java).apply {
 
             decideNextActivity.observe(this@SplashActivity, Observer {
-                if (it) {
-                    isAdmin.observe(this@SplashActivity, Observer {admin ->
-                        if (admin) openAdminActivity() else openMainActivity()
-                    })
-                } else openLoginActivity()
+                when (it) {
+                    -1 -> openLoginActivity()
+                    UsersTypes.ADMIN.ordinal -> openAdminActivity()
+                    UsersTypes.CONTRIBUTOR.ordinal -> openMainActivity()
+                }
             })
 
             Handler().postDelayed(::startSeeding, SPLASH_SCREEN_DURATION)
-
         }
     }
 
