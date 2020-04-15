@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
+import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import com.google.android.material.snackbar.Snackbar
@@ -70,7 +71,7 @@ class AddSubmissionFragment : Fragment(), AdapterView.OnItemSelectedListener {
     private fun setupGuildView(context: Context) {
         tvGuildeInfoName.text = addSubmissionViewModel.currentUser!!.guilde.name
         tvGuildInfoPoints.text = getString(R.string.guilds_points, addSubmissionViewModel.currentUser!!.guilde.points)
-        ivGuildeInfo.setImageDrawable(resources.getDrawable(addSubmissionViewModel.getDrawableRes(context)))
+        ivGuildeInfo.setImageDrawable(ResourcesCompat.getDrawable(resources, addSubmissionViewModel.getDrawableRes(context), null))
     }
 
     private fun showSnackbar(viewRes: Int, message: Int, length: Int = Snackbar.LENGTH_LONG) {
