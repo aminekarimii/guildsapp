@@ -190,6 +190,24 @@ class DataManager(val context: Context) {
                         })
                     }
 
+    fun getSubmission(submissionId: String): Single<Resource<Submission>> =
+            apiService.getSubmissions("Bearer $tokenPref", submissionId)
+                    .flatMap { response ->
+                        Single.just(when (response) {
+                            is NetworkResponse.Success -> {
+                                Resource.Success(response.body)
+                            }
+                            is NetworkResponse.NetworkError -> {
+                                Resource.Error(response.error.localizedMessage
+                                        ?: context.getString(R.string.ntework_error_msg))
+                            }
+                            is NetworkResponse.ServerError -> {
+                                Resource.Error<Submission>(response.body?.message
+                                        ?: context.getString(R.string.server_error_msg))
+                            }
+                        })
+                    }
+
     fun getUserContributions(userId: String): Single<Resource<List<Submission>>> = apiService
             .getUserSubmissions("Bearer $tokenPref", userId)
             .flatMap { response ->
