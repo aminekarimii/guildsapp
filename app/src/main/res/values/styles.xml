@@ -8,7 +8,7 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="AdminPanel" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="AdminPanel" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="colorPrimary">@color/lightblue_400</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>

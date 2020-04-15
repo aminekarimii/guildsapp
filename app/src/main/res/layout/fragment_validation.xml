@@ -2,22 +2,23 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/home"
+    android:id="@+id/validation"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/grad"
     android:orientation="vertical"
-    tools:context=".ui.home.HomeFragment">
+    tools:context=".ui.validation.ValidationFragment">
 
     <View
         android:id="@+id/view2"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/ver_bg"
-        app:layout_constraintBottom_toTopOf="@+id/guideline2"
+        app:layout_constraintBottom_toBottomOf="@+id/guideline2"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/tvProfileGuildeName"
@@ -25,13 +26,13 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/small"
         android:contentDescription="@string/app_name"
+        android:text="@string/contributions_points"
         android:textColor="@color/white"
         android:textSize="@dimen/textH1"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="Point d'activite" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <View
         android:id="@+id/background_points"
@@ -52,14 +53,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/mini"
+        android:paddingStart="@dimen/mini"
         android:paddingLeft="@dimen/mini"
         android:paddingTop="@dimen/mini"
         android:paddingBottom="@dimen/mini"
         android:textColor="@color/colorH2"
         android:textSize="@dimen/textH2"
+        app:layout_constraintBottom_toTopOf="@+id/guideline2"
         app:layout_constraintEnd_toStartOf="@+id/star_ic"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/tvProfileGuildeName"
         app:layout_constraintTop_toBottomOf="@+id/tvProfileGuildeName"
+        app:layout_constraintVertical_bias="0"
         tools:text="300" />
 
     <View
@@ -94,53 +99,54 @@
         android:id="@+id/tvContribLabel"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:textColor="@color/white"
+        android:text="@string/by_label"
+        android:textColor="@color/colorH3"
         android:textSize="@dimen/textH2"
+        app:layout_constraintBottom_toBottomOf="@+id/tvContrib"
         app:layout_constraintStart_toStartOf="@+id/leftGuideline"
-        app:layout_constraintTop_toTopOf="@+id/guideline2"
-        tools:text="Par: " />
+        app:layout_constraintTop_toTopOf="@+id/tvContrib" />
 
     <TextView
         android:id="@+id/tvContrib"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="@dimen/textH2"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/guideline5"
         app:layout_constraintStart_toEndOf="@+id/tvContribLabel"
-        app:layout_constraintTop_toTopOf="@+id/guideline2"
+        app:layout_constraintTop_toBottomOf="@+id/view2"
         tools:text="Amine Karimi" />
 
     <TextView
         android:id="@+id/tvGuildLabel"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:textColor="@color/white"
+        android:text="@string/guilde_label"
+        android:textColor="@color/colorH3"
         android:textSize="@dimen/textH3"
         app:layout_constraintBottom_toBottomOf="@+id/tvGuildName"
         app:layout_constraintStart_toStartOf="@+id/guideline5"
-        app:layout_constraintTop_toTopOf="@+id/guideline2"
-        tools:text="Guilde: " />
+        app:layout_constraintTop_toTopOf="@+id/tvGuildName" />
 
     <TextView
         android:id="@+id/tvGuildName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="@dimen/textH2"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
         app:layout_constraintStart_toEndOf="@+id/tvGuildLabel"
-        app:layout_constraintTop_toTopOf="@+id/guideline2"
+        app:layout_constraintTop_toBottomOf="@+id/view2"
         tools:text="Andromede" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/tvContribTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/small"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="@dimen/textH1"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
@@ -149,16 +155,32 @@
         app:layout_constraintTop_toBottomOf="@+id/tvContrib"
         tools:text="Presentation de securite dans android" />
 
+    <com.google.android.material.chip.Chip
+        android:id="@+id/tvContribType"
+        style="@style/Widget.MaterialComponents.Chip.Entry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/mini"
+        android:checkable="false"
+        android:clickable="false"
+        app:closeIconEnabled="false"
+        app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toStartOf="@+id/leftGuideline"
+        app:layout_constraintTop_toBottomOf="@+id/tvContribTitle"
+        tools:text="Presentation de securite dans android" />
+
     <TextView
+        android:id="@+id/tvContribDescription"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/small"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="@dimen/textH2"
         app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/leftGuideline"
-        app:layout_constraintTop_toBottomOf="@+id/textView5"
+        app:layout_constraintTop_toBottomOf="@+id/tvContribType"
         tools:text="@string/lorem_medium" />
 
     <androidx.appcompat.widget.AppCompatButton

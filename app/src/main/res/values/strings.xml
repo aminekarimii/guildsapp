@@ -71,6 +71,12 @@
     <string name="validate">Valider</string>
     <string name="lorem_small">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</string>
     <string name="lorem_medium">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</string>
+    <string name="tv_contributions_total">Contributions Total</string>
+    <string name="ntework_error_msg">Network Error</string>
+    <string name="server_error_msg">Try later please</string>
+    <string name="contributions_points">Points d\'activite</string>
+    <string name="by_label">Par:</string>
+    <string name="guilde_label">Guilde:</string>
 
     <string-array name="submissions_types">
         <item>@string/article</item>

@@ -16,4 +16,5 @@
 <!-- SQLI Colors   -->
     <color name="lightblue_400">#54beea</color>
     <color name="deep_purple_400">#371450</color>
+    <color name="black">#000000</color>
 </resources>
