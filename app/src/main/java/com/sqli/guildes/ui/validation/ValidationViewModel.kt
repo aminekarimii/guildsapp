@@ -16,6 +16,9 @@ class ValidationViewModel(dataManager: DataManager) : BaseViewModel(dataManager)
     private var _contribution = MutableLiveData<Resource<Submission>>()
     val contribution: LiveData<Resource<Submission>> get() = _contribution
 
+    private var _validation = MutableLiveData<Boolean>()
+    val validation: LiveData<Boolean> get() = _validation
+
     fun getContribution(submissionId: String) {
         _contribution.postValue(Resource.Loading())
         dataManager.getSubmission(submissionId)
@@ -26,4 +29,14 @@ class ValidationViewModel(dataManager: DataManager) : BaseViewModel(dataManager)
                 ).disposeWith(compositeDisposable)
     }
 
+    fun validateSubmission(submissionId: String) {
+        _contribution.postValue(Resource.Loading())
+        dataManager.getSubmission(submissionId)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeBy(onSuccess = {
+                    _validation.postValue(true)
+                })
+                .disposeWith(compositeDisposable)
+    }
 }

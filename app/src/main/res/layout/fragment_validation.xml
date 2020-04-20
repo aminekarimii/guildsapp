@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/validation"
+    android:id="@+id/validationView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -12,7 +12,7 @@
         android:id="@+id/view2"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@drawable/ver_bg"
+        android:background="@color/colorPrimary"
         app:layout_constraintBottom_toBottomOf="@+id/guideline2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -20,19 +20,67 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 
+    <View
+        android:id="@+id/view_container"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/ic_shape"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/mini"
+        app:layout_constraintBottom_toBottomOf="@+id/ivGuildeInfo"
+        app:layout_constraintEnd_toEndOf="@+id/tvGuildeInfoName"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/ivGuildeInfo"
+        app:layout_constraintTop_toTopOf="@+id/ivGuildeInfo"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/ivGuildeInfo"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:contentDescription="@string/app_name"
+        android:paddingStart="@dimen/mini"
+        android:paddingLeft="@dimen/mini"
+        android:paddingTop="@dimen/mini"
+        android:paddingEnd="0dp"
+        android:paddingRight="0dp"
+        android:paddingBottom="@dimen/mini"
+        android:src="@drawable/verseau"
+        app:layout_constraintHorizontal_bias="1"
+        app:layout_constraintBottom_toTopOf="@+id/guideline2"
+        app:layout_constraintEnd_toStartOf="@+id/tvGuildeInfoName"
+        app:layout_constraintStart_toStartOf="@+id/leftGuideline"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
-        android:id="@+id/tvProfileGuildeName"
+        android:id="@+id/tvGuildeInfoName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/small"
+        android:layout_marginEnd="@dimen/small"
+        android:layout_marginRight="@dimen/small"
+        android:paddingEnd="@dimen/small"
+        android:paddingRight="@dimen/small"
+        app:layout_constrainedWidth="true"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/textH3"
+        app:layout_constraintBottom_toBottomOf="@+id/ivGuildeInfo"
+        app:layout_constraintEnd_toStartOf="@+id/guideline5"
+        app:layout_constraintTop_toTopOf="@+id/ivGuildeInfo"
+        tools:text="Verseau" />
+
+    <TextView
+        android:id="@+id/tvProfileGuildeName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/small"
         android:contentDescription="@string/app_name"
         android:text="@string/contributions_points"
         android:textColor="@color/white"
-        android:textSize="@dimen/textH1"
+        android:textSize="@dimen/textH2"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
+        app:layout_constraintStart_toStartOf="@+id/guideline5"
+        app:layout_constraintTop_toTopOf="@+id/view_container" />
 
     <View
         android:id="@+id/background_points"
@@ -60,8 +108,6 @@
         android:textColor="@color/colorH2"
         android:textSize="@dimen/textH2"
         app:layout_constraintBottom_toTopOf="@+id/guideline2"
-        app:layout_constraintEnd_toStartOf="@+id/star_ic"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/tvProfileGuildeName"
         app:layout_constraintTop_toBottomOf="@+id/tvProfileGuildeName"
         app:layout_constraintVertical_bias="0"
@@ -77,8 +123,6 @@
         android:layout_marginBottom="@dimen/mini"
         android:background="@drawable/line"
         app:layout_constraintBottom_toBottomOf="@+id/tvProfileGuildePoints"
-        app:layout_constraintEnd_toStartOf="@+id/star_ic"
-        app:layout_constraintHorizontal_bias="0"
         app:layout_constraintStart_toEndOf="@+id/tvProfileGuildePoints"
         app:layout_constraintTop_toTopOf="@+id/tvProfileGuildePoints" />
 
@@ -86,14 +130,27 @@
         android:id="@+id/star_ic"
         android:layout_width="@dimen/width_height_icon"
         android:layout_height="@dimen/width_height_icon"
+        android:layout_margin="@dimen/mini"
         android:contentDescription="@string/app_name"
-        android:paddingEnd="@dimen/mini"
-        android:paddingRight="@dimen/mini"
         android:src="@drawable/ic_star"
         app:layout_constraintBottom_toBottomOf="@+id/tvProfileGuildePoints"
-        app:layout_constraintEnd_toEndOf="@+id/tvProfileGuildeName"
-        app:layout_constraintStart_toEndOf="@+id/tvProfileGuildePoints"
+        app:layout_constraintStart_toEndOf="@+id/line"
         app:layout_constraintTop_toTopOf="@+id/tvProfileGuildePoints" />
+
+
+    <TextView
+        android:id="@+id/tvContribTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/small"
+        android:textColor="@color/black"
+        android:textSize="@dimen/textH1"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/leftGuideline"
+        app:layout_constraintTop_toTopOf="@+id/guideline2"
+        tools:text="Presentation de securite dans android" />
 
     <TextView
         android:id="@+id/tvContribLabel"
@@ -110,50 +167,16 @@
         android:id="@+id/tvContrib"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/mini"
+        android:layout_marginLeft="@dimen/mini"
+        android:layout_marginTop="@dimen/mini"
         android:textColor="@color/black"
         android:textSize="@dimen/textH2"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/guideline5"
+        android:textStyle="italic"
+        app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
         app:layout_constraintStart_toEndOf="@+id/tvContribLabel"
-        app:layout_constraintTop_toBottomOf="@+id/view2"
+        app:layout_constraintTop_toBottomOf="@+id/tvContribTitle"
         tools:text="Amine Karimi" />
-
-    <TextView
-        android:id="@+id/tvGuildLabel"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="@string/guilde_label"
-        android:textColor="@color/colorH3"
-        android:textSize="@dimen/textH3"
-        app:layout_constraintBottom_toBottomOf="@+id/tvGuildName"
-        app:layout_constraintStart_toStartOf="@+id/guideline5"
-        app:layout_constraintTop_toTopOf="@+id/tvGuildName" />
-
-    <TextView
-        android:id="@+id/tvGuildName"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:textColor="@color/black"
-        android:textSize="@dimen/textH2"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
-        app:layout_constraintStart_toEndOf="@+id/tvGuildLabel"
-        app:layout_constraintTop_toBottomOf="@+id/view2"
-        tools:text="Andromede" />
-
-    <TextView
-        android:id="@+id/tvContribTitle"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/small"
-        android:textColor="@color/black"
-        android:textSize="@dimen/textH1"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/leftGuideline"
-        app:layout_constraintTop_toBottomOf="@+id/tvContrib"
-        tools:text="Presentation de securite dans android" />
 
     <com.google.android.material.chip.Chip
         android:id="@+id/tvContribType"
@@ -167,7 +190,7 @@
         app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
         app:layout_constraintHorizontal_bias="0"
         app:layout_constraintStart_toStartOf="@+id/leftGuideline"
-        app:layout_constraintTop_toBottomOf="@+id/tvContribTitle"
+        app:layout_constraintTop_toBottomOf="@+id/tvContrib"
         tools:text="Presentation de securite dans android" />
 
     <TextView
@@ -183,46 +206,27 @@
         app:layout_constraintTop_toBottomOf="@+id/tvContribType"
         tools:text="@string/lorem_medium" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnInvalid"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/medium"
-        android:layout_marginLeft="@dimen/medium"
-        android:layout_marginEnd="@dimen/mini"
-        android:layout_marginRight="@dimen/mini"
-        android:layout_marginBottom="@dimen/large"
-        android:background="@color/gradEnd"
-        android:text="Delete"
-        android:textColor="@color/colorWhite"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btnValidate"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnValidate"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/mini"
-        android:layout_marginLeft="@dimen/mini"
         android:layout_marginEnd="@dimen/medium"
         android:layout_marginRight="@dimen/medium"
-        android:layout_marginBottom="@dimen/large"
+        android:layout_marginBottom="@dimen/medium"
         android:background="@drawable/login_btn_background"
         android:text="@string/validate"
         android:textColor="@color/colorWhite"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/btnInvalid" />
+        app:layout_constraintStart_toStartOf="@+id/guideline5" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.15" />
+        app:layout_constraintGuide_percent="0.19" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/leftGuideline"

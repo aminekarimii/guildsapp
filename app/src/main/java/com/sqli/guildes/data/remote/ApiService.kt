@@ -53,6 +53,10 @@ interface ApiService {
     fun getUserSubmissions(@Header("Authorization") authHeader: String, @Path("id") id: String)
             : Single<NetworkResponse<List<Submission>, ErrorResponse>>
 
+    @GET("submissions/validate/{id}")
+    fun validate(@Header("Authorization") authHeader: String, @Path("id") id: String)
+            : Single<NetworkResponse<Submission, ErrorResponse>>
+
     @GET("submissions/details/{id}")
     fun getSubmissions(@Header("Authorization") authHeader: String, @Path("id") id: String)
             : Single<NetworkResponse<Submission, ErrorResponse>>

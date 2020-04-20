@@ -30,7 +30,7 @@ class UserSubmissionsFragment : Fragment() {
 
         rvUserContributions.apply {
             layoutManager = LinearLayoutManager(context)
-            submissionController = SubmissionController()
+            submissionController = SubmissionController(context)
             setController(submissionController)
         }
     }
