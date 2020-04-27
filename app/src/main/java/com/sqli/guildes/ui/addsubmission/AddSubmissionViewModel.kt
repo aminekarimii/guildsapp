@@ -67,11 +67,15 @@ class AddSubmissionViewModel(dataManager: DataManager) : BaseViewModel(dataManag
     }
 
     fun getSubmissionPoints(position: Int): Int {
-        return SUBMISSIONS_TYPES.toList()[position].second
+        return if (position <= SUBMISSIONS_TYPES.size)
+            SUBMISSIONS_TYPES.toList()[position].second
+        else -1
     }
 
     fun getSubmissionType(context: Context, position: Int): String {
-        return context.getString(SUBMISSIONS_TYPES.toList()[position].first)
+        return if (position <= SUBMISSIONS_TYPES.size)
+            context.getString(SUBMISSIONS_TYPES.toList()[position].first)
+        else "empty"
     }
 
     fun getDrawableRes(context: Context): Int {

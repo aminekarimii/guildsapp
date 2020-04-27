@@ -64,8 +64,14 @@ class AddSubmissionFragment : Fragment(), AdapterView.OnItemSelectedListener {
     }
 
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-        this.type = addSubmissionViewModel.getSubmissionType(view!!.context, position)
-        this.points = addSubmissionViewModel.getSubmissionPoints(position)
+        addSubmissionViewModel.getSubmissionType(view!!.context, position).let {
+            if (it != "empty")
+                this.type = it
+        }
+        addSubmissionViewModel.getSubmissionPoints(position).let {
+            if (it != -1)
+                this.points = it
+        }
     }
 
     private fun setupGuildView(context: Context) {
