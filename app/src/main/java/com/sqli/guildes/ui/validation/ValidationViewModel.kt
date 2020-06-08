@@ -31,7 +31,7 @@ class ValidationViewModel(dataManager: DataManager) : BaseViewModel(dataManager)
 
     fun validateSubmission(submissionId: String) {
         _contribution.postValue(Resource.Loading())
-        dataManager.getSubmission(submissionId)
+        dataManager.validateSubmission(submissionId)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeBy(onSuccess = {

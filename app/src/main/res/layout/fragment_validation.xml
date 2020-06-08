@@ -92,6 +92,7 @@
         android:background="@drawable/bg_points"
         android:gravity="center"
         android:orientation="horizontal"
+
         app:layout_constraintBottom_toBottomOf="@+id/tvProfileGuildePoints"
         app:layout_constraintEnd_toEndOf="@+id/star_ic"
         app:layout_constraintHorizontal_bias="0.0"
@@ -135,8 +136,9 @@
         android:id="@+id/star_ic"
         android:layout_width="@dimen/width_height_icon"
         android:layout_height="@dimen/width_height_icon"
-        android:layout_margin="@dimen/mini"
+        android:layout_marginLeft="@dimen/tiny"
         android:contentDescription="@string/app_name"
+        android:padding="@dimen/tiny"
         android:src="@drawable/ic_star"
         app:layout_constraintBottom_toBottomOf="@+id/tvProfileGuildePoints"
         app:layout_constraintStart_toEndOf="@+id/line"
@@ -198,19 +200,26 @@
         app:layout_constraintTop_toBottomOf="@+id/tvContrib"
         tools:text="Presentation de securite dans android" />
 
-    <TextView
-        android:id="@+id/tvContribDescription"
+    <ScrollView
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginTop="@dimen/small"
-        android:textColor="@color/black"
-        android:textSize="@dimen/textH2"
+        android:layout_marginBottom="@dimen/small"
+        app:layout_constraintBottom_toTopOf="@+id/btnValidate"
         app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/leftGuideline"
         app:layout_constraintTop_toBottomOf="@+id/tvContribType"
-        tools:text="@string/lorem_medium" />
+        app:layout_constraintVertical_bias="0">
 
+        <TextView
+            android:id="@+id/tvContribDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="@dimen/textH2"
+            tools:text="@string/lorem_medium" />
+    </ScrollView>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnValidate"
@@ -218,7 +227,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/medium"
         android:layout_marginRight="@dimen/medium"
-        android:layout_marginBottom="@dimen/medium"
+        android:layout_marginBottom="@dimen/small"
         android:background="@drawable/login_btn_background"
         android:text="@string/validate"
         android:textColor="@color/colorWhite"
