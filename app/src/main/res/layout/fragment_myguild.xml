@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/ivGuildIcon"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/ic_aquarium" />
+
+    <TextView
+        android:id="@+id/tvMyGuildName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_margin="@dimen/small"
+        android:textColor="@color/black"
+        android:textSize="@dimen/textH1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivGuildIcon"
+        tools:text="GuildName" />
+
+    <TextView
+        android:id="@+id/tvMyGuildSite"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/mini"
+        android:layout_marginEnd="@dimen/small"
+        android:layout_marginRight="@dimen/small"
+        app:layout_constraintEnd_toStartOf="@+id/divider"
+        app:layout_constraintTop_toBottomOf="@+id/tvMyGuildName"
+        tools:text="RABAT" />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="1dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/mini"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintBottom_toBottomOf="@+id/tvMyGuildSite"
+        app:layout_constraintEnd_toStartOf="@+id/guideline3"
+        app:layout_constraintStart_toStartOf="@+id/guideline3"
+        app:layout_constraintTop_toBottomOf="@+id/tvMyGuildName" />
+
+    <TextView
+        android:id="@+id/tvMyGuildPts"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/small"
+        android:layout_marginLeft="@dimen/small"
+        android:layout_marginTop="@dimen/mini"
+        app:layout_constraintStart_toEndOf="@+id/divider"
+        app:layout_constraintTop_toBottomOf="@+id/tvMyGuildName"
+        tools:text="200 pts" />
+
+    <com.airbnb.epoxy.EpoxyRecyclerView
+        android:id="@+id/rvMyGuildContribs"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/small"
+        android:layout_marginLeft="@dimen/small"
+        android:layout_marginEnd="@dimen/small"
+        android:layout_marginRight="@dimen/small"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="@dimen/small"
+        app:layout_constraintTop_toBottomOf="@+id/tvMyGuildSite"
+        tools:itemCount="5"
+        tools:listitem="@layout/item_submission" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

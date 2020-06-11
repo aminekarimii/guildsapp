@@ -1,6 +1,7 @@
-package com.sqli.guildes.ui.profile
+package com.sqli.guildes.ui.myguild
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,24 +11,25 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.sqli.guildes.R
 import com.sqli.guildes.core.Resource
 import com.sqli.guildes.core.extensions.obtainViewModel
-import com.sqli.guildes.data.models.User
 import com.sqli.guildes.ui.common.epoxy.controllers.SubmissionController
-import kotlinx.android.synthetic.main.fragment_profile.*
-import log
+import com.sqli.guildes.ui.main.MainActivity
+import com.sqli.guildes.ui.main.MainViewModel
+import kotlinx.android.synthetic.main.fragment_myguild.*
 
-class ProfileFragment : Fragment(){
+class MyGuildFragment : Fragment() {
 
-    private lateinit var profileViewModel: ProfileViewModel
+    private lateinit var mainViewModel: MainViewModel
+    private lateinit var myGuildViewModel: MyGuildViewModel
     private lateinit var submissionController: SubmissionController
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View {
-        return inflater.inflate(R.layout.fragment_profile, container, false)
+        return inflater.inflate(R.layout.fragment_myguild, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        rvProfileContributions.apply {
+        rvMyGuildContribs.apply {
             layoutManager = LinearLayoutManager(context)
             submissionController = SubmissionController(context)
             setController(submissionController)
@@ -36,32 +38,25 @@ class ProfileFragment : Fragment(){
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        mainViewModel = (activity as MainActivity).obtainViewModel().apply {
+            //updateToolbarTitle("Home")
+            tvMyGuildName.text = currentUser?.guilde?.name
+            tvMyGuildPts.text = currentUser?.guilde?.points.toString()
+            tvMyGuildSite.text = currentUser?.site
+        }
 
-        profileViewModel = obtainViewModel(ProfileViewModel::class.java).apply {
-
-            currentContributor.observe(this@ProfileFragment, Observer {
+        myGuildViewModel = obtainViewModel(MyGuildViewModel::class.java).apply {
+            guildContributions.observe(this@MyGuildFragment, Observer {
+                submissionController.setData(it)
                 when (it) {
-                    is Resource.Success -> with(it.data) {
-                        setupTextViews(this)
-                    }
-                    is Resource.Error -> with(it.errorMessage) {
-                        log(this)
+                    is Resource.Success ->{
+                        Log.d("TAG", "onActivityCreated: " + it.data)
                     }
                 }
             })
-
-            submissions.observe(this@ProfileFragment, Observer {
-                submissionController.setData(it)
-            })
         }
-        profileViewModel.loadCurrentUserDetails().loadCurrentUserSubmissions()
 
+        myGuildViewModel.loadGuildContributions()
     }
 
-    private fun setupTextViews(data: User) {
-        tvProfileFName.text = data.firstname
-        tvProfileLName.text = data.lastname
-        tvProfileGuildeName.text = data.guilde.name
-        tvProfileGuildePoints.text = "${data.guilde.points}"
-    }
 }

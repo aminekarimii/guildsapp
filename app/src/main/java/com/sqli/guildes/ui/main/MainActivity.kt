@@ -82,6 +82,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 navController.navigate(R.id.addSubmissionFragment)
             }
 
+            R.id.my_guilde_navigation_menu_item -> {
+                mainViewModel.updateToolbarTitle(getString(R.string.my_guilde))
+                navController.navigate(R.id.myGuildFragment)
+            }
+
             R.id.profile_navigation_menu_item -> {
                 mainViewModel.updateToolbarTitle(getString(R.string.profile_tootlbar_title))
                 navController.navigate(R.id.profileFragment)

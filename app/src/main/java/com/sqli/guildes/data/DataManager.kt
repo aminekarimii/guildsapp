@@ -244,6 +244,24 @@ class DataManager(val context: Context) {
                 })
             }
 
+    fun getGuildSubmissions(guildeId: String): Single<Resource<List<Submission>>> = apiService
+            .getGuildSubmissions(guildeId, "Bearer $tokenPref")
+            .flatMap { response ->
+                Single.just(when (response) {
+                    is NetworkResponse.Success -> {
+                        Resource.Success(response.body)
+                    }
+                    is NetworkResponse.ServerError -> {
+                        Resource.Error<List<Submission>>(response.body?.message
+                                ?: context.getString(R.string.server_error_msg))
+                    }
+                    is NetworkResponse.NetworkError -> {
+                        Resource.Error(response.error.localizedMessage
+                                ?: context.getString(R.string.ntework_error_msg))
+                    }
+                })
+            }
+
     fun postSubmission(subject: String, description: String, type: String, points: Int): Single<Resource<String>> {
         return apiService.addSubmission("Bearer $tokenPref",
                 AddSubmissionRequest(subject, type, description, points))

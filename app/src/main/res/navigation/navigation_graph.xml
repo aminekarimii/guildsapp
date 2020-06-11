@@ -24,9 +24,17 @@
             app:exitAnim="@animator/slide_out_left"
             app:popEnterAnim="@animator/slide_in_left"
             app:popExitAnim="@animator/slide_out_right" />
+
         <action
             android:id="@+id/action_homeFragment_to_addSubmissionFragment"
             app:destination="@id/addSubmissionFragment"
+            app:enterAnim="@animator/slide_in_right"
+            app:exitAnim="@animator/slide_out_left"
+            app:popEnterAnim="@animator/slide_in_left"
+            app:popExitAnim="@animator/slide_out_right" />
+        <action
+            android:id="@+id/action_homeFragment_to_myGuildFragment"
+            app:destination="@id/myGuildFragment"
             app:enterAnim="@animator/slide_in_right"
             app:exitAnim="@animator/slide_out_left"
             app:popEnterAnim="@animator/slide_in_left"
@@ -62,6 +70,13 @@
         android:name="com.sqli.guildes.ui.addsubmission.AddSubmissionFragment"
         android:label="fragment_addsubmission"
         tools:layout="@layout/fragment_addsubmission" />
+
+    <fragment
+        android:id="@+id/myGuildFragment"
+        android:name="com.sqli.guildes.ui.myguild.MyGuildFragment"
+        android:label="fragment_myguild"
+        tools:layout="@layout/fragment_myguild" />
+
     <fragment
         android:id="@+id/userSubmissionsFragment"
         android:name="com.sqli.guildes.ui.usersubmissions.UserSubmissionsFragment"
