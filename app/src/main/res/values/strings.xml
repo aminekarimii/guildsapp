@@ -78,6 +78,9 @@
     <string name="contributions_points">Points d\'activitée</string>
     <string name="by_label">Par:</string>
     <string name="guilde_label">Guilde:</string>
+    <string name="cancel">Cancel</string>
+    <string name="validate_msg">Cette contribution sera valider après la validation</string>
+    <string name="validation_confirmation">Valider ?</string>
 
     <string-array name="submissions_types">
         <item>@string/article</item>
